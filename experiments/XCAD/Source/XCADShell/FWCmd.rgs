@@ -1,0 +1,26 @@
+HKCR
+{
+	XCADShell.FWCmd.1 = s 'FWCmd Class'
+	{
+		CLSID = s '{60A6CCD9-33E7-4417-96EC-1640CE3B14E3}'
+	}
+	XCADShell.FWCmd = s 'FWCmd Class'
+	{
+		CLSID = s '{60A6CCD9-33E7-4417-96EC-1640CE3B14E3}'
+		CurVer = s 'XCADShell.FWCmd.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {60A6CCD9-33E7-4417-96EC-1640CE3B14E3} = s 'FWCmd Class'
+		{
+			ProgID = s 'XCADShell.FWCmd.1'
+			VersionIndependentProgID = s 'XCADShell.FWCmd'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{693A6269-9D47-43B3-92A1-EEA2B52CF54E}'
+		}
+	}
+}

@@ -1,0 +1,26 @@
+HKCR
+{
+	XCADShell.FWUICmdBars.1 = s 'FWUICmdBars Class'
+	{
+		CLSID = s '{76E05C81-FB65-497D-A3F7-366F4B8BBC8F}'
+	}
+	XCADShell.FWUICmdBars = s 'FWUICmdBars Class'
+	{
+		CLSID = s '{76E05C81-FB65-497D-A3F7-366F4B8BBC8F}'
+		CurVer = s 'XCADShell.FWUICmdBars.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {76E05C81-FB65-497D-A3F7-366F4B8BBC8F} = s 'FWUICmdBars Class'
+		{
+			ProgID = s 'XCADShell.FWUICmdBars.1'
+			VersionIndependentProgID = s 'XCADShell.FWUICmdBars'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{693A6269-9D47-43B3-92A1-EEA2B52CF54E}'
+		}
+	}
+}

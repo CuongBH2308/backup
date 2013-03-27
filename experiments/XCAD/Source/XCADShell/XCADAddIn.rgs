@@ -1,0 +1,27 @@
+HKCR
+{
+	XCADShell.XCADAddIn.1 = s 'XCADAddIn Class'
+	{
+		CLSID = s '{5B9154DE-9F23-4790-9097-BBD76ABFA9DA}'
+	}
+	XCADShell.XCADAddIn = s 'XCADAddIn Class'
+	{
+		CLSID = s '{5B9154DE-9F23-4790-9097-BBD76ABFA9DA}'
+		CurVer = s 'XCADShell.XCADAddIn.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {5B9154DE-9F23-4790-9097-BBD76ABFA9DA} = s 'XCADAddIn Class'
+		{
+			ProgID = s 'XCADShell.XCADAddIn.1'
+			VersionIndependentProgID = s 'XCADShell.XCADAddIn'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{693A6269-9D47-43B3-92A1-EEA2B52CF54E}'
+		}
+	}
+}

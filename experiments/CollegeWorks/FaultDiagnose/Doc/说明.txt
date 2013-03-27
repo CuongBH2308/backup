@@ -1,0 +1,5 @@
+1.附加"数据库"目录下两个数据库(勿改变名字)
+2.在企业管理器中，工具－>SQL配置属性，改为SQL和Windows双重验证
+3.注册"COM"目录下的三个COM组件
+4.数据库feng-->MODELSET_Table-->部件图片路径  设置为misile.bmp所在路径
+5.在user_info.txt文件中将数据源改成机器名

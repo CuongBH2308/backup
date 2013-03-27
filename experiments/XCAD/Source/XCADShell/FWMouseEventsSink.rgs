@@ -1,0 +1,27 @@
+HKCR
+{
+	XCADShell.FWMouseEventsSink.1 = s 'FWMouseEventsSink Class'
+	{
+		CLSID = s '{30E00EED-5EAC-4857-BE06-8E97A86585AC}'
+	}
+	XCADShell.FWMouseEventsSink = s 'FWMouseEventsSink Class'
+	{
+		CLSID = s '{30E00EED-5EAC-4857-BE06-8E97A86585AC}'
+		CurVer = s 'XCADShell.FWMouseEventsSink.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {30E00EED-5EAC-4857-BE06-8E97A86585AC} = s 'FWMouseEventsSink Class'
+		{
+			ProgID = s 'XCADShell.FWMouseEventsSink.1'
+			VersionIndependentProgID = s 'XCADShell.FWMouseEventsSink'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{693A6269-9D47-43B3-92A1-EEA2B52CF54E}'
+		}
+	}
+}

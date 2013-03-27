@@ -1,0 +1,872 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\XCAD.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "1 TYPELIB ""XCAD.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "res\\Crate.bmp"
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// 英语(美国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\toolbar.bmp"
+IDB_FWAPP               BITMAP                  "res\\fwapp.bmp"
+IDB_UC_TEST_FRAGMENT    BITMAP                  "res\\uc\\uc_test_fragment.bmp"
+IDB_UC_TEST_CRVNURBS    BITMAP                  "res\\uc\\uc_test_crvnurbs.bmp"
+IDB_UC_UNDO             BITMAP                  "res\\uc\\uc_undo.bmp"
+IDB_UC_REDO             BITMAP                  "res\\uc\\uc_redo.bmp"
+IDB_UC_VIEW_ROTATE      BITMAP                  "res\\uc\\uc_rotate.bmp"
+IDB_UC_VIEW_ZOOM        BITMAP                  "res\\uc\\uc_zoom.bmp"
+IDB_UC_VIEW_MOVE        BITMAP                  "res\\uc\\uc_move.bmp"
+IDB_UC_SKETCH2D         BITMAP                  "res\\uc\\uc_sketch2d.bmp"
+IDB_UC_SKETCH3D         BITMAP                  "res\\uc\\uc_sketch3d.bmp"
+IDB_UC_WORKPLANE        BITMAP                  "res\\uc\\uc_workplane.bmp"
+IDB_UC_PROPERTY         BITMAP                  "res\\uc\\uc_property.bmp"
+IDB_UC_RENDERLIGHT      BITMAP                  "res\\uc\\uc_renderlight.bmp"
+IDB_S2_DRAG             BITMAP                  "res\\s2\\drag.bmp"
+IDB_S2_CRVLINESEG       BITMAP                  "res\\s2\\polyline.bmp"
+IDB_S2_CRVNURBS         BITMAP                  "res\\s2\\nurbs.bmp"
+IDB_S2_CRVBEZIER        BITMAP                  "res\\s2\\bezier.bmp"
+IDB_PT_FTREXTRUSION     BITMAP                  "res\\pt\\extrusion.bmp"
+IDB_PT_FTRREVOLVE       BITMAP                  "res\\pt\\revolve.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\XCAD.ico"
+IDR_XCADTYPE            ICON                    "res\\XCADDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About XCAD...",              ID_APP_ABOUT
+    END
+END
+
+IDR_XCADTYPE MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tCtrl+N",                ID_FILE_NEW
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close",                      ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...",                 ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               IDR_UC_UNDO
+        MENUITEM "&Redo\tCtrl+R",               IDR_UC_REDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Tools"
+    BEGIN
+        POPUP "&Macro"
+        BEGIN
+            MENUITEM "&Macros...",                  ID_TOOLS_MACRO_MACROS
+            MENUITEM "&Visual Basic Editor",        ID_TOOLS_MACRO_VISUALBASICEDITOR
+
+        END
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile",                       ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About XCAD...",              ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            IDR_UC_UNDO,            VIRTKEY, CONTROL
+    "R",            IDR_UC_REDO,            VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About XCAD"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "XCAD Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2006",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_UC_PROPERTY_CURVE DIALOGEX 0, 0, 135, 218
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Curve"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_UC_PROPERTY_CURVE_COLOR_R,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,23,14,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_PROPERTY_CURVE_COLOR_G,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,23,32,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_PROPERTY_CURVE_COLOR_B,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,24,51,99,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_PROPERTY_CURVE_COLOR_A,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,24,70,99,13,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Color...",IDC_UC_PROPERTY_CURVE_COLOR,73,90,45,14,0,
+                    WS_EX_TRANSPARENT
+    GROUPBOX        "Color",IDC_STATIC,7,3,121,107
+    LTEXT           "R:",IDC_STATIC,11,16,8,8
+    LTEXT           "G:",IDC_STATIC,11,35,8,8
+    LTEXT           "B:",IDC_STATIC,11,53,8,8
+    LTEXT           "A:",IDC_STATIC,11,73,8,8
+    GROUPBOX        "Stipple",IDC_STATIC,7,111,121,52
+    EDITTEXT        IDC_UC_PROPERTY_CURVE_STIPPLE_PATTERN,45,124,73,12,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_UC_PROPERTY_CURVE_STIPPLE_FACTOR,
+                    "msctls_trackbar32",TBS_AUTOTICKS | TBS_TOOLTIPS | 
+                    WS_TABSTOP,43,143,80,13,WS_EX_TRANSPARENT
+    LTEXT           "Pattern:",IDC_STATIC,11,126,34,8
+    LTEXT           "Factor:",IDC_STATIC,11,144,24,8
+    GROUPBOX        "Weight",IDC_STATIC,7,163,121,34
+    CONTROL         "",IDC_UC_PROPERTY_CURVE_WEIGHT,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,43,175,80,13,
+                    WS_EX_TRANSPARENT
+    LTEXT           "Weight:",IDC_STATIC,11,176,26,8
+    CONTROL         "",IDC_STATIC,"Static",SS_GRAYFRAME | NOT WS_VISIBLE,7,
+                    202,121,8
+END
+
+IDD_UC_PROPERTY_POINT DIALOGEX 0, 0, 135, 183
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Point"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_UC_PROPERTY_POINT_COLOR_R,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,22,14,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_PROPERTY_POINT_COLOR_G,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,22,32,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_PROPERTY_POINT_COLOR_B,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,22,51,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_PROPERTY_POINT_COLOR_A,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,22,71,100,13,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Color...",IDC_UC_PROPERTY_POINT_COLOR,72,90,45,14,0,
+                    WS_EX_TRANSPARENT
+    GROUPBOX        "Color",-1,7,3,121,106
+    LTEXT           "R:",-1,11,16,8,8
+    LTEXT           "G:",-1,11,35,8,8
+    LTEXT           "B:",-1,11,53,8,8
+    LTEXT           "A:",-1,11,73,8,8
+    GROUPBOX        "Size",-1,7,110,121,34
+    CONTROL         "",IDC_UC_PROPERTY_POINT_SIZE,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,23,122,100,13,
+                    WS_EX_TRANSPARENT
+    LTEXT           "Size:",-1,11,124,16,8
+    CONTROL         "Smooth",IDC_UC_PROPERTY_POINT_SMOOTH,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,152,69,10
+END
+
+IDD_UC_PROPERTY_SURFACE DIALOGEX 0, 0, 135, 170
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Surface"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_UC_PROPERTY_SURFACE_COLOR_R,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,23,14,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_PROPERTY_SURFACE_COLOR_G,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,23,32,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_PROPERTY_SURFACE_COLOR_B,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,23,50,99,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_PROPERTY_SURFACE_COLOR_A,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,23,70,99,13,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Color...",IDC_UC_PROPERTY_SURFACE_COLOR,73,90,45,14,0,
+                    WS_EX_TRANSPARENT
+    GROUPBOX        "Color",IDC_STATIC,7,3,121,106
+    LTEXT           "R:",IDC_STATIC,11,16,8,8
+    LTEXT           "G:",IDC_STATIC,11,35,8,8
+    LTEXT           "B:",IDC_STATIC,11,53,8,8
+    LTEXT           "A:",IDC_STATIC,11,73,8,8
+    CONTROL         "Transparency",IDC_UC_PROPERTY_SURFACE_TRANSPARENCY,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,117,60,10
+    EDITTEXT        IDC_UC_PROPERTY_SURFACE_TEXTURE_PATH,7,145,101,14,
+                    ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_UC_PROPERTY_SURFACE_TEXTURE_PATH_BROWSER,112,
+                    145,16,14
+    LTEXT           "Texture:",IDC_STATIC,7,134,29,8
+END
+
+IDD_UC_PROPERTY DIALOGEX 0, 0, 292, 277
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Property"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_UC_PROPERTY_NODE_TREE,"SysTreeView32",
+                    TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | 
+                    TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,7,9,100,219
+    DEFPUSHBUTTON   "OK",IDOK,124,256,50,14
+    PUSHBUTTON      "Close",IDCANCEL,179,256,50,14
+    CONTROL         "",IDC_UC_PROPERTY_SHEET_RECT,"Static",SS_WHITEFRAME | 
+                    NOT WS_VISIBLE,113,7,172,221
+    PUSHBUTTON      "Apply",ID_APPLY_NOW,235,256,50,14
+END
+
+IDD_DBG_MEMORY DIALOGEX 0, 0, 250, 300
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Storage Memory"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_DBG_MEMORY_HTMLCTRL,"Static",SS_BLACKFRAME,7,7,
+                    236,286
+END
+
+IDD_UC_RENDER_LIGHT DIALOGEX 0, 0, 245, 282
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Light"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,73,261,50,14
+    PUSHBUTTON      "Close",IDCANCEL,126,261,50,14
+    DEFPUSHBUTTON   "Apply",ID_APPLY_NOW,188,261,50,14
+    CONTROL         "Ambient",IDC_UC_RENDER_LIGHT_AMBIENT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,7,42,10
+    CONTROL         "",IDC_UC_RENDER_LIGHT_AMBIENT_COLOR_R,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,18,22,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_RENDER_LIGHT_AMBIENT_COLOR_G,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,18,40,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_RENDER_LIGHT_AMBIENT_COLOR_B,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,18,59,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_RENDER_LIGHT_AMBIENT_COLOR_A,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,18,79,100,13,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Color...",IDC_UC_RENDER_LIGHT_AMBIENT_COLOR,68,98,45,14,
+                    0,WS_EX_TRANSPARENT
+    LTEXT           "R:",IDC_STATIC,7,24,8,8
+    LTEXT           "G:",IDC_STATIC,7,43,8,8
+    LTEXT           "B:",IDC_STATIC,7,61,8,8
+    LTEXT           "A:",IDC_STATIC,7,81,8,8
+    CONTROL         "Diffuse",IDC_UC_RENDER_LIGHT_DIFFUSE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,127,7,39,10
+    CONTROL         "",IDC_UC_RENDER_LIGHT_DIFFUSE_COLOR_R,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,138,22,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_RENDER_LIGHT_DIFFUSE_COLOR_G,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,138,40,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_RENDER_LIGHT_DIFFUSE_COLOR_B,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,138,59,100,13,
+                    WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_RENDER_LIGHT_DIFFUSE_COLOR_A,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOOLTIPS | WS_TABSTOP,138,79,100,13,
+                    WS_EX_TRANSPARENT
+    PUSHBUTTON      "Color...",IDC_UC_RENDER_LIGHT_DIFFUSE_COLOR,188,98,45,
+                    14,0,WS_EX_TRANSPARENT
+    LTEXT           "R:",IDC_STATIC,127,24,8,8
+    LTEXT           "G:",IDC_STATIC,127,43,8,8
+    LTEXT           "B:",IDC_STATIC,127,61,8,8
+    LTEXT           "A:",IDC_STATIC,127,81,8,8
+    CONTROL         "Specular",IDC_UC_RENDER_LIGHT_SPECULAR,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,127,43,10
+    CONTROL         "",IDC_UC_RENDER_LIGHT_SPECULAR_COLOR_R,
+                    "msctls_trackbar32",TBS_AUTOTICKS | TBS_TOOLTIPS | 
+                    WS_TABSTOP,18,143,100,13,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_RENDER_LIGHT_SPECULAR_COLOR_G,
+                    "msctls_trackbar32",TBS_AUTOTICKS | TBS_TOOLTIPS | 
+                    WS_TABSTOP,18,160,100,13,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_RENDER_LIGHT_SPECULAR_COLOR_B,
+                    "msctls_trackbar32",TBS_AUTOTICKS | TBS_TOOLTIPS | 
+                    WS_TABSTOP,18,180,100,13,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_UC_RENDER_LIGHT_SPECULAR_COLOR_A,
+                    "msctls_trackbar32",TBS_AUTOTICKS | TBS_TOOLTIPS | 
+                    WS_TABSTOP,18,199,100,13,WS_EX_TRANSPARENT
+    PUSHBUTTON      "Color...",IDC_UC_RENDER_LIGHT_SPECULAR_COLOR,68,218,45,
+                    14,0,WS_EX_TRANSPARENT
+    LTEXT           "R:",IDC_STATIC,7,144,8,8
+    LTEXT           "G:",IDC_STATIC,7,164,8,8
+    LTEXT           "B:",IDC_STATIC,7,181,8,8
+    LTEXT           "A:",IDC_STATIC,7,201,8,8
+    LTEXT           "Position",IDC_STATIC,128,127,26,8
+    EDITTEXT        IDC_UC_RENDER_LIGHT_POSITION_X,141,138,80,12,
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_UC_RENDER_LIGHT_POSITION_Y,141,153,80,12,
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_UC_RENDER_LIGHT_POSITION_Z,141,168,80,12,
+                    ES_AUTOHSCROLL
+    LTEXT           "Direction",IDC_STATIC,140,187,29,8
+    EDITTEXT        IDC_UC_RENDER_LIGHT_DIRECTION_X,141,198,80,12,
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_UC_RENDER_LIGHT_DIRECTION_Y,141,214,80,12,
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_UC_RENDER_LIGHT_DIRECTION_Z,141,228,80,12,
+                    ES_AUTOHSCROLL
+    LTEXT           "X:",IDC_STATIC,128,140,8,8
+    LTEXT           "Y:",IDC_STATIC,128,156,8,8
+    LTEXT           "Z:",IDC_STATIC,128,171,8,8
+    LTEXT           "X:",IDC_STATIC,129,200,8,8
+    LTEXT           "Y:",IDC_STATIC,129,216,8,8
+    LTEXT           "Z:",IDC_STATIC,129,231,8,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "TODO: <Company name>"
+            VALUE "FileDescription", "TODO: <File description>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "XCAD.exe"
+            VALUE "LegalCopyright", "TODO: (c) <Company name>.  All rights reserved."
+            VALUE "OriginalFilename", "XCAD.exe"
+            VALUE "ProductName", "TODO: <Product name>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_UC_PROPERTY_CURVE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 128
+        VERTGUIDE, 11
+        VERTGUIDE, 30
+        VERTGUIDE, 118
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 211
+        HORZGUIDE, 14
+    END
+
+    IDD_UC_PROPERTY_POINT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 128
+        VERTGUIDE, 11
+        VERTGUIDE, 33
+        VERTGUIDE, 117
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 176
+        HORZGUIDE, 14
+    END
+
+    IDD_UC_PROPERTY_SURFACE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 128
+        VERTGUIDE, 11
+        VERTGUIDE, 30
+        VERTGUIDE, 118
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 163
+        HORZGUIDE, 14
+    END
+
+    IDD_UC_PROPERTY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 285
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 270
+    END
+
+    IDD_DBG_MEMORY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 243
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 293
+    END
+
+    IDD_UC_RENDER_LIGHT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 238
+        VERTGUIDE, 22
+        VERTGUIDE, 127
+        VERTGUIDE, 141
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 275
+        HORZGUIDE, 127
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_UC_ROTATE           CURSOR                  "res\\uc\\uc_rotate.cur"
+IDC_UC_ZOOM             CURSOR                  "res\\uc\\uc_zoom.cur"
+IDC_UC_MOVE             CURSOR                  "res\\uc\\uc_move.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_MACROSDLG_TITLE     "XCAD Macros"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_S2_CRVLINESEG_DISPNAME "Line Segment"
+    IDS_S2_CRVLINESEG_TOOLTIP "Draw Line Segment"
+    IDS_S2_CRVNURBS_DISPNAME "Nurbs Curve"
+    IDS_S2_CRVNURBS_TOOLTIP "Draw Nurbs Curve"
+    IDS_S2_CRVBEZIER_DISPNAME "Bezier Curve"
+    IDS_S2_CRVBEZIER_TOOLTIP "Draw Bezier Curve"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_TOOLS_MACRO_MACROS   "Displays the Macros Dialog\nMacros"
+    ID_TOOLS_MACRO_VISUALBASICEDITOR 
+                            "Displays the Visual Basic for Applications IDE\nVBA Editor"
+END
+
+STRINGTABLE 
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+END
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "XCAD"
+    IDR_XCADTYPE            "\nXCAD\nXCAD\nXCAD Files(*.xcad)\n.xcad\nXCAD.Document\nXCAD.Document"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "XCAD"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    AFX_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_UC_TEST_FRAGMENT_DISPNAME "Test Fragment"
+    IDS_UC_TEST_FRAGMENT_TOOLTIP "Test Fragment"
+    IDS_UC_TEST_CRVNURBS_DISPNAME "Test Nurbs Curve"
+    IDS_UC_TEST_CRVNURBS_TOOLTIP "Test Nurbs Curve"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_UC_UNDO_DISPNAME    "Undo"
+    IDS_UC_UNDO_TOOLTIP     "Undo previous operation"
+    IDS_UC_REDO_DISPNAME    "Redo"
+    IDS_UC_REDO_TOOLTIP     "Redo last undone operation"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_S2_DRAG_DISPNAME    "Drag"
+    IDS_S2_DRAG_TOOLTIP     "Drag the item"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_UC_VIEW_ROTATE_DISPNAME "Rotate"
+    IDS_UC_VIEW_ROTATE_TOOLTIP "Rotate the scene"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_UC_VIEW_ZOOM_DISPNAME "Zoom"
+    IDS_UC_VIEW_ZOOM_TOOLTIP "Zoom in/out the scene"
+    IDS_UC_VIEW_MOVE_DISPNAME "Move"
+    IDS_UC_VIEW_MOVE_TOOLTIP "Move the scene"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_UC_SKETCH2D_DISPNAME "Sketch2D"
+    IDS_UC_SKETCH2D_TOOLTIP "Create 2D sketch"
+    IDS_UC_SKETCH3D_DISPNAME "Sketch3D"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_UC_SKETCH3D_TOOLTIP "Create 3D sketch"
+    IDS_UC_WORKPLANE_DISPNAME "Workplane"
+    IDS_UC_WORKPLANE_TOOLTIP "Create Workplane"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_UC_PROPERTY_DISPNAME "Property"
+    IDS_UC_PROPERTY_TOOLTIP "Property of DL and DLNode"
+    IDS_UC_RENDERLIGHT_DISPNAME "Light"
+    IDS_UC_RENDERLIGHT_TOOLTIP "Add or Edit Light"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_PT_FTREXTRUSION_DISPNAME "Extrusion"
+    IDS_PT_FTREXTRUSION_TOOLTIP "Create Extrusion Feature"
+    IDS_PT_FTRREVOLVE_DISPNAME "Revolve"
+    IDS_PT_FTRREVOLVE_TOOLTIP "Create Revolve Feature"
+END
+
+#endif    // 英语(美国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\XCAD.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+1 TYPELIB "XCAD.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,27 @@
+HKCR
+{
+	XCADShell.FWWinApp.1 = s 'FWWinApp Class'
+	{
+		CLSID = s '{6F5700EA-3066-4CC6-A70F-53E2CBADF456}'
+	}
+	XCADShell.FWWinApp = s 'FWWinApp Class'
+	{
+		CLSID = s '{6F5700EA-3066-4CC6-A70F-53E2CBADF456}'
+		CurVer = s 'XCADShell.FWWinApp.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {6F5700EA-3066-4CC6-A70F-53E2CBADF456} = s 'FWWinApp Class'
+		{
+			ProgID = s 'XCADShell.FWWinApp.1'
+			VersionIndependentProgID = s 'XCADShell.FWWinApp'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{693A6269-9D47-43B3-92A1-EEA2B52CF54E}'
+		}
+	}
+}

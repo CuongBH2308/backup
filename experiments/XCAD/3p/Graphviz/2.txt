@@ -1,0 +1,13 @@
+digraph G {
+size ="15,15";
+DR_StPoint9770224 -> {DR_DCtStop97701cc [shape=box] };
+DR_StCrvLine97702a0 -> {DR_DCtStop97701cc [shape=box] };
+DR_StCrvLine9770374 -> {DR_DCtStop97701cc [shape=box] };
+DR_StCrvLine9770448 -> {DR_DCtStop97701cc [shape=box] };
+DR_StPlane977051c -> {DR_DCtStop97701cc [shape=box]; DR_DCtAlignerPlane977080c [shape=box] };
+DR_DCtAlignerPlane977080c -> {DR_StXform977075c};
+DR_StPlane97705dc -> {DR_DCtStop97701cc [shape=box] };
+DR_StPlane977069c -> {DR_DCtStop97701cc [shape=box] };
+DR_StXform977075c -> {DR_DCtSketch2D977089c [shape=box] };
+DR_DCtSketch2D977089c -> {DR_StVector3977092c};
+}

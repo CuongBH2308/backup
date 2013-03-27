@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XCAD", "XCAD.vcproj", "{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XCADShell", "XCADShell\XCADShell.vcproj", "{393DD681-524A-400A-9662-FD3701D273D3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF} = {FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddInSample", "AddInSample\AddInSample.vcproj", "{8C7C57C0-0C01-4138-8847-6EC9F8B00791}"
+	ProjectSection(ProjectDependencies) = postProject
+		{393DD681-524A-400A-9662-FD3701D273D3} = {393DD681-524A-400A-9662-FD3701D273D3}
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF} = {FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}.Debug.ActiveCfg = Debug|Win32
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}.Debug.Build.0 = Debug|Win32
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}.Release.ActiveCfg = Release|Win32
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}.Release.Build.0 = Release|Win32
+		{393DD681-524A-400A-9662-FD3701D273D3}.Debug.ActiveCfg = Debug|Win32
+		{393DD681-524A-400A-9662-FD3701D273D3}.Debug.Build.0 = Debug|Win32
+		{393DD681-524A-400A-9662-FD3701D273D3}.Release.ActiveCfg = Release|Win32
+		{393DD681-524A-400A-9662-FD3701D273D3}.Release.Build.0 = Release|Win32
+		{8C7C57C0-0C01-4138-8847-6EC9F8B00791}.Debug.ActiveCfg = Debug|Win32
+		{8C7C57C0-0C01-4138-8847-6EC9F8B00791}.Debug.Build.0 = Debug|Win32
+		{8C7C57C0-0C01-4138-8847-6EC9F8B00791}.Release.ActiveCfg = Release|Win32
+		{8C7C57C0-0C01-4138-8847-6EC9F8B00791}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		Doc\XCAD.vsd = Doc\XCAD.vsd
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

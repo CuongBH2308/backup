@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="install" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+	<property file="build.properties" />
+	<property name="src.dir" value="src" />
+	<property name="test.dir" value="test" />
+
+
+	<property name="output.dir" value="output/ant" />
+	<property name="build.dir" value="${output.dir}/build/classes" />
+	<property name="install.dir" value="${output.dir}/install" />
+	<property name="findbugs.dir" value="${output.dir}/findbugs" />
+	<property name="checkstyle.dir" value="${output.dir}/checkstyle" />
+	<property name="lib.dir" value="${output.dir}/build/lib" />
+	<property name="report.dir" value="${output.dir}/junitreport" />
+
+	<property name="checkstyleinstall.dir" value="D:\Source\Tools\checkstyle-5.5" />
+
+	<property name="target.war.name" value="${install.dir}/interviewerportal.war" />
+	<property name="target.jar.name" value="${install.dir}/interviewerportal.jar" />
+
+
+	<property name="findbugs.home" value="D:\Source\Tools\findbugs-2.0.1" />
+	<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" />
+
+	<taskdef resource="checkstyletask.properties" classpath="${checkstyleinstall.dir}/checkstyle-5.5-all.jar" />
+
+	<path id="build.classpath">
+		<fileset dir="${lib.dir}/runtime">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${appserver.lib}">
+			<!-- servlet API classes: -->
+			<include name="servlet*.jar" />
+		</fileset>
+		<pathelement path="${build.dir}" />
+	</path>
+
+	<target name="resolve" description="--> retreive dependencies with ivy">
+		<!-- conf="*" will copie artifacts defined for each conf in a dir matching conf name -->
+		<ivy:retrieve pattern="${lib.dir}/[conf]/[artifact]-[revision].[ext]" />
+	</target>
+
+	<target name="checkstyle" description="Run check styles">
+		<mkdir dir="${checkstyle.dir}" />
+		<checkstyle config="${checkstyleinstall.dir}/sun_checks.xml">
+			<fileset dir="${src.dir}" includes="**/*.java" />
+			<fileset dir="${test.dir}" includes="**/*.java" />
+			<formatter type="plain" />
+			<formatter type="xml" toFile="${checkstyle.dir}/checkstyle_errors.xml" />
+		</checkstyle>
+	</target>
+
+	<target name="build" depends="resolve" description="Compile java classes">
+		<mkdir dir="${build.dir}" />
+		<javac destdir="${build.dir}" failonerror="true">
+			<src path="${src.dir}" />
+			<classpath refid="build.classpath" />
+		</javac>
+		<javac destdir="${build.dir}" failonerror="true">
+			<src path="${test.dir}" />
+			<classpath refid="build.classpath" />
+		</javac>
+	</target>
+
+	<target name="install" depends="build" description="Generate the war file">
+		<war destfile="${target.war.name}" webxml="WebContent/WEB-INF/web.xml">
+			<zipfileset dir="WebContent" />
+			<lib dir="${lib.dir}/runtime">
+				<include name="*.jar" />
+				<exclude name="servlet*.jar" />
+			</lib>
+			<classes dir="${build.dir}" />
+		</war>
+	</target>
+
+	<target name="jar" depends="build" description="Generate the jar file">
+		<jar destfile="${target.jar.name}" basedir="${build.dir}" />
+	</target>
+
+	<target name="findbugs" depends="jar">
+		<mkdir dir="${findbugs.dir}" />
+		<findbugs home="${findbugs.home}" output="xml" outputFile="${findbugs.dir}\interviewerportal-findbugs.xml">
+			<sourcePath path="${src.dir}" />
+			<class location="${target.jar.name}" />
+		</findbugs>
+	</target>
+
+
+	<path id="classpath">
+		<fileset file="${target.jar.name}" />
+	</path>
+	<target name="junit" depends="jar">
+		<mkdir dir="${report.dir}" />
+		<junit printsummary="yes">
+			<classpath>
+				<path refid="classpath" />
+			</classpath>
+
+			<formatter type="xml" />
+
+			<batchtest todir="${report.dir}">
+				<fileset dir="${test.dir}" includes="**/*Test.java" />
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="junitreport" depends="junit">
+		<junitreport todir="${report.dir}">
+			<fileset dir="${report.dir}" includes="TEST-*.xml" />
+			<report todir="${report.dir}" />
+		</junitreport>
+	</target>
+
+
+	<target name="deploy" depends="install" description="Deploy war to tomcat">
+		<copy file="${target.war.name}" todir="${appserver.webapps}" />
+	</target>
+
+
+	<target name="clean" description="Clean output directories">
+		<delete includeEmptyDirs="true">
+			<fileset dir="${output.dir}" />
+		</delete>
+	</target>
+
+</project>

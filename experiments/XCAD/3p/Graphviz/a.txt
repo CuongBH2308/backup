@@ -1,0 +1,37 @@
+digraph G {
+size ="25,25";
+DR_StPointf8012c -> {DR_DCtStopf800c8 [shape=box]};
+DR_StCrvLinef801b4 -> {DR_DCtStopf800c8 [shape=box]};
+DR_StCrvLinef80298 -> {DR_DCtStopf800c8 [shape=box]};
+DR_StCrvLinef8037c -> {DR_DCtStopf800c8 [shape=box]};
+DR_StPlanef80460 -> {DR_DCtStopf800c8 [shape=box]};
+DR_StPlanef8052c -> {DR_DCtStopf800c8 [shape=box]};
+DR_StPlanef805f8 -> {DR_DCtStopf800c8 [shape=box]};
+DR_StVector3f808b8 -> {DR_DCtStopf800c8 [shape=box]};
+{DR_DCtSketch2Df8081c [shape=box]} -> {DR_StVector3f808b8};
+DR_StXformf806c4 -> {DR_DCtSketch2Df8081c [shape=box]};
+{DR_DCtAlignerPlanef80780 [shape=box]} -> {DR_StXformf806c4};
+DR_StPlanef80460 -> {DR_DCtAlignerPlanef80780 [shape=box]};
+DR_StCrvNurbs6a70228 -> {DR_DCtSketch2Df8081c [shape=box]};
+{DR_DCtSolver6a702e8 [shape=box]} -> {DR_StCrvNurbs6a70228};
+{DR_UCtCVCrvNurbs6a703e8 [shape=diamond]} -> {DR_StCrvNurbs6a70228};
+{DR_UCtCVCrvNurbs6a7067c [shape=diamond]} -> {DR_StCrvNurbs6a70228};
+{DR_UCtCVCrvNurbs6a70910 [shape=diamond]} -> {DR_StCrvNurbs6a70228};
+{DR_UCtCVCrvNurbs6a70ba4 [shape=diamond]} -> {DR_StCrvNurbs6a70228};
+{DR_UCtCVCrvNurbs6a70e38 [shape=diamond]} -> {DR_StCrvNurbs6a70228};
+DR_StPoint6a70360 -> {DR_DCtSketch2Df8081c [shape=box]};
+{DR_DCtSolver6a702e8 [shape=box]} -> {DR_StPoint6a70360};
+{DR_UCtCVCrvNurbs6a703e8 [shape=diamond]} -> {DR_StPoint6a70360};
+DR_StPoint6a705f4 -> {DR_DCtSketch2Df8081c [shape=box]};
+{DR_DCtSolver6a702e8 [shape=box]} -> {DR_StPoint6a705f4};
+{DR_UCtCVCrvNurbs6a7067c [shape=diamond]} -> {DR_StPoint6a705f4};
+DR_StPoint6a70888 -> {DR_DCtSketch2Df8081c [shape=box]};
+{DR_DCtSolver6a702e8 [shape=box]} -> {DR_StPoint6a70888};
+{DR_UCtCVCrvNurbs6a70910 [shape=diamond]} -> {DR_StPoint6a70888};
+DR_StPoint6a70b1c -> {DR_DCtSketch2Df8081c [shape=box]};
+{DR_DCtSolver6a702e8 [shape=box]} -> {DR_StPoint6a70b1c};
+{DR_UCtCVCrvNurbs6a70ba4 [shape=diamond]} -> {DR_StPoint6a70b1c};
+DR_StPoint6a70db0 -> {DR_DCtSketch2Df8081c [shape=box]};
+{DR_DCtSolver6a702e8 [shape=box]} -> {DR_StPoint6a70db0};
+{DR_UCtCVCrvNurbs6a70e38 [shape=diamond]} -> {DR_StPoint6a70db0};
+}

@@ -1,0 +1,71 @@
+// AlgorithmCOM.idl : IDL source for AlgorithmCOM.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (AlgorithmCOM.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+//接口1，IBlurAlgo，模糊算法
+	[
+		uuid(979F45D4-1C55-4dd7-8A6F-11E74B732874),
+		helpstring("IBlurAlgo Interface"),
+		object,
+		dual,
+		pointer_default(unique)
+	]
+
+	interface IBlurAlgo : IDispatch
+	{
+		//正态分布
+	//k:调节参数  a:特征值
+    	[id(1)]HRESULT SetZhengTaiParameters([in]double k,[in]double a);
+    	[id(2)]HRESULT ZhengTaiFun([in]double x,[out,retval]double* presult);
+		//double
+	//b,c:极限偏差
+	[id(3)]HRESULT SetSanJiaoParameters([in]double b,[in]double c,[in]double a);
+    	[id(4)]HRESULT SanJiaoFun(double x,[out,retval]double* presult);
+
+	//梯形分布
+	//d,e：容差
+	    [id(5)]HRESULT SetTiXingParameters([in]double b,[in]double c,[in]double d,[in]double e,[in]double a);
+	    [id(6)]HRESULT TiXingFun(double x,[out,retval]double *presult);
+
+
+	//升半正态分布
+	    [id(7)]HRESULT SetAscZhengTaiParameters([in]double k,[in]double a);
+	    [id(8)]HRESULT AscZhengTaiFun([in]double x,[out,retval]double* presult);
+
+
+	//降半正态分布
+    	[id(9)]HRESULT SetDescZhengTaiParameters([in]double k,[in]double a);
+    	[id(10)]HRESULT DescZhengTaiFun([in]double x,[out,retval]double* presult);
+
+	
+	};
+
+
+
+	
+[
+	uuid(38A734A2-445F-491c-A1A4-947B46008A62),
+	version(1.0),
+	helpstring("AlgorithmCOM 1.0 Type Library")
+]
+library AlgorithmCOMLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+
+	[
+		uuid(495FA11F-036E-4b49-834F-51566E89D00B),
+		helpstring("AlgorithmCOM Class")
+	]
+	coclass AlgorithmCOM
+	{
+		[default] interface IBlurAlgo;
+		
+	};
+};

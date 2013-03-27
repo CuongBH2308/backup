@@ -1,0 +1,27 @@
+HKCR
+{
+	XCADShell.FWMouseEvents.1 = s 'FWMouseEvents Class'
+	{
+		CLSID = s '{BCD5DAAE-400D-490E-AD7B-DE8DFE6801DC}'
+	}
+	XCADShell.FWMouseEvents = s 'FWMouseEvents Class'
+	{
+		CLSID = s '{BCD5DAAE-400D-490E-AD7B-DE8DFE6801DC}'
+		CurVer = s 'XCADShell.FWMouseEvents.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {BCD5DAAE-400D-490E-AD7B-DE8DFE6801DC} = s 'FWMouseEvents Class'
+		{
+			ProgID = s 'XCADShell.FWMouseEvents.1'
+			VersionIndependentProgID = s 'XCADShell.FWMouseEvents'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{693A6269-9D47-43B3-92A1-EEA2B52CF54E}'
+		}
+	}
+}

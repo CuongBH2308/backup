@@ -1,0 +1,26 @@
+HKCR
+{
+	XCADShell.FWEventManager.1 = s 'FWEventManager Class'
+	{
+		CLSID = s '{4F79F414-5D9B-464E-86E9-DD791BE705CC}'
+	}
+	XCADShell.FWEventManager = s 'FWEventManager Class'
+	{
+		CLSID = s '{4F79F414-5D9B-464E-86E9-DD791BE705CC}'
+		CurVer = s 'XCADShell.FWEventManager.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4F79F414-5D9B-464E-86E9-DD791BE705CC} = s 'FWEventManager Class'
+		{
+			ProgID = s 'XCADShell.FWEventManager.1'
+			VersionIndependentProgID = s 'XCADShell.FWEventManager'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{693A6269-9D47-43B3-92A1-EEA2B52CF54E}'
+		}
+	}
+}

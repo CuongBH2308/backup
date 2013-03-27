@@ -1,0 +1,160 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: FireWork - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/Resource.res" /d "_DEBUG" "E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\Resource.rc"" 
+Creating temporary file "C:\DOCUME~1\Henry\LOCALS~1\Temp\RSP2407.tmp" with contents
+[
+/nologo /MLd /w /W0 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Debug/" /Fp"Debug/FireWork.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\firework.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\Viewer.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\3DSounder.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\Sounder.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\SoundListener.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\WAVREAD.CPP"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\InputManager.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\JoyStick.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\Keyboard.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\Mouse.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\d3dfont.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\d3dutil.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\dxutil.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\DXGDIFont.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\DXMESHFont.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\DXTEXFont.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\IDXFont.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\camera.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\pSystem.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\terrain.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\Courtyard.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\d3dBase.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\math3D\BspTree.cpp"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\math3D\COLOR3.CPP"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\math3D\COLOR4.CPP"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\math3D\MATRIX4.CPP"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\math3D\PLANE3.CPP"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\math3D\POINT3.CPP"
+"E:\程序\3 精品\精品程序(整理中)\整理ing 缓冲区\Firework System\复件 FireWork\File.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Henry\LOCALS~1\Temp\RSP2407.tmp" 
+Creating temporary file "C:\DOCUME~1\Henry\LOCALS~1\Temp\RSP2408.tmp" with contents
+[
+winmm.lib dxguid.lib d3d9.lib d3dx9.lib dsound.lib dinput8.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/FireWork.pdb" /debug /machine:I386 /out:"Debug/FireWork.exe" /pdbtype:sept 
+".\Debug\firework.obj"
+".\Debug\Viewer.obj"
+".\Debug\3DSounder.obj"
+".\Debug\Sounder.obj"
+".\Debug\SoundListener.obj"
+".\Debug\WAVREAD.OBJ"
+".\Debug\InputManager.obj"
+".\Debug\JoyStick.obj"
+".\Debug\Keyboard.obj"
+".\Debug\Mouse.obj"
+".\Debug\d3dfont.obj"
+".\Debug\d3dutil.obj"
+".\Debug\dxutil.obj"
+".\Debug\DXGDIFont.obj"
+".\Debug\DXMESHFont.obj"
+".\Debug\DXTEXFont.obj"
+".\Debug\IDXFont.obj"
+".\Debug\camera.obj"
+".\Debug\pSystem.obj"
+".\Debug\terrain.obj"
+".\Debug\Courtyard.obj"
+".\Debug\d3dBase.obj"
+".\Debug\BspTree.obj"
+".\Debug\COLOR3.OBJ"
+".\Debug\COLOR4.OBJ"
+".\Debug\MATRIX4.OBJ"
+".\Debug\PLANE3.OBJ"
+".\Debug\POINT3.OBJ"
+".\Debug\File.obj"
+".\Debug\Resource.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\Henry\LOCALS~1\Temp\RSP2408.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+firework.cpp
+d:\program files\dirextx\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+Viewer.cpp
+d:\program files\dirextx\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+3DSounder.cpp
+Sounder.cpp
+SoundListener.cpp
+WAVREAD.CPP
+InputManager.cpp
+d:\program files\dirextx\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+JoyStick.cpp
+d:\program files\dirextx\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+Keyboard.cpp
+d:\program files\dirextx\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+Mouse.cpp
+d:\program files\dirextx\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d3dfont.cpp
+d3dutil.cpp
+dxutil.cpp
+DXGDIFont.cpp
+DXMESHFont.cpp
+DXTEXFont.cpp
+IDXFont.cpp
+camera.cpp
+pSystem.cpp
+terrain.cpp
+Courtyard.cpp
+d3dBase.cpp
+BspTree.cpp
+COLOR3.CPP
+COLOR4.CPP
+MATRIX4.CPP
+PLANE3.CPP
+POINT3.CPP
+File.cpp
+Linking...
+Creating temporary file "C:\DOCUME~1\Henry\LOCALS~1\Temp\RSP240A.tmp" with contents
+[
+/nologo /o"Debug/FireWork.bsc" 
+".\Debug\firework.sbr"
+".\Debug\Viewer.sbr"
+".\Debug\3DSounder.sbr"
+".\Debug\Sounder.sbr"
+".\Debug\SoundListener.sbr"
+".\Debug\WAVREAD.SBR"
+".\Debug\InputManager.sbr"
+".\Debug\JoyStick.sbr"
+".\Debug\Keyboard.sbr"
+".\Debug\Mouse.sbr"
+".\Debug\d3dfont.sbr"
+".\Debug\d3dutil.sbr"
+".\Debug\dxutil.sbr"
+".\Debug\DXGDIFont.sbr"
+".\Debug\DXMESHFont.sbr"
+".\Debug\DXTEXFont.sbr"
+".\Debug\IDXFont.sbr"
+".\Debug\camera.sbr"
+".\Debug\pSystem.sbr"
+".\Debug\terrain.sbr"
+".\Debug\Courtyard.sbr"
+".\Debug\d3dBase.sbr"
+".\Debug\BspTree.sbr"
+".\Debug\COLOR3.SBR"
+".\Debug\COLOR4.SBR"
+".\Debug\MATRIX4.SBR"
+".\Debug\PLANE3.SBR"
+".\Debug\POINT3.SBR"
+".\Debug\File.sbr"]
+Creating command line "bscmake.exe @C:\DOCUME~1\Henry\LOCALS~1\Temp\RSP240A.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+FireWork.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

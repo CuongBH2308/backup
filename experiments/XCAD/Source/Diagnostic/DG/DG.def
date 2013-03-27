@@ -1,0 +1,6 @@
+; DG.def : Declares the module parameters for the DLL.
+
+LIBRARY      "DG"
+
+EXPORTS
+    ; Explicit exports can go here

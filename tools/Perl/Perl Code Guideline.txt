@@ -1,0 +1,34 @@
+Perl Code Guideline
+*********************************
+1. SubRoutine Call
+Always include "&" before the subroutine and "()" after the subroutine
+&Package::SubRoutine(); # Call subroutine in another named package
+&::SubRoutine();# Call subroutine from main package
+&SubRoutine(); # Inside same package
+
+2. SubRoutine Declaration
+sub SubRoutine(@)
+{
+}
+sub SubRoutine(\@)
+{
+}
+sub SubRoutine($)
+{
+}
+
+3. Comment
+Description:
+Author:
+Date:
+Usage:
+Steps:
+Note:
+TODO:
+
+4. Syntax:
+Script:
+Description:
+Syntax:
+Example:
+Support:

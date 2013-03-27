@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RayTracing", "RayTracing\RayTracing.vcproj", "{70ABE510-A68E-4DB7-AEBD-A530ABDB802A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ResultChecker", "ResultChecker\ResultChecker.vcproj", "{F7167335-1D27-43B6-8875-AA3A05113856}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70ABE510-A68E-4DB7-AEBD-A530ABDB802A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{70ABE510-A68E-4DB7-AEBD-A530ABDB802A}.Debug|Win32.Build.0 = Debug|Win32
+		{70ABE510-A68E-4DB7-AEBD-A530ABDB802A}.Release|Win32.ActiveCfg = Release|Win32
+		{70ABE510-A68E-4DB7-AEBD-A530ABDB802A}.Release|Win32.Build.0 = Release|Win32
+		{F7167335-1D27-43B6-8875-AA3A05113856}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F7167335-1D27-43B6-8875-AA3A05113856}.Debug|Win32.Build.0 = Debug|Win32
+		{F7167335-1D27-43B6-8875-AA3A05113856}.Release|Win32.ActiveCfg = Release|Win32
+		{F7167335-1D27-43B6-8875-AA3A05113856}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,49 @@
+// AddInSample.idl : AddInSample  IDL 
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(DD2E8D0A-8A50-418C-B894-6D62B5B103A8),
+	dual,
+	nonextensible,
+	helpstring("IAddInServer Interface"),
+	pointer_default(unique)
+]
+interface IAddInServer : IDispatch{
+};
+[
+	object,
+	uuid(C5E23539-4458-49A6-89FB-30AC55F0FDD6),
+	dual,
+	helpstring("IMouseEventsHandler Interface"),
+	pointer_default(unique)
+]
+interface IMouseEventsHandler : IDispatch{
+};
+[
+	uuid(00683951-54AB-424C-A2FD-07D82060E38F),
+	version(1.0),
+	helpstring("AddInSample 1.0 TypeLib")
+]
+library AddInSampleLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(0F98901D-E956-4B71-A839-8FBD5E4A746C),
+		helpstring("AddInServer Class")
+	]
+	coclass AddInServer
+	{
+		[default] interface IAddInServer;
+	};
+	[
+		uuid(C31D353A-8A6E-4148-BB0B-5F4FB72A5269),
+		helpstring("MouseEventsHandler Class")
+	]
+	coclass MouseEventsHandler
+	{
+		[default] interface IMouseEventsHandler;
+	};
+};

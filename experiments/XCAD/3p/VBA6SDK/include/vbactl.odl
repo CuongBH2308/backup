@@ -1,0 +1,37 @@
+//---------------------------------------------------------------------------
+// VBACTL.H
+//---------------------------------------------------------------------------
+// Copyright (c) 1995-1996, Microsoft Corporation
+//                 All Rights Reserved
+// Information Contained Herein Is Proprietary and Confidential.
+//---------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//  Macros for inserting default members to the build in Controls.
+//
+//-------------------------------------------------------------------------
+#define MEMID_Index           (-804)
+#define MEMID_Name            (0x80010000)  // as defined by controls spec.
+#define MEMID_Parent          (0x80010008)  // as defined by controls spec.
+#define MEMID_Delete          (-801)        // new dispid assigned.
+#define MEMID_Object          (-802)        // new dispid assigned
+
+
+
+#define ISTD_EXTENDER_METHODS                                       \
+        [propget, id(MEMID_Name)] HRESULT Name([retval, out] BSTR * pbstr);  \
+        [propput, id(MEMID_Name)] HRESULT Name([in] BSTR bstrName);  \
+        [propget, id(MEMID_Object)] HRESULT Object([retval, out] IUnknown ** ppunk);          \
+        [propget, id(MEMID_Parent)] HRESULT Parent([retval, out] IUnknown ** ppunk);          \
+        [id(MEMID_Delete), hidden] HRESULT Delete();		\
+        [id(MEMID_Index), hidden] HRESULT Index()
+
+#define DISPSTD_EXTENDER_METHODS                                       \
+        [propget, id(MEMID_Name)] BSTR Name();                    \
+        [propput, id(MEMID_Name)] void Name([in] BSTR bstrName);  \
+        [propget, id(MEMID_Object)] IUnknown * Object();          \
+        [propget, id(MEMID_Parent)] IUnknown * Parent();          \
+        [id(MEMID_Index), hidden] void Index();	\
+        [id(MEMID_Delete), hidden] void Delete()
+
+

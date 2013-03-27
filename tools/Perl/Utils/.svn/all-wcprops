@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/6/trunk/Script/Perl/Utils
+END
+IncludeGraph.pm
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/6/trunk/Script/Perl/Utils/IncludeGraph.pm
+END
+VS.pm
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/6/trunk/Script/Perl/Utils/VS.pm
+END
+VSProject.pm
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/6/trunk/Script/Perl/Utils/VSProject.pm
+END
+Basic.pm
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/6/trunk/Script/Perl/Utils/Basic.pm
+END
+P4.pm
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/6/trunk/Script/Perl/Utils/P4.pm
+END

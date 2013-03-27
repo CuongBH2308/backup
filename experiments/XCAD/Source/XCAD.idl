@@ -1,0 +1,29 @@
+// XCAD.idl : type library source for XCAD.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (XCAD.tlb).
+
+[ uuid(1582B9D0-5B4D-44C5-BB48-9916F49B090A), version(1.0) ]
+library XCAD
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//  Primary dispatch interface for PT_Document
+	
+	[ uuid(F52945F3-19C1-4AE9-9CF9-E500C6750187) ]
+	dispinterface IXCAD
+	{
+		properties:
+			
+		methods:
+	};
+
+	//  Class information for PT_Document
+	
+	[ uuid(90FEFA6F-7CF9-40DD-A894-E985C24C5CE6) ]
+	coclass PT_Document
+	{
+		[default] dispinterface IXCAD;
+	};
+};

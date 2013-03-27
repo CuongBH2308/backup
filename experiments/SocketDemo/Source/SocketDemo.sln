@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SocketDemo", "SocketDemo\SocketDemo.vcproj", "{C9626BCC-F9CA-46F1-BB02-B16F83926355}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0735B03C-0DFC-4654-A2CB-01637F0B1C7E} = {0735B03C-0DFC-4654-A2CB-01637F0B1C7E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetLib", "NetLib\NetLib.vcproj", "{0735B03C-0DFC-4654-A2CB-01637F0B1C7E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "Client\Client.vcproj", "{2A7FD39A-F065-42DC-A013-F1DBDF5526F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9626BCC-F9CA-46F1-BB02-B16F83926355}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C9626BCC-F9CA-46F1-BB02-B16F83926355}.Debug|Win32.Build.0 = Debug|Win32
+		{C9626BCC-F9CA-46F1-BB02-B16F83926355}.Release|Win32.ActiveCfg = Release|Win32
+		{C9626BCC-F9CA-46F1-BB02-B16F83926355}.Release|Win32.Build.0 = Release|Win32
+		{0735B03C-0DFC-4654-A2CB-01637F0B1C7E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0735B03C-0DFC-4654-A2CB-01637F0B1C7E}.Debug|Win32.Build.0 = Debug|Win32
+		{0735B03C-0DFC-4654-A2CB-01637F0B1C7E}.Release|Win32.ActiveCfg = Release|Win32
+		{0735B03C-0DFC-4654-A2CB-01637F0B1C7E}.Release|Win32.Build.0 = Release|Win32
+		{2A7FD39A-F065-42DC-A013-F1DBDF5526F1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2A7FD39A-F065-42DC-A013-F1DBDF5526F1}.Debug|Win32.Build.0 = Debug|Win32
+		{2A7FD39A-F065-42DC-A013-F1DBDF5526F1}.Release|Win32.ActiveCfg = Release|Win32
+		{2A7FD39A-F065-42DC-A013-F1DBDF5526F1}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

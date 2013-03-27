@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA34D0D8-DCCC-45ED-841A-95227FA09A46}"
+	ProjectSection(SolutionItems) = preProject
+		Doc\XCAD.vsd = Doc\XCAD.vsd
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XCAD", "XCAD.vcproj", "{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XCADShell", "XCADShell\XCADShell.vcproj", "{393DD681-524A-400A-9662-FD3701D273D3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF} = {FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddInSample", "AddInSample\AddInSample.vcproj", "{8C7C57C0-0C01-4138-8847-6EC9F8B00791}"
+	ProjectSection(ProjectDependencies) = postProject
+		{393DD681-524A-400A-9662-FD3701D273D3} = {393DD681-524A-400A-9662-FD3701D273D3}
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF} = {FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}.Debug|Win32.Build.0 = Debug|Win32
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}.Release|Win32.ActiveCfg = Release|Win32
+		{FA42C085-8FBF-49B9-A42F-8CD89FAA9CCF}.Release|Win32.Build.0 = Release|Win32
+		{393DD681-524A-400A-9662-FD3701D273D3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{393DD681-524A-400A-9662-FD3701D273D3}.Debug|Win32.Build.0 = Debug|Win32
+		{393DD681-524A-400A-9662-FD3701D273D3}.Release|Win32.ActiveCfg = Release|Win32
+		{393DD681-524A-400A-9662-FD3701D273D3}.Release|Win32.Build.0 = Release|Win32
+		{8C7C57C0-0C01-4138-8847-6EC9F8B00791}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8C7C57C0-0C01-4138-8847-6EC9F8B00791}.Debug|Win32.Build.0 = Debug|Win32
+		{8C7C57C0-0C01-4138-8847-6EC9F8B00791}.Release|Win32.ActiveCfg = Release|Win32
+		{8C7C57C0-0C01-4138-8847-6EC9F8B00791}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

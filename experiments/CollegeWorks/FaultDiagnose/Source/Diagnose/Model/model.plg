@@ -1,0 +1,104 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: model - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\feng\LOCALS~1\Temp\RSP1F6E.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "_WINDLL" /FR"Debug/" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\航天部项目\交付航天部\源程序\Model\basecom.cpp"
+"D:\航天部项目\交付航天部\源程序\Model\extern_call.cpp"
+"D:\航天部项目\交付航天部\源程序\Model\model.cpp"
+"D:\航天部项目\交付航天部\源程序\Model\MyCom1.cpp"
+"D:\航天部项目\交付航天部\源程序\Model\MyCom11.cpp"
+"D:\航天部项目\交付航天部\源程序\Model\MyCom12.cpp"
+"D:\航天部项目\交付航天部\源程序\Model\MyCom2.cpp"
+"D:\航天部项目\交付航天部\源程序\Model\MyCom3.cpp"
+"D:\航天部项目\交付航天部\源程序\Model\MyCom4.cpp"
+"D:\航天部项目\交付航天部\源程序\Model\MyCom5.cpp"
+"D:\航天部项目\交付航天部\源程序\Model\MyCom6.cpp"
+"D:\航天部项目\交付航天部\源程序\Model\MyLineCom.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\feng\LOCALS~1\Temp\RSP1F6E.tmp" 
+Creating temporary file "C:\DOCUME~1\feng\LOCALS~1\Temp\RSP1F6F.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "_WINDLL" /FR"Debug/" /Fp"Debug/model.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\航天部项目\交付航天部\源程序\Model\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\feng\LOCALS~1\Temp\RSP1F6F.tmp" 
+Creating temporary file "C:\DOCUME~1\feng\LOCALS~1\Temp\RSP1F70.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/model.pdb" /debug /machine:I386 /def:".\model.def" /out:"Debug/model.dll" /implib:"Debug/model.lib" /pdbtype:sept 
+".\Debug\basecom.obj"
+".\Debug\extern_call.obj"
+".\Debug\model.obj"
+".\Debug\MyCom1.obj"
+".\Debug\MyCom11.obj"
+".\Debug\MyCom12.obj"
+".\Debug\MyCom2.obj"
+".\Debug\MyCom3.obj"
+".\Debug\MyCom4.obj"
+".\Debug\MyCom5.obj"
+".\Debug\MyCom6.obj"
+".\Debug\MyLineCom.obj"
+".\Debug\StdAfx.obj"
+".\Debug\model.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\feng\LOCALS~1\Temp\RSP1F70.tmp"
+Creating temporary file "C:\DOCUME~1\feng\LOCALS~1\Temp\RSP1F71.bat" with contents
+[
+@echo off
+regsvr32 /s /c ".\Debug\model.dll"
+echo regsvr32 exec. time > ".\Debug\regsvr32.trg"
+]
+Creating command line "C:\DOCUME~1\feng\LOCALS~1\Temp\RSP1F71.bat"
+Compiling...
+StdAfx.cpp
+Compiling...
+basecom.cpp
+extern_call.cpp
+model.cpp
+MyCom1.cpp
+MyCom11.cpp
+MyCom12.cpp
+MyCom2.cpp
+MyCom3.cpp
+MyCom4.cpp
+MyCom5.cpp
+MyCom6.cpp
+MyLineCom.cpp
+Generating Code...
+Linking...
+   Creating library Debug/model.lib and object Debug/model.exp
+<h3>Output Window</h3>
+Performing registration
+Creating temporary file "C:\DOCUME~1\feng\LOCALS~1\Temp\RSP1F75.tmp" with contents
+[
+/nologo /o"Debug/model.bsc" 
+".\Debug\StdAfx.sbr"
+".\Debug\basecom.sbr"
+".\Debug\extern_call.sbr"
+".\Debug\model.sbr"
+".\Debug\MyCom1.sbr"
+".\Debug\MyCom11.sbr"
+".\Debug\MyCom12.sbr"
+".\Debug\MyCom2.sbr"
+".\Debug\MyCom3.sbr"
+".\Debug\MyCom4.sbr"
+".\Debug\MyCom5.sbr"
+".\Debug\MyCom6.sbr"
+".\Debug\MyLineCom.sbr"]
+Creating command line "bscmake.exe @C:\DOCUME~1\feng\LOCALS~1\Temp\RSP1F75.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+model.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,26 @@
+HKCR
+{
+	XCADShell.FWUIManager.1 = s 'FWUIManager Class'
+	{
+		CLSID = s '{4C5871A4-DA89-4E9B-96AC-79D809E897C3}'
+	}
+	XCADShell.FWUIManager = s 'FWUIManager Class'
+	{
+		CLSID = s '{4C5871A4-DA89-4E9B-96AC-79D809E897C3}'
+		CurVer = s 'XCADShell.FWUIManager.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4C5871A4-DA89-4E9B-96AC-79D809E897C3} = s 'FWUIManager Class'
+		{
+			ProgID = s 'XCADShell.FWUIManager.1'
+			VersionIndependentProgID = s 'XCADShell.FWUIManager'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{693A6269-9D47-43B3-92A1-EEA2B52CF54E}'
+		}
+	}
+}

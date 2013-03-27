@@ -1,0 +1,27 @@
+HKCR
+{
+	AddInSample.AddInServer.1 = s 'AddInServer Class'
+	{
+		CLSID = s '{0F98901D-E956-4B71-A839-8FBD5E4A746C}'
+	}
+	AddInSample.AddInServer = s 'AddInServer Class'
+	{
+		CLSID = s '{0F98901D-E956-4B71-A839-8FBD5E4A746C}'
+		CurVer = s 'AddInSample.AddInServer.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0F98901D-E956-4B71-A839-8FBD5E4A746C} = s 'AddInServer Class'
+		{
+			ProgID = s 'AddInSample.AddInServer.1'
+			VersionIndependentProgID = s 'AddInSample.AddInServer'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{00683951-54AB-424C-A2FD-07D82060E38F}'
+		}
+	}
+}

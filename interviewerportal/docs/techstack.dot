@@ -1,0 +1,47 @@
+/* 
+ * Use following command to generate: 
+ * dot -Tjpg -o techstack.jpg techstack.dot
+ */
+digraph techstack
+{	
+	node [shape=box style=filled]; 
+	
+	/* Frontend*/
+	subgraph cluster_frontend /* the cluster prefix is necessary */
+	{
+		label="frontend"
+		JQuery;
+		Bootstrap;
+		Jsp;
+		JQuery -> Jsp;
+		Bootstrap -> Jsp;
+	}
+	
+	
+	
+	/* Backend */
+	Jsp -> SpringMVC;
+	subgraph cluster_backend /* the cluster prefix is necessary */
+	{
+		label="backend"
+		SpringMVC;
+		SpringData;
+		Lucene;
+		SpringMVC -> SpringData;
+		SpringMVC -> Lucene;
+		Lucene -> SpringData;
+	}
+	
+	/* Data Store */
+	SpringData -> MySQL;
+	SpringData -> MongoDB;
+	subgraph cluster_datastore /* the cluster prefix is necessary */
+	{
+		label="data store"
+		MySQL;
+		MongoDB;
+	}
+	
+	
+
+}

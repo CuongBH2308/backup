@@ -1,0 +1,27 @@
+HKCR
+{
+	AddInSample.MouseEventsHandler.1 = s 'MouseEventsHandler Class'
+	{
+		CLSID = s '{C31D353A-8A6E-4148-BB0B-5F4FB72A5269}'
+	}
+	AddInSample.MouseEventsHandler = s 'MouseEventsHandler Class'
+	{
+		CLSID = s '{C31D353A-8A6E-4148-BB0B-5F4FB72A5269}'
+		CurVer = s 'AddInSample.MouseEventsHandler.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C31D353A-8A6E-4148-BB0B-5F4FB72A5269} = s 'MouseEventsHandler Class'
+		{
+			ProgID = s 'AddInSample.MouseEventsHandler.1'
+			VersionIndependentProgID = s 'AddInSample.MouseEventsHandler'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{00683951-54AB-424C-A2FD-07D82060E38F}'
+		}
+	}
+}

@@ -1,0 +1,26 @@
+HKCR
+{
+	Model.MyCom5.1 = s 'MyCom5 Class'
+	{
+		CLSID = s '{8DBBEFA7-F548-453E-8D7E-BAC2436EB73C}'
+	}
+	Model.MyCom5 = s 'MyCom5 Class'
+	{
+		CLSID = s '{8DBBEFA7-F548-453E-8D7E-BAC2436EB73C}'
+		CurVer = s 'Model.MyCom5.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {8DBBEFA7-F548-453E-8D7E-BAC2436EB73C} = s 'MyCom5 Class'
+		{
+			ProgID = s 'Model.MyCom5.1'
+			VersionIndependentProgID = s 'Model.MyCom5'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{BC74691E-4CD0-4BC9-9E73-76E9B45FADCC}'
+		}
+	}
+}

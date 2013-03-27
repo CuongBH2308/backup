@@ -1,0 +1,448 @@
+// model.idl : IDL source for model.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (model.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(83448C4B-4205-49F9-B7A3-150BC55FF5A4),
+		dual,
+		helpstring("IMyCom1 Interface"),
+		pointer_default(unique)
+	]
+	interface IMyCom1 : IDispatch
+	{
+		[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(2), helpstring("method DrawOffset")] HRESULT DrawOffset(unsigned long m_pDC, unsigned long m_pOffset, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(3), helpstring("method SetName")] HRESULT PtInRgn(unsigned long point, unsigned long return_flag);
+		[id(4), helpstring("method SetID")] HRESULT SetID(unsigned long ID);
+		[id(5), helpstring("method PtInRgn")] HRESULT SetName(unsigned long pName);
+		[id(6), helpstring("method GetIID")] HRESULT GetIID(unsigned long pIID);
+		[id(7), helpstring("method GetCLSID")] HRESULT GetCLSID(unsigned long pCLSID);
+		[id(8), helpstring("method GetTopLeft")] HRESULT GetTopLeft(unsigned long pPoint);
+		[id(9), helpstring("method SetActive")] HRESULT SetActive(BOOL IsActive);
+		[id(10), helpstring("method GetActive")] HRESULT GetActive(unsigned long pIsActive);
+		[id(11), helpstring("method GetRgn")] HRESULT GetRgn(unsigned long pRgn);
+		[id(12), helpstring("method InOtherRgn")] HRESULT InOtherRgn(unsigned long pRgn, float scale, unsigned long pFlag);
+		[id(13), helpstring("method InOtherRect")] HRESULT InOtherRect(unsigned long pRect, float scale, unsigned long pFlag);
+		[id(14), helpstring("method OffsetRgn")] HRESULT OffsetRgn(unsigned long pPoint);
+		[id(15), helpstring("method GetTopCenter")] HRESULT GetTopCenter(unsigned long pPoint);
+		[id(16), helpstring("method GetBottomCenter")] HRESULT GetBottomCenter(unsigned long pPoint);
+		[id(17), helpstring("method GetLeftCenter")] HRESULT GetLeftCenter(unsigned long pPoint);
+		[id(18), helpstring("method GetRightCenter")] HRESULT GetRightCenter(unsigned long pPoint);
+		[id(19), helpstring("method SetStartPoint")] HRESULT SetStartPoint(unsigned long pPoint);
+		[id(20), helpstring("method SetEndPoint")] HRESULT SetEndPoint(unsigned long pPoint);
+		[id(21), helpstring("method GetName")] HRESULT GetName(unsigned long pName);
+		[id(22), helpstring("method GetID")] HRESULT GetID(unsigned long pID);
+		[id(23), helpstring("method GetGraphInfo")] HRESULT GetGraphInfo(unsigned long pGraphInfo);
+		[id(24), helpstring("method SetGraphInfo")] HRESULT SetGraphInfo(unsigned long pGraphInfo);
+	};
+	[
+		object,
+		uuid(B2174A73-5C8A-470F-B3C0-7C773A9529F4),
+		dual,
+		helpstring("IMyCom2 Interface"),
+		pointer_default(unique)
+	]
+	interface IMyCom2 : IDispatch
+	{
+		//[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, unsigned long m_pScrollPos, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(2), helpstring("method DrawOffset")] HRESULT DrawOffset(unsigned long m_pDC, unsigned long m_pOffset, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(3), helpstring("method SetName")] HRESULT PtInRgn(unsigned long point, unsigned long return_flag);
+		[id(4), helpstring("method SetID")] HRESULT SetID(unsigned long ID);
+		[id(5), helpstring("method PtInRgn")] HRESULT SetName(unsigned long pName);
+		[id(6), helpstring("method GetIID")] HRESULT GetIID(unsigned long pIID);
+		[id(7), helpstring("method GetCLSID")] HRESULT GetCLSID(unsigned long pCLSID);
+		[id(8), helpstring("method GetTopLeft")] HRESULT GetTopLeft(unsigned long pPoint);
+		[id(9), helpstring("method SetActive")] HRESULT SetActive(BOOL IsActive);
+		[id(10), helpstring("method GetActive")] HRESULT GetActive(unsigned long pIsActive);
+		[id(11), helpstring("method GetRgn")] HRESULT GetRgn(unsigned long pRgn);
+		[id(12), helpstring("method InOtherRgn")] HRESULT InOtherRgn(unsigned long pRgn, float scale, unsigned long pFlag);
+		[id(13), helpstring("method InOtherRect")] HRESULT InOtherRect(unsigned long pRect, float scale, unsigned long pFlag);
+		[id(14), helpstring("method OffsetRgn")] HRESULT OffsetRgn(unsigned long pPoint);
+		[id(15), helpstring("method GetTopCenter")] HRESULT GetTopCenter(unsigned long pPoint);
+		[id(16), helpstring("method GetBottomCenter")] HRESULT GetBottomCenter(unsigned long pPoint);
+		[id(17), helpstring("method GetLeftCenter")] HRESULT GetLeftCenter(unsigned long pPoint);
+		[id(18), helpstring("method GetRightCenter")] HRESULT GetRightCenter(unsigned long pPoint);
+		[id(19), helpstring("method SetStartPoint")] HRESULT SetStartPoint(unsigned long pPoint);
+		[id(20), helpstring("method SetEndPoint")] HRESULT SetEndPoint(unsigned long pPoint);
+		[id(21), helpstring("method GetName")] HRESULT GetName(unsigned long pName);
+		[id(22), helpstring("method GetID")] HRESULT GetID(unsigned long pID);
+		[id(23), helpstring("method GetGraphInfo")] HRESULT GetGraphInfo(unsigned long pGraphInfo);
+		[id(24), helpstring("method SetGraphInfo")] HRESULT SetGraphInfo(unsigned long pGraphInfo);
+	};
+	
+	[
+		object,
+		uuid(5268440E-10C8-4B0D-899C-2C747BEE9DE8),
+		dual,
+		helpstring("IBaseCom Interface"),
+		pointer_default(unique)
+	]
+	interface IBaseCom : IDispatch
+	{
+		//[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, unsigned long m_pScrollPos, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(2), helpstring("method DrawOffset")] HRESULT DrawOffset(unsigned long m_pDC, unsigned long m_pOffset, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(3), helpstring("method SetName")] HRESULT PtInRgn(unsigned long point, unsigned long return_flag);
+		[id(4), helpstring("method SetID")] HRESULT SetID(unsigned long ID);
+		[id(5), helpstring("method PtInRgn")] HRESULT SetName(unsigned long pName);
+		[id(6), helpstring("method GetIID")] HRESULT GetIID(unsigned long pIID);
+		[id(7), helpstring("method GetCLSID")] HRESULT GetCLSID(unsigned long pCLSID);
+		[id(8), helpstring("method GetTopLeft")] HRESULT GetTopLeft(unsigned long pPoint);
+		[id(9), helpstring("method SetActive")] HRESULT SetActive(BOOL IsActive);
+		[id(10), helpstring("method GetActive")] HRESULT GetActive(unsigned long pIsActive);
+		[id(11), helpstring("method GetRgn")] HRESULT GetRgn(unsigned long pRgn);
+		[id(12), helpstring("method InOtherRgn")] HRESULT InOtherRgn(unsigned long pRgn, float scale, unsigned long pFlag);
+		[id(13), helpstring("method InOtherRect")] HRESULT InOtherRect(unsigned long pRect, float scale, unsigned long pFlag);
+		[id(14), helpstring("method OffsetRgn")] HRESULT OffsetRgn(unsigned long pPoint);
+		[id(15), helpstring("method GetTopCenter")] HRESULT GetTopCenter(unsigned long pPoint);
+		[id(16), helpstring("method GetBottomCenter")] HRESULT GetBottomCenter(unsigned long pPoint);
+		[id(17), helpstring("method GetLeftCenter")] HRESULT GetLeftCenter(unsigned long pPoint);
+		[id(18), helpstring("method GetRightCenter")] HRESULT GetRightCenter(unsigned long pPoint);
+		[id(19), helpstring("method SetStartPoint")] HRESULT SetStartPoint(unsigned long pPoint);
+		[id(20), helpstring("method SetEndPoint")] HRESULT SetEndPoint(unsigned long pPoint);
+		[id(21), helpstring("method GetName")] HRESULT GetName(unsigned long pName);
+		[id(22), helpstring("method GetID")] HRESULT GetID(unsigned long pID);
+		[id(23), helpstring("method GetGraphInfo")] HRESULT GetGraphInfo(unsigned long pGraphInfo);
+		[id(24), helpstring("method SetGraphInfo")] HRESULT SetGraphInfo(unsigned long pGraphInfo);
+	};
+	[
+		object,
+		uuid(0C226EFC-4C5F-4BC5-8905-B16625000F71),
+		dual,
+		helpstring("IMyLineCom Interface"),
+		pointer_default(unique)
+	]
+	interface IMyLineCom : IDispatch
+	{
+		//[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, unsigned long m_pScrollPos, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(2), helpstring("method DrawOffset")] HRESULT DrawOffset(unsigned long m_pDC, unsigned long m_pOffset, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(3), helpstring("method SetName")] HRESULT PtInRgn(unsigned long point, unsigned long return_flag);
+		[id(4), helpstring("method SetID")] HRESULT SetID(unsigned long ID);
+		[id(5), helpstring("method PtInRgn")] HRESULT SetName(unsigned long pName);
+		[id(6), helpstring("method GetIID")] HRESULT GetIID(unsigned long pIID);
+		[id(7), helpstring("method GetCLSID")] HRESULT GetCLSID(unsigned long pCLSID);
+		[id(8), helpstring("method GetTopLeft")] HRESULT GetTopLeft(unsigned long pPoint);
+		[id(9), helpstring("method SetActive")] HRESULT SetActive(BOOL IsActive);
+		[id(10), helpstring("method GetActive")] HRESULT GetActive(unsigned long pIsActive);
+		[id(11), helpstring("method GetRgn")] HRESULT GetRgn(unsigned long pRgn);
+		[id(12), helpstring("method InOtherRgn")] HRESULT InOtherRgn(unsigned long pRgn, float scale, unsigned long pFlag);
+		[id(13), helpstring("method InOtherRect")] HRESULT InOtherRect(unsigned long pRect, float scale, unsigned long pFlag);
+		[id(14), helpstring("method OffsetRgn")] HRESULT OffsetRgn(unsigned long pPoint);
+		[id(15), helpstring("method GetTopCenter")] HRESULT GetTopCenter(unsigned long pPoint);
+		[id(16), helpstring("method GetBottomCenter")] HRESULT GetBottomCenter(unsigned long pPoint);
+		[id(17), helpstring("method GetLeftCenter")] HRESULT GetLeftCenter(unsigned long pPoint);
+		[id(18), helpstring("method GetRightCenter")] HRESULT GetRightCenter(unsigned long pPoint);
+		[id(19), helpstring("method SetStartPoint")] HRESULT SetStartPoint(unsigned long pPoint);
+		[id(20), helpstring("method SetEndPoint")] HRESULT SetEndPoint(unsigned long pPoint);
+		[id(21), helpstring("method GetName")] HRESULT GetName(unsigned long pName);
+		[id(22), helpstring("method GetID")] HRESULT GetID(unsigned long pID);
+		[id(23), helpstring("method GetGraphInfo")] HRESULT GetGraphInfo(unsigned long pGraphInfo);
+		[id(24), helpstring("method SetGraphInfo")] HRESULT SetGraphInfo(unsigned long pGraphInfo);
+	};
+	[
+		object,
+		uuid(5FA9ECDC-C6AA-4E4A-AB9D-40E9DBA986CC),
+		dual,
+		helpstring("IMyCom11 Interface"),
+		pointer_default(unique)
+	]
+	interface IMyCom11 : IDispatch
+	{
+		//[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, unsigned long m_pScrollPos, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(2), helpstring("method DrawOffset")] HRESULT DrawOffset(unsigned long m_pDC, unsigned long m_pOffset, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(3), helpstring("method SetName")] HRESULT PtInRgn(unsigned long point, unsigned long return_flag);
+		[id(4), helpstring("method SetID")] HRESULT SetID(unsigned long ID);
+		[id(5), helpstring("method PtInRgn")] HRESULT SetName(unsigned long pName);
+		[id(6), helpstring("method GetIID")] HRESULT GetIID(unsigned long pIID);
+		[id(7), helpstring("method GetCLSID")] HRESULT GetCLSID(unsigned long pCLSID);
+		[id(8), helpstring("method GetTopLeft")] HRESULT GetTopLeft(unsigned long pPoint);
+		[id(9), helpstring("method SetActive")] HRESULT SetActive(BOOL IsActive);
+		[id(10), helpstring("method GetActive")] HRESULT GetActive(unsigned long pIsActive);
+		[id(11), helpstring("method GetRgn")] HRESULT GetRgn(unsigned long pRgn);
+		[id(12), helpstring("method InOtherRgn")] HRESULT InOtherRgn(unsigned long pRgn, float scale, unsigned long pFlag);
+		[id(13), helpstring("method InOtherRect")] HRESULT InOtherRect(unsigned long pRect, float scale, unsigned long pFlag);
+		[id(14), helpstring("method OffsetRgn")] HRESULT OffsetRgn(unsigned long pPoint);
+		[id(15), helpstring("method GetTopCenter")] HRESULT GetTopCenter(unsigned long pPoint);
+		[id(16), helpstring("method GetBottomCenter")] HRESULT GetBottomCenter(unsigned long pPoint);
+		[id(17), helpstring("method GetLeftCenter")] HRESULT GetLeftCenter(unsigned long pPoint);
+		[id(18), helpstring("method GetRightCenter")] HRESULT GetRightCenter(unsigned long pPoint);
+		[id(19), helpstring("method SetStartPoint")] HRESULT SetStartPoint(unsigned long pPoint);
+		[id(20), helpstring("method SetEndPoint")] HRESULT SetEndPoint(unsigned long pPoint);
+		[id(21), helpstring("method GetName")] HRESULT GetName(unsigned long pName);
+		[id(22), helpstring("method GetID")] HRESULT GetID(unsigned long pID);
+		[id(23), helpstring("method GetGraphInfo")] HRESULT GetGraphInfo(unsigned long pGraphInfo);
+		[id(24), helpstring("method SetGraphInfo")] HRESULT SetGraphInfo(unsigned long pGraphInfo);
+	};
+	[
+		object,
+		uuid(B824429C-B924-4721-8080-1A8E8E3B710B),
+		dual,
+		helpstring("IMyCom12 Interface"),
+		pointer_default(unique)
+	]
+	interface IMyCom12 : IDispatch
+	{
+		//[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, unsigned long m_pScrollPos, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(2), helpstring("method DrawOffset")] HRESULT DrawOffset(unsigned long m_pDC, unsigned long m_pOffset, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(3), helpstring("method SetName")] HRESULT PtInRgn(unsigned long point, unsigned long return_flag);
+		[id(4), helpstring("method SetID")] HRESULT SetID(unsigned long ID);
+		[id(5), helpstring("method PtInRgn")] HRESULT SetName(unsigned long pName);
+		[id(6), helpstring("method GetIID")] HRESULT GetIID(unsigned long pIID);
+		[id(7), helpstring("method GetCLSID")] HRESULT GetCLSID(unsigned long pCLSID);
+		[id(8), helpstring("method GetTopLeft")] HRESULT GetTopLeft(unsigned long pPoint);
+		[id(9), helpstring("method SetActive")] HRESULT SetActive(BOOL IsActive);
+		[id(10), helpstring("method GetActive")] HRESULT GetActive(unsigned long pIsActive);
+		[id(11), helpstring("method GetRgn")] HRESULT GetRgn(unsigned long pRgn);
+		[id(12), helpstring("method InOtherRgn")] HRESULT InOtherRgn(unsigned long pRgn, float scale, unsigned long pFlag);
+		[id(13), helpstring("method InOtherRect")] HRESULT InOtherRect(unsigned long pRect, float scale, unsigned long pFlag);
+		[id(14), helpstring("method OffsetRgn")] HRESULT OffsetRgn(unsigned long pPoint);
+		[id(15), helpstring("method GetTopCenter")] HRESULT GetTopCenter(unsigned long pPoint);
+		[id(16), helpstring("method GetBottomCenter")] HRESULT GetBottomCenter(unsigned long pPoint);
+		[id(17), helpstring("method GetLeftCenter")] HRESULT GetLeftCenter(unsigned long pPoint);
+		[id(18), helpstring("method GetRightCenter")] HRESULT GetRightCenter(unsigned long pPoint);
+		[id(19), helpstring("method SetStartPoint")] HRESULT SetStartPoint(unsigned long pPoint);
+		[id(20), helpstring("method SetEndPoint")] HRESULT SetEndPoint(unsigned long pPoint);
+		[id(21), helpstring("method GetName")] HRESULT GetName(unsigned long pName);
+		[id(22), helpstring("method GetID")] HRESULT GetID(unsigned long pID);
+		[id(23), helpstring("method GetGraphInfo")] HRESULT GetGraphInfo(unsigned long pGraphInfo);
+		[id(24), helpstring("method SetGraphInfo")] HRESULT SetGraphInfo(unsigned long pGraphInfo);
+	};
+	[
+		object,
+		uuid(DFB34E53-F59B-4245-AA73-0FBC9C099EE1),
+		dual,
+		helpstring("IMyCom3 Interface"),
+		pointer_default(unique)
+	]
+	interface IMyCom3 : IDispatch
+	{
+		[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(2), helpstring("method DrawOffset")] HRESULT DrawOffset(unsigned long m_pDC, unsigned long m_pOffset, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(3), helpstring("method SetName")] HRESULT PtInRgn(unsigned long point, unsigned long return_flag);
+		[id(4), helpstring("method SetID")] HRESULT SetID(unsigned long ID);
+		[id(5), helpstring("method PtInRgn")] HRESULT SetName(unsigned long pName);
+		[id(6), helpstring("method GetIID")] HRESULT GetIID(unsigned long pIID);
+		[id(7), helpstring("method GetCLSID")] HRESULT GetCLSID(unsigned long pCLSID);
+		[id(8), helpstring("method GetTopLeft")] HRESULT GetTopLeft(unsigned long pPoint);
+		[id(9), helpstring("method SetActive")] HRESULT SetActive(BOOL IsActive);
+		[id(10), helpstring("method GetActive")] HRESULT GetActive(unsigned long pIsActive);
+		[id(11), helpstring("method GetRgn")] HRESULT GetRgn(unsigned long pRgn);
+		[id(12), helpstring("method InOtherRgn")] HRESULT InOtherRgn(unsigned long pRgn, float scale, unsigned long pFlag);
+		[id(13), helpstring("method InOtherRect")] HRESULT InOtherRect(unsigned long pRect, float scale, unsigned long pFlag);
+		[id(14), helpstring("method OffsetRgn")] HRESULT OffsetRgn(unsigned long pPoint);
+		[id(15), helpstring("method GetTopCenter")] HRESULT GetTopCenter(unsigned long pPoint);
+		[id(16), helpstring("method GetBottomCenter")] HRESULT GetBottomCenter(unsigned long pPoint);
+		[id(17), helpstring("method GetLeftCenter")] HRESULT GetLeftCenter(unsigned long pPoint);
+		[id(18), helpstring("method GetRightCenter")] HRESULT GetRightCenter(unsigned long pPoint);
+		[id(19), helpstring("method SetStartPoint")] HRESULT SetStartPoint(unsigned long pPoint);
+		[id(20), helpstring("method SetEndPoint")] HRESULT SetEndPoint(unsigned long pPoint);
+		[id(21), helpstring("method GetName")] HRESULT GetName(unsigned long pName);
+		[id(22), helpstring("method GetID")] HRESULT GetID(unsigned long pID);
+		[id(23), helpstring("method GetGraphInfo")] HRESULT GetGraphInfo(unsigned long pGraphInfo);
+		[id(24), helpstring("method SetGraphInfo")] HRESULT SetGraphInfo(unsigned long pGraphInfo);
+	};
+	[
+		object,
+		uuid(26236F0A-E679-490B-9737-0F1D0452E550),
+		dual,
+		helpstring("IMyCom4 Interface"),
+		pointer_default(unique)
+	]
+	interface IMyCom4 : IDispatch
+	{
+		[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(2), helpstring("method DrawOffset")] HRESULT DrawOffset(unsigned long m_pDC, unsigned long m_pOffset, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(3), helpstring("method SetName")] HRESULT PtInRgn(unsigned long point, unsigned long return_flag);
+		[id(4), helpstring("method SetID")] HRESULT SetID(unsigned long ID);
+		[id(5), helpstring("method PtInRgn")] HRESULT SetName(unsigned long pName);
+		[id(6), helpstring("method GetIID")] HRESULT GetIID(unsigned long pIID);
+		[id(7), helpstring("method GetCLSID")] HRESULT GetCLSID(unsigned long pCLSID);
+		[id(8), helpstring("method GetTopLeft")] HRESULT GetTopLeft(unsigned long pPoint);
+		[id(9), helpstring("method SetActive")] HRESULT SetActive(BOOL IsActive);
+		[id(10), helpstring("method GetActive")] HRESULT GetActive(unsigned long pIsActive);
+		[id(11), helpstring("method GetRgn")] HRESULT GetRgn(unsigned long pRgn);
+		[id(12), helpstring("method InOtherRgn")] HRESULT InOtherRgn(unsigned long pRgn, float scale, unsigned long pFlag);
+		[id(13), helpstring("method InOtherRect")] HRESULT InOtherRect(unsigned long pRect, float scale, unsigned long pFlag);
+		[id(14), helpstring("method OffsetRgn")] HRESULT OffsetRgn(unsigned long pPoint);
+		[id(15), helpstring("method GetTopCenter")] HRESULT GetTopCenter(unsigned long pPoint);
+		[id(16), helpstring("method GetBottomCenter")] HRESULT GetBottomCenter(unsigned long pPoint);
+		[id(17), helpstring("method GetLeftCenter")] HRESULT GetLeftCenter(unsigned long pPoint);
+		[id(18), helpstring("method GetRightCenter")] HRESULT GetRightCenter(unsigned long pPoint);
+		[id(19), helpstring("method SetStartPoint")] HRESULT SetStartPoint(unsigned long pPoint);
+		[id(20), helpstring("method SetEndPoint")] HRESULT SetEndPoint(unsigned long pPoint);
+		[id(21), helpstring("method GetName")] HRESULT GetName(unsigned long pName);
+		[id(22), helpstring("method GetID")] HRESULT GetID(unsigned long pID);
+		[id(23), helpstring("method GetGraphInfo")] HRESULT GetGraphInfo(unsigned long pGraphInfo);
+		[id(24), helpstring("method SetGraphInfo")] HRESULT SetGraphInfo(unsigned long pGraphInfo);
+	};
+	[
+		object,
+		uuid(61B06022-6473-4D26-8058-2B4C8BD25D21),
+		dual,
+		helpstring("IMyCom5 Interface"),
+		pointer_default(unique)
+	]
+	interface IMyCom5 : IDispatch
+	{
+		[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(2), helpstring("method DrawOffset")] HRESULT DrawOffset(unsigned long m_pDC, unsigned long m_pOffset, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(3), helpstring("method SetName")] HRESULT PtInRgn(unsigned long point, unsigned long return_flag);
+		[id(4), helpstring("method SetID")] HRESULT SetID(unsigned long ID);
+		[id(5), helpstring("method PtInRgn")] HRESULT SetName(unsigned long pName);
+		[id(6), helpstring("method GetIID")] HRESULT GetIID(unsigned long pIID);
+		[id(7), helpstring("method GetCLSID")] HRESULT GetCLSID(unsigned long pCLSID);
+		[id(8), helpstring("method GetTopLeft")] HRESULT GetTopLeft(unsigned long pPoint);
+		[id(9), helpstring("method SetActive")] HRESULT SetActive(BOOL IsActive);
+		[id(10), helpstring("method GetActive")] HRESULT GetActive(unsigned long pIsActive);
+		[id(11), helpstring("method GetRgn")] HRESULT GetRgn(unsigned long pRgn);
+		[id(12), helpstring("method InOtherRgn")] HRESULT InOtherRgn(unsigned long pRgn, float scale, unsigned long pFlag);
+		[id(13), helpstring("method InOtherRect")] HRESULT InOtherRect(unsigned long pRect, float scale, unsigned long pFlag);
+		[id(14), helpstring("method OffsetRgn")] HRESULT OffsetRgn(unsigned long pPoint);
+		[id(15), helpstring("method GetTopCenter")] HRESULT GetTopCenter(unsigned long pPoint);
+		[id(16), helpstring("method GetBottomCenter")] HRESULT GetBottomCenter(unsigned long pPoint);
+		[id(17), helpstring("method GetLeftCenter")] HRESULT GetLeftCenter(unsigned long pPoint);
+		[id(18), helpstring("method GetRightCenter")] HRESULT GetRightCenter(unsigned long pPoint);
+		[id(19), helpstring("method SetStartPoint")] HRESULT SetStartPoint(unsigned long pPoint);
+		[id(20), helpstring("method SetEndPoint")] HRESULT SetEndPoint(unsigned long pPoint);
+		[id(21), helpstring("method GetName")] HRESULT GetName(unsigned long pName);
+		[id(22), helpstring("method GetID")] HRESULT GetID(unsigned long pID);
+		[id(23), helpstring("method GetGraphInfo")] HRESULT GetGraphInfo(unsigned long pGraphInfo);
+		[id(24), helpstring("method SetGraphInfo")] HRESULT SetGraphInfo(unsigned long pGraphInfo);
+	};
+	[
+		object,
+		uuid(72E36E10-B81D-4539-B47C-7D276BB00039),
+		dual,
+		helpstring("IMyCom6 Interface"),
+		pointer_default(unique)
+	]
+	interface IMyCom6 : IDispatch
+	{
+		[id(1), helpstring("method Draw")] HRESULT Draw(unsigned long m_pDC, unsigned long m_pStartPoint, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(2), helpstring("method DrawOffset")] HRESULT DrawOffset(unsigned long m_pDC, unsigned long m_pOffset, double m_Scale, unsigned long m_pGraphInfo, BOOL scale_flag, BOOL m_active_flag);
+		[id(3), helpstring("method SetName")] HRESULT PtInRgn(unsigned long point, unsigned long return_flag);
+		[id(4), helpstring("method SetID")] HRESULT SetID(unsigned long ID);
+		[id(5), helpstring("method PtInRgn")] HRESULT SetName(unsigned long pName);
+		[id(6), helpstring("method GetIID")] HRESULT GetIID(unsigned long pIID);
+		[id(7), helpstring("method GetCLSID")] HRESULT GetCLSID(unsigned long pCLSID);
+		[id(8), helpstring("method GetTopLeft")] HRESULT GetTopLeft(unsigned long pPoint);
+		[id(9), helpstring("method SetActive")] HRESULT SetActive(BOOL IsActive);
+		[id(10), helpstring("method GetActive")] HRESULT GetActive(unsigned long pIsActive);
+		[id(11), helpstring("method GetRgn")] HRESULT GetRgn(unsigned long pRgn);
+		[id(12), helpstring("method InOtherRgn")] HRESULT InOtherRgn(unsigned long pRgn, float scale, unsigned long pFlag);
+		[id(13), helpstring("method InOtherRect")] HRESULT InOtherRect(unsigned long pRect, float scale, unsigned long pFlag);
+		[id(14), helpstring("method OffsetRgn")] HRESULT OffsetRgn(unsigned long pPoint);
+		[id(15), helpstring("method GetTopCenter")] HRESULT GetTopCenter(unsigned long pPoint);
+		[id(16), helpstring("method GetBottomCenter")] HRESULT GetBottomCenter(unsigned long pPoint);
+		[id(17), helpstring("method GetLeftCenter")] HRESULT GetLeftCenter(unsigned long pPoint);
+		[id(18), helpstring("method GetRightCenter")] HRESULT GetRightCenter(unsigned long pPoint);
+		[id(19), helpstring("method SetStartPoint")] HRESULT SetStartPoint(unsigned long pPoint);
+		[id(20), helpstring("method SetEndPoint")] HRESULT SetEndPoint(unsigned long pPoint);
+		[id(21), helpstring("method GetName")] HRESULT GetName(unsigned long pName);
+		[id(22), helpstring("method GetID")] HRESULT GetID(unsigned long pID);
+		[id(23), helpstring("method GetGraphInfo")] HRESULT GetGraphInfo(unsigned long pGraphInfo);
+		[id(24), helpstring("method SetGraphInfo")] HRESULT SetGraphInfo(unsigned long pGraphInfo);
+
+	};
+
+[
+	uuid(BC74691E-4CD0-4BC9-9E73-76E9B45FADCC),
+	version(1.0),
+	helpstring("model 1.0 Type Library")
+]
+library MODELLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(A919B7F3-BDA5-47B0-ACBE-98BC32B95F3D),
+		helpstring("MyCom1 Class")
+	]
+	coclass MyCom1
+	{
+		[default] interface IMyCom1;
+	};
+	[
+		uuid(259749C5-9B08-4EBA-8DDC-3421062B7EDD),
+		helpstring("MyCom2 Class")
+	]
+	coclass MyCom2
+	{
+		[default] interface IMyCom2;
+	};
+	
+	[
+		uuid(C6073E4D-0EB3-4DF5-9EDE-DCD36C016F0D),
+		helpstring("BaseCom Class")
+	]
+	coclass BaseCom
+	{
+		[default] interface IBaseCom;
+	};
+	[
+		uuid(ACAC9EF9-6AFE-474C-BAF8-FD50CA753506),
+		helpstring("MyLineCom Class")
+	]
+	coclass MyLineCom
+	{
+		[default] interface IMyLineCom;
+	};
+	[
+		uuid(6A9F0237-1711-4C01-8FE1-F1D3E4883BF2),
+		helpstring("MyCom11 Class")
+	]
+	coclass MyCom11
+	{
+		[default] interface IMyCom11;
+	};
+	[
+		uuid(C7C71AD5-6442-4940-935C-043FA9C4B9B2),
+		helpstring("MyCom12 Class")
+	]
+	coclass MyCom12
+	{
+		[default] interface IMyCom12;
+	};
+	[
+		uuid(ECCA26C4-6050-47ED-AE13-C05977A3EF1F),
+		helpstring("MyCom3 Class")
+	]
+	coclass MyCom3
+	{
+		[default] interface IMyCom3;
+	};
+	[
+		uuid(54EB1DA3-9783-406C-9B2A-7070F155BAD4),
+		helpstring("MyCom4 Class")
+	]
+	coclass MyCom4
+	{
+		[default] interface IMyCom4;
+	};
+	[
+		uuid(8DBBEFA7-F548-453E-8D7E-BAC2436EB73C),
+		helpstring("MyCom5 Class")
+	]
+	coclass MyCom5
+	{
+		[default] interface IMyCom5;
+	};
+	[
+		uuid(4DB9449E-0CA5-4C96-89DC-BE509B98EE95),
+		helpstring("MyCom6 Class")
+	]
+	coclass MyCom6
+	{
+		[default] interface IMyCom6;
+	};
+};

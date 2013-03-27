@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0085)http://www.cs.mtu.edu/~shene/COURSES/cs3621/NOTES/spline/Bezier/bezier-construct.html -->
+<HTML><HEAD><TITLE>Construction of Bézier Curves</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=GB18030">
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY text=#0a0aff vLink=#ff1cac aLink=#666666 link=#22806a 
+background="Construction of Bézier Curves_files/background.gif">
+<H1>Construction of Bézier Curves </H1><IMG 
+src="Construction of Bézier Curves_files/GrLine.gif"> 
+<P>Given <I>n</I>+1 points <B>P</B><SUB>0</SUB>, <B>P</B><SUB>1</SUB>, 
+<B>P</B><SUB>2</SUB>, ... and <B>P</B><SUB><I>n</I></SUB> in space, the <FONT 
+color=#ff0000><I>control points</FONT></I>, the <FONT color=#ff0000><I>Bézier 
+curve</FONT></I> defined by these control points is 
+<P>
+<CENTER><IMG src="Construction of Bézier Curves_files/b-eqn.jpg" border=1> 
+</CENTER>
+<P>where the coefficients are defined as follows: 
+<P>
+<CENTER><IMG src="Construction of Bézier Curves_files/b-coef.jpg" border=1> 
+</CENTER>
+<P>Therefore, the point that corresponds to <I>u</I> on the Bézier curve is the 
+"weighted" average of all control points, where the weights are the coefficients 
+<I>B</I><SUB><I>n</I>,<I>i</I></SUB>(<I>u</I>). The line segments 
+<B>P</B><SUB>0</SUB><B>P</B><SUB>1</SUB>, 
+<B>P</B><SUB>1</SUB><B>P</B><SUB>2</SUB>, ..., 
+<B>P</B><SUB><I>n</I>-1</SUB><B>P</B><SUB><I>n</I></SUB>, called <FONT 
+color=#ff0000><I>legs</I></FONT>, joining in this order form a <FONT 
+color=#ff0000><I>control polyline</FONT></I>. Many authors prefer to call this 
+control polyline as <FONT color=#ff0000><I>control polygon</I></FONT>. Functions 
+<I>B</I><SUB><I>n</I>,<I>i</I></SUB>(<I>u</I>), 0 &lt;= <I>i</I> &lt;= <I>n</I>, 
+are referred to as the <FONT color=#ff0000><I>Bézier basis functions</I></FONT> 
+or <FONT color=#ff0000><I>Bernstein polynomials</I></FONT>. 
+<P>Note that the domain of <I>u</I> is [0,1]. As a result, all basis functions 
+are non-negative. In the above, since <I>u</I> and <I>i</I> can both be zero and 
+so do 1 - <I>u</I> and <I>n - i</I>, we adopt the convention that 0<SUP>0</SUP> 
+is 1. The following shows a Bézier curve defined by 11 control points, where the 
+blue dot is a point on the curve that corresponds to <I>u</I>=0.4. As you can 
+see in the figure, the curve more or less follows the polyline. 
+<P>
+<CENTER><IMG src="Construction of Bézier Curves_files/b-curve-1.jpg" border=2> 
+</CENTER>
+<P>The following properties of a Bézier curve are important: 
+<OL>
+  <LI><B>The degree of a Bézier curve defined by <I>n</I>+1 control points is 
+  <I>n</I></B>: <BR>In each basis function, the exponent of <I>u</I> is <I>i</I> 
+  + (<I>n</I> - <I>i</I>) = <I>n</I>. Therefore, the degree of the curve is 
+  <I>n</I>. 
+  <LI><B>C(<I>u</I>) passes through P<SUB>0</SUB> and P<SUB><I>n</I></SUB></B>: 
+  <BR>This is shown in the above figure. The curve passes though the first and 
+  the last control point. Please verify this yourself with some simple algebraic 
+  manipulation. 
+  <LI><B>Non-negativity</B>: <BR>All basis functions are non-negative. We have 
+  mentioned this earlier. 
+  <LI><B>Partition of Unity</B>: <BR>The sum of the basis functions at a fixed 
+  <I>u</I> is 1. It is not difficult to verify that the basis functions are the 
+  coefficients in the binomial expansion of the expression 1 = (<I>u</I> + (1 - 
+  <I>u</I>))<SUP><I>n</I></SUP>. Hence, their sum is one. Moreover, since they 
+  are nonnegative, we conclude that the value of any basis function is in the 
+  range of 0 and 1. 
+  <P>
+  <CENTER><IMG src="Construction of Bézier Curves_files/b-curve-2.jpg" border=2> 
+  <IMG src="Construction of Bézier Curves_files/b-pou-1.jpg" align=top border=2> 
+  </CENTER>
+  <P>In the left figure above, we have a Bézier curve defined by five control 
+  points. Its five basis functions are functions in <I>u</I> as shown in the 
+  right figure above. The figures show <I>u</I>=0.5 and all five basis 
+  functions. The right-most vertical bar shows the way of partitioning 1 into 
+  five intervals and hence the name of <I>partition of unity</I>. Note that the 
+  color of a partition is identical to the color used to draw its corresponding 
+  basis functions. 
+  <P>Since all basis functions are in the range of 0 an 1 and sum to one, they 
+  can be considered as weights in the computation of a weighted average. More 
+  precisely, we could say "to compute <B>C</B>(<I>u</I>), one takes the weight 
+  <I>B<SUB>n,i</SUB></I>(<I>u</I>) for control point <B>P</B><SUB><I>i</I></SUB> 
+  and sum them together." </P>
+  <LI><B>Convex Hull Property</B>: <BR>This means the Bézier curve defined by 
+  the given <I>n</I> + 1 control points lies completely in the convex hull of 
+  the given control points. The convex hull of a set of points is the smallest 
+  convex set that contains all points. In the following figure, the convex hull 
+  of the 11 control points is shown in color gray. Note that not all control 
+  points are on the boundary of the convex hull. For example, control points 3, 
+  4, 5, 6, 8 and 9 are in the interior. The curve, except for the first two 
+  endpoints, lies completely in the convex hull. 
+  <P>
+  <CENTER><IMG src="Construction of Bézier Curves_files/b-curve-1.jpg" border=2> 
+  </CENTER>
+  <P>This property is important because we are guaranteed that the generated 
+  curve will be in an understood and computable region and will not go outside 
+  of it. </P>
+  <LI><B>Variation Diminishing Property</B>: <BR>If the curve is in a plane, 
+  this means <I>no straight line intersects a Bézier curve more times than it 
+  intersects the curve's control polyline</I>. 
+  <P>
+  <CENTER><IMG src="Construction of Bézier Curves_files/b-variation.jpg" 
+  border=2> </CENTER>
+  <P>Take a look at the above figure. The yellow line intersects the curve 3 
+  times and the polyline 7 times; the magenta line intersects the curve 5 times 
+  and the polyline 7 times; and the cyan line intersects the curve and its 
+  polyline twice. You could draw other straight lines to verify this property. 
+  <P>If the curve is a space curve, replacing "line" with "plane" will suffice. 
+  Special cases may occur; however, it will not be a difficult task to come up 
+  with a proper counting scheme that takes these special cases into 
+  consideration. 
+  <P>So, what is the meaning of this property? It tells us that the complexity 
+  (<I>i.e.</I>, turning and twisting) of the curve is no more complex than the 
+  control polyline. In other words, the control polyline twists and turns more 
+  frequently than the Bézier curve does, because an arbitrary line hits the 
+  control polyline more often than it hits the curve. Take a look at the above 
+  figure,the control polyline is more complex than the curve it defines. </P>
+  <LI><B>Affine Invariance</B>: <BR>If an affine transformation is applied to a 
+  Bézier curve, the result can be constructed from the affine images of its 
+  control points. This is a nice property. When we want to apply a geometric or 
+  even affine transformation to a Bézier curve, this property states that we can 
+  apply the transformation to control points, which is quite easy, and once the 
+  transformed control points are obtained the transformed Bézier curve is the 
+  one defined by these new points. Therefore, we do not have to transform the 
+  curve. </LI></OL>
+<P>
+<CENTER><IMG src="Construction of Bézier Curves_files/GrLine1.gif"> </CENTER><!------------------------------------------------------------------>
+<P>
+<H3>What If the Domain of <I>u</I> Is Not [0.1]?</H3>
+<P>Sometimes the domain of a Bézier curve is [<I>a</I>,<I>b</I>] rather than 
+[0,1]. Thus, a change of variable is required. What we should do is simply 
+converting a <I>u</I> in [<I>a</I>,<I>b</I>] to a new <I><U>u</U></I> in [0,1] 
+and using this <I><U>u</U></I> in the basis functions. Converting 
+<I><U>u</U></I> to [0,1] can be done as follows: 
+<P>
+<CENTER><IMG src="Construction of Bézier Curves_files/b-curve-new-u.jpg" 
+border=1> </CENTER>
+<P>Plugging this <I><U>u</U></I> into the basis function 
+<I>B<SUB>n,i</SUB></I>(<I><U>u</U></I>) gives the following: 
+<P>
+<CENTER><IMG src="Construction of Bézier Curves_files/b-curve-new-Bni.jpg" 
+border=1> </CENTER>
+<P>These new basis functions define a Bézier curve on the domain of 
+[<I>a</I>,<I>b</I>]. We shall use this fact in later sections. 
+<P>
+<CENTER><IMG src="Construction of Bézier Curves_files/GrLine1.gif"> </CENTER>
+<P>
+<H3>A Short Summary </H3>
+<P>In summary, to define a Bézier curve of degree <I>n</I>, we need to choose 
+<I>n</I> + 1 control points in space so that they roughly indicate the shape of 
+the desired curve. Then, if it is not up to our expectation, we can move the 
+control points around. As one or more control points are moved, the shape of the 
+Bézier curve changes accordingly. But, the curve always lies in the convex hull 
+defined by the control points (the convex hull property), and the shape of 
+generated curve is less complex than the control polyline (variation diminishing 
+property). </P></BODY></HTML>

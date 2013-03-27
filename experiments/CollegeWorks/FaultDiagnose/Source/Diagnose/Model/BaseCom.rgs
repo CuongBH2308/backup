@@ -1,0 +1,23 @@
+HKCR
+{
+	Model.BaseCom.1 = s 'BaseCom Class'
+	{
+		CLSID = s '{C6073E4D-0EB3-4DF5-9EDE-DCD36C016F0D}'
+	}
+	Model.BaseCom = s 'BaseCom Class'
+	{
+		CLSID = s '{C6073E4D-0EB3-4DF5-9EDE-DCD36C016F0D}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {C6073E4D-0EB3-4DF5-9EDE-DCD36C016F0D} = s 'BaseCom Class'
+		{
+			ProgID = s 'Model.BaseCom.1'
+			VersionIndependentProgID = s 'Model.BaseCom'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'both'
+			}
+		}
+	}
+}

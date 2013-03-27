@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="2.0.1" sequence="0" timestamp="1346766507065" analysisTimestamp="1346766507142" release="">
+  <Project projectName="">
+    <Jar>D:\Source\GitHub\interviewerportal\interviewerportal\output\ant\install\interviewerportal.jar</Jar>
+    <SrcDir>D:\Source\GitHub\interviewerportal\interviewerportal\src</SrcDir>
+  </Project>
+  <Errors errors="0" missingClasses="13">
+    <MissingClass>junit.framework.Assert</MissingClass>
+    <MissingClass>org.junit.Test</MissingClass>
+    <MissingClass>org.slf4j.Logger</MissingClass>
+    <MissingClass>org.slf4j.LoggerFactory</MissingClass>
+    <MissingClass>org.springframework.oxm.jaxb.Jaxb2Marshaller</MissingClass>
+    <MissingClass>org.springframework.stereotype.Component</MissingClass>
+    <MissingClass>org.springframework.stereotype.Controller</MissingClass>
+    <MissingClass>org.springframework.stereotype.Service</MissingClass>
+    <MissingClass>org.springframework.web.bind.annotation.PathVariable</MissingClass>
+    <MissingClass>org.springframework.web.bind.annotation.RequestBody</MissingClass>
+    <MissingClass>org.springframework.web.bind.annotation.RequestMapping</MissingClass>
+    <MissingClass>org.springframework.web.bind.annotation.RequestMethod</MissingClass>
+    <MissingClass>org.springframework.web.servlet.ModelAndView</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Tue, 4 Sep 2012 21:48:27 +0800" total_classes="15" referenced_classes="44" total_bugs="0" total_size="283" num_packages="6" vm_version="21.0-b17" cpu_seconds="13.04" clock_seconds="4.72" peak_mbytes="106.66" alloc_mbytes="910.25" gc_seconds="0.08">
+    <PackageStats package="interviewerportal.controller" total_bugs="0" total_types="5" total_size="81">
+      <ClassStats class="interviewerportal.controller.EmployeeController" sourceFile="&lt;Unknown&gt;" interface="false" size="33" bugs="0"/>
+      <ClassStats class="interviewerportal.controller.HomePageController" sourceFile="&lt;Unknown&gt;" interface="false" size="9" bugs="0"/>
+      <ClassStats class="interviewerportal.controller.QuestionController" sourceFile="&lt;Unknown&gt;" interface="false" size="13" bugs="0"/>
+      <ClassStats class="interviewerportal.controller.QuestionListController" sourceFile="&lt;Unknown&gt;" interface="false" size="13" bugs="0"/>
+      <ClassStats class="interviewerportal.controller.TestArenaController" sourceFile="&lt;Unknown&gt;" interface="false" size="13" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="interviewerportal.dao" total_bugs="0" total_types="1" total_size="4">
+      <ClassStats class="interviewerportal.dao.QuestionDao" sourceFile="&lt;Unknown&gt;" interface="true" size="4" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="interviewerportal.dao.mockds" total_bugs="0" total_types="1" total_size="9">
+      <ClassStats class="interviewerportal.dao.mockds.MockDSQuestionDao" sourceFile="&lt;Unknown&gt;" interface="false" size="9" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="interviewerportal.domain" total_bugs="0" total_types="5" total_size="101">
+      <ClassStats class="interviewerportal.domain.Employee" sourceFile="&lt;Unknown&gt;" interface="false" size="17" bugs="0"/>
+      <ClassStats class="interviewerportal.domain.EmployeeList" sourceFile="&lt;Unknown&gt;" interface="false" size="13" bugs="0"/>
+      <ClassStats class="interviewerportal.domain.Question" sourceFile="&lt;Unknown&gt;" interface="false" size="51" bugs="0"/>
+      <ClassStats class="interviewerportal.domain.QuestionTest" sourceFile="&lt;Unknown&gt;" interface="false" size="7" bugs="0"/>
+      <ClassStats class="interviewerportal.domain.SLF4JTest" sourceFile="&lt;Unknown&gt;" interface="false" size="13" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="interviewerportal.mockds" total_bugs="0" total_types="2" total_size="71">
+      <ClassStats class="interviewerportal.mockds.EmployeeDS" sourceFile="&lt;Unknown&gt;" interface="false" size="28" bugs="0"/>
+      <ClassStats class="interviewerportal.mockds.InterviewerPortalDS" sourceFile="&lt;Unknown&gt;" interface="false" size="43" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="interviewerportal.service" total_bugs="0" total_types="1" total_size="17">
+      <ClassStats class="interviewerportal.service.QuestionService" sourceFile="&lt;Unknown&gt;" interface="false" size="17" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="631" invocations="379" avgMicrosecondsPerInvocation="1667" maxMicrosecondsPerInvocation="55761" standardDeviationMircosecondsPerInvocation="4778"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="191" invocations="44" avgMicrosecondsPerInvocation="4342" maxMicrosecondsPerInvocation="35497" standardDeviationMircosecondsPerInvocation="8300"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="154" invocations="44" avgMicrosecondsPerInvocation="3517" maxMicrosecondsPerInvocation="27080" standardDeviationMircosecondsPerInvocation="6509"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="127" invocations="86" avgMicrosecondsPerInvocation="1483" maxMicrosecondsPerInvocation="112873" standardDeviationMircosecondsPerInvocation="12096"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="112" invocations="83" avgMicrosecondsPerInvocation="1353" maxMicrosecondsPerInvocation="35343" standardDeviationMircosecondsPerInvocation="4036"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.impl.ZipCodeBaseFactory" totalMilliseconds="111" invocations="14" avgMicrosecondsPerInvocation="7944" maxMicrosecondsPerInvocation="89446" standardDeviationMircosecondsPerInvocation="23079"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="110" invocations="44" avgMicrosecondsPerInvocation="2519" maxMicrosecondsPerInvocation="17497" standardDeviationMircosecondsPerInvocation="4174"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="102" invocations="358" avgMicrosecondsPerInvocation="286" maxMicrosecondsPerInvocation="5336" standardDeviationMircosecondsPerInvocation="645"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="100" invocations="384" avgMicrosecondsPerInvocation="262" maxMicrosecondsPerInvocation="15997" standardDeviationMircosecondsPerInvocation="963"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="96" invocations="83" avgMicrosecondsPerInvocation="1165" maxMicrosecondsPerInvocation="20938" standardDeviationMircosecondsPerInvocation="2858"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="90" invocations="171" avgMicrosecondsPerInvocation="529" maxMicrosecondsPerInvocation="4607" standardDeviationMircosecondsPerInvocation="713"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="90" invocations="83" avgMicrosecondsPerInvocation="1089" maxMicrosecondsPerInvocation="32430" standardDeviationMircosecondsPerInvocation="3665"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="86" invocations="83" avgMicrosecondsPerInvocation="1043" maxMicrosecondsPerInvocation="20154" standardDeviationMircosecondsPerInvocation="2921"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="86" invocations="64" avgMicrosecondsPerInvocation="1345" maxMicrosecondsPerInvocation="48394" standardDeviationMircosecondsPerInvocation="6045"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="81" invocations="83" avgMicrosecondsPerInvocation="978" maxMicrosecondsPerInvocation="16560" standardDeviationMircosecondsPerInvocation="2154"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="79" invocations="83" avgMicrosecondsPerInvocation="961" maxMicrosecondsPerInvocation="37589" standardDeviationMircosecondsPerInvocation="4099"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="61" invocations="44" avgMicrosecondsPerInvocation="1404" maxMicrosecondsPerInvocation="16351" standardDeviationMircosecondsPerInvocation="2688"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteNonnullReturnValues" totalMilliseconds="58" invocations="15" avgMicrosecondsPerInvocation="3871" maxMicrosecondsPerInvocation="53790" standardDeviationMircosecondsPerInvocation="13343"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="55" invocations="44" avgMicrosecondsPerInvocation="1264" maxMicrosecondsPerInvocation="10234" standardDeviationMircosecondsPerInvocation="2547"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="52" invocations="44" avgMicrosecondsPerInvocation="1199" maxMicrosecondsPerInvocation="14489" standardDeviationMircosecondsPerInvocation="2649"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

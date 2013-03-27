@@ -1,0 +1,12 @@
+Jul 24, 2012 10:19:46 PM interviewerportal.domain.SLF4JTest main
+SEVERE: Hello, error
+Jul 24, 2012 10:19:46 PM interviewerportal.domain.SLF4JTest main
+WARNING: Hello, warn
+Jul 24, 2012 10:19:46 PM interviewerportal.domain.SLF4JTest main
+INFO: Hello, info
+Jul 24, 2012 10:19:46 PM interviewerportal.domain.SLF4JTest main
+FINE: Hello, debug
+Jul 24, 2012 10:19:46 PM interviewerportal.domain.SLF4JTest main
+FINEST: Hello, trace
+Jul 24, 2012 10:19:46 PM interviewerportal.domain.SLF4JTest main
+INFO: 1 + 2 = {}

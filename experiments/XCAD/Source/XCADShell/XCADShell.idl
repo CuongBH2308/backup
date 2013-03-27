@@ -1,0 +1,397 @@
+// XCADShell.idl : XCADShell.dll
+
+#include "EventsIds.h"
+import "ocidl.idl";
+import "oaidl.idl";
+
+//standard dispids
+#define DISPID_Name                     (-800)
+#define DISPID_Delete                   (-801)
+#define DISPID_Object                   (-802)
+#define DISPID_Parent                   (-803)
+#define DISPID_NewEnum					(-4)
+#define DISPID_Value					(0)
+
+
+typedef [uuid(FC275B68-FA8F-11D2-8072-00C04F8EC1B3)]
+enum FWSaveOptions
+{
+	mpDoNotSaveChanges = 0,
+	mpPromptToSaveChanges = 1,
+	mpSaveChanges = 2
+}FWSaveOptions;
+
+interface IFWWinApp;
+interface IFWDocuments;
+interface IFWCmdManager;
+interface IFWUIManager;
+interface IFWEventManager;
+interface IFWDocument;
+interface IFWUICmdBars;
+interface IFWUICmdBar;
+interface IFWUICmdBarCtrls;
+interface IFWUICmdBarCtrl;
+interface IFWCmd;
+interface IFWMouseEvents;
+
+[
+	object,
+	uuid(FC138127-5C99-4C61-A7EC-84765253E3DF),
+	dual,
+	helpstring("IFWWinApp Interface"),
+	pointer_default(unique)
+]
+interface IFWWinApp : IDispatch
+{
+	[propget, id(1), helpstring("property Application")] HRESULT Application([out, retval] IFWWinApp* *ppVal);
+	[propget, id(2), helpstring("property ActiveDocument")] HRESULT ActiveDocument([out, retval] IFWDocument* *ppVal);
+	[propget, id(3), helpstring("property Documents")] HRESULT Documents([out, retval] IFWDocuments* *ppVal);
+	[propget, id(DISPID_Value), helpstring("property Name")] HRESULT Name([out, retval] BSTR *pVal);
+	[propget, id(DISPID_Parent), helpstring("property Parent")] HRESULT Parent([out, retval] IFWWinApp* *ppVal);
+	[propget, id(6), helpstring("property VBE")] HRESULT VBE([out, retval] IDispatch* *ppVal);
+	[id(7), helpstring("method Activate")] HRESULT Activate();
+	[id(8), helpstring("method Quit")] HRESULT Quit([in, optional, defaultvalue(mpSaveChanges)] FWSaveOptions Option);
+	[propget, id(9), helpstring("property CmdManager")] HRESULT CmdManager([out, retval] IFWCmdManager* *ppVal);
+	[propget, id(10), helpstring("property UIManager")] HRESULT UIManager([out, retval] IFWUIManager* *ppVal);
+	[propget, id(11), helpstring("property EventManager")] HRESULT EventManager([out, retval] IFWEventManager* *ppVal);
+
+};
+
+
+[
+	object,
+	uuid(1D7EEC56-E0F5-4B77-9C84-68137BDCB3BC),
+	dual,
+	helpstring("IFWDocuments Interface"),
+	pointer_default(unique)
+]
+interface IFWDocuments : IDispatch
+{
+	[propget, id(1), helpstring("property Application")] HRESULT Application([out, retval] IFWWinApp* *ppVal);
+	[propget, id(DISPID_Parent), helpstring("property Parent")] HRESULT Parent([out, retval] IFWWinApp* *ppVal);
+	[propget, id(3), helpstring("property Count")] HRESULT Count([out, retval] long *pVal);
+	[propget, id(DISPID_NewEnum), helpstring("property _NewEnum"), restricted] HRESULT _NewEnum([out, retval] IUnknown* *ppVal);
+	[id(DISPID_Value), helpstring("method Item")] HRESULT Item([in] VARIANT Index, [out, retval] IFWDocument* *ppVal);
+	[id(6), helpstring("method Open")] HRESULT Open([in] BSTR FileName, [out, retval] IFWDocument* *ppVal);
+	[id(7), helpstring("method Add")] HRESULT Add([out, retval]IFWDocument* *ppVal);
+};
+
+
+[
+	object,
+	uuid(3DA8BE2D-2D84-4C01-AFE7-F4CA1B44801C),
+	dual,
+	helpstring("IFWDocument Interface"),
+	pointer_default(unique)
+]
+interface IFWDocument : IDispatch
+{
+	[id(0), helpstring("method SetPrimary"), hidden] HRESULT SetPrimary([in] unsigned char* pVal);
+	[propget, id(1), helpstring("property Application")] HRESULT Application([out, retval] IFWWinApp* *ppVal);
+	[propget, id(2), helpstring("property Name")] HRESULT Name([out, retval] BSTR *pVal);
+	[propget, id(DISPID_Parent), helpstring("property Parent")] HRESULT Parent([out, retval] IFWWinApp* *ppVal);
+	[propget, id(4), helpstring("property Collection")] HRESULT Collection([out, retval] IFWDocuments* *ppVal);
+	[propget, id(5), helpstring("property Saved")] HRESULT Saved([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(5), helpstring("property Saved")] HRESULT Saved([in] VARIANT_BOOL newVal);
+	[id(6), helpstring("method Close")] HRESULT Close([in, optional, defaultvalue(mpSaveChanges)] FWSaveOptions Option);
+	[id(7), helpstring("method Activate")] HRESULT Activate();
+	[id(8), helpstring("method Save")] HRESULT Save();
+};
+
+
+// IXCADAddIn. Protocal: Each add-in should implement this interface
+// In the EXE, we will load the add-in as below:
+// 1. Look for regestry for the add-in's CLSID that include interface IXCADAddIn
+// 2. Query interface IXCADAddIn in this component
+// 3. Call IXCADAddIn::Initialize to tansfer the WinApp to the add-in
+// 4. The Add-In should keep the WinApp for the later use
+[
+	object,
+	uuid(462E2C02-E3C1-488B-A1CE-18420A93BCC0),
+	helpstring("IXCADAddIn Interface"),
+	pointer_default(unique)
+]
+interface IXCADAddIn : IUnknown
+{
+	[id(1), helpstring("method Initialize")] HRESULT Initialize([in] IFWWinApp* pApp, [in] VARIANT_BOOL bFirstTime);
+	[id(2), helpstring("method Uninitialize")] HRESULT Uninitialize(void);
+};
+
+[
+	object,
+	uuid(DA9811F0-D962-49F6-9694-30E4DC4163C4),
+	dual,
+	helpstring("IFWMouseEvents Interface"),
+	pointer_default(unique)
+]
+interface IFWMouseEvents : IDispatch
+{
+	[id(1), helpstring("Method Move")] HRESULT Move([in] LONGLONG hWnd, [in] LONG lFlag, [in] LONG x, [in] LONG y);
+};
+
+[
+	object,
+	uuid(DE756748-F1B5-4F28-A0EA-EA1E3E32FC23),
+	dual,
+	helpstring("IFWMouseEventsSink Interface"),
+	pointer_default(unique)
+]
+interface IFWMouseEventsSink : IDispatch
+{
+	[id(MouseEventsSink_OnMove), helpstring("Method Move")] HRESULT Move([in] LONGLONG hWnd, [in] LONG lFlag, [in] LONG x, [in] LONG y);
+};
+
+[
+	object,
+	uuid(9A04849E-5AE2-4F95-AAE5-B4E892FBC214),
+	dual,
+	helpstring("IFWCmd Interface"),
+	pointer_default(unique)
+]
+interface IFWCmd : IDispatch
+{
+	[id(0), helpstring("method SetPrimary"), hidden] HRESULT SetPrimary([in] unsigned char* pVal);
+	[propget, id(1), helpstring("property CmdId")] HRESULT CmdId([out, retval] int *pVal);
+};
+
+[
+	object,
+	uuid(29DAF7E1-C2FF-48BB-BA61-6223196B34F7),
+	dual,
+	helpstring("IFWCmds Interface"),
+	pointer_default(unique)
+]
+interface IFWCmds : IDispatch
+{
+	[id(1), helpstring("Method Add")] HRESULT Add([in] BSTR bstrDisplayName, 
+		[in] BSTR bstrTooltip, 
+		[in] BSTR bstrInternalName, 
+		[in] IPictureDisp* pPictureDispEnable, 
+		[in] IPictureDisp* pPictureDispDisable, 
+		[in] IPictureDisp* pPictureDispHot,
+		[out,retval] IFWCmd* *ppVal);
+};
+
+[
+	object,
+	uuid(65BC9AA3-AF56-43A0-84F5-263F7367568A),
+	dual,
+	helpstring("IFWCmdManager Interface"),
+	pointer_default(unique)
+]
+interface IFWCmdManager : IDispatch
+{
+	[propget, id(1), helpstring("property Cmds")] HRESULT Cmds([out, retval] IFWCmds* *ppVal);
+};
+
+[
+	object,
+	uuid(A63B26DD-7AF5-4AE4-967D-287A23F9DEBC),
+	dual,
+	helpstring("IFWUIManager Interface"),
+	pointer_default(unique)
+]
+interface IFWUIManager : IDispatch
+{
+	[propget, id(1), helpstring("property CmdBars")] HRESULT CmdBars([out, retval] IFWUICmdBars* *ppVal);
+};
+
+[
+	object,
+	uuid(11EA6395-5F6D-428A-9497-54F5B06DEB32),
+	dual,
+	helpstring("IFWUICmdBars Interface"),
+	pointer_default(unique)
+]
+interface IFWUICmdBars : IDispatch
+{
+	[id(1), helpstring("Method Add")] HRESULT Add([in] BSTR bstrDisplayName, [in] BSTR bstrInternalName, [out,retval] IFWUICmdBar* *ppVal);
+	[propget, id(DISPID_Parent), helpstring("property Parent")] HRESULT Parent([out, retval] IFWUIManager* *ppVal);
+	[propget, id(3), helpstring("property Count")] HRESULT Count([out, retval] long *pVal);
+	[propget, id(DISPID_NewEnum), helpstring("property _NewEnum"), restricted] HRESULT _NewEnum([out, retval] IUnknown* *ppVal);
+	[id(DISPID_Value), helpstring("method Item")] HRESULT Item([in] VARIANT Index, [out, retval] IFWUICmdBar* *ppVal);
+};
+
+
+[
+	object,
+	uuid(B99BCB22-DD12-4449-9FDC-658C5A591D69),
+	dual,
+	helpstring("IFWUICmdBar Interface"),
+	pointer_default(unique)
+]
+interface IFWUICmdBar : IDispatch
+{
+	[id(0), helpstring("method SetPrimary"), hidden] HRESULT SetPrimary([in] unsigned char* pVal);
+	[propget, id(1), helpstring("property CmdBarCtrls")] HRESULT CmdBarCtrls([out, retval] IFWUICmdBarCtrls* *ppVal);
+};
+
+[
+	object,
+	uuid(08886153-BEEF-4409-8728-53397C38EDC8),
+	dual,
+	helpstring("IFWUICmdBarCtrls Interface"),
+	pointer_default(unique)
+]
+interface IFWUICmdBarCtrls : IDispatch
+{
+	[id(0), helpstring("method SetPrimary"), hidden] HRESULT SetPrimary([in] unsigned char* pVal);
+	[id(1), helpstring("method Add")] HRESULT Add([in] IFWCmd* pCmd, [out, retval] IFWUICmdBarCtrl* *ppVal);
+};
+
+[
+	object,
+	uuid(5364786E-25B8-424C-9419-C7164BE773D7),
+	dual,
+	helpstring("IFWUICmdBarCtrl Interface"),
+	pointer_default(unique)
+]
+interface IFWUICmdBarCtrl : IDispatch
+{
+	[id(0), helpstring("method SetPrimary"), hidden] HRESULT SetPrimary([in] unsigned char* pVal);
+};
+
+[
+	object,
+	uuid(DF3EECCA-DD6B-4725-9514-04B1C4040381),
+	dual,
+	helpstring("IFWEventManager Interface"),
+	pointer_default(unique)
+]
+interface IFWEventManager : IDispatch
+{
+	[propget, id(1), helpstring("property MouseEvents")] HRESULT MouseEvents([out, retval] IFWMouseEvents* *ppVal);
+
+};
+
+
+[	
+	uuid(693A6269-9D47-43B3-92A1-EEA2B52CF54E), 
+	helpstring("XCADShell Type Library"),
+	version(1.0) 
+]
+library XCADShell
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	[
+		uuid(6F5700EA-3066-4CC6-A70F-53E2CBADF456),
+		helpstring("FWWinApp Class"),
+		appobject
+	]
+	coclass FWWinApp
+	{
+		[default] interface IFWWinApp;
+	};
+	[
+		uuid(15F51090-C951-4A38-BA2A-463C3DA1F8D0),
+		helpstring("FWDocuments Class")
+	]
+	coclass FWDocuments
+	{
+		[default] interface IFWDocuments;
+	};
+	[
+		uuid(61666DE7-76E2-4756-BDDA-B0D5B96CD8F2),
+		helpstring("FWDocument Class")
+	]
+	coclass FWDocument
+	{
+		[default] interface IFWDocument;
+	};
+	[
+		uuid(5B9154DE-9F23-4790-9097-BBD76ABFA9DA),
+		helpstring("XCADAddIn Class")
+	]
+	coclass XCADAddIn
+	{
+		[default] interface IXCADAddIn;
+	};
+
+	// If the Add-In want to receive mouse events,
+	// it should connect to the source object first.
+	// CMouseEvents has impeleted the connection point and the output interface
+	[
+		uuid(BCD5DAAE-400D-490E-AD7B-DE8DFE6801DC),
+		helpstring("FWMouseEvents Class")
+	]
+	coclass FWMouseEvents
+	{
+		[default] interface IFWMouseEvents;
+		[default, source] interface IFWMouseEventsSink;
+	};
+	[
+		uuid(60A6CCD9-33E7-4417-96EC-1640CE3B14E3),
+		helpstring("FWCmd Class")
+	]
+	coclass FWCmd
+	{
+		[default] interface IFWCmd;
+	};
+	[
+		uuid(1B3677F4-5128-40A4-B1D3-9FBB6F8C924E),
+		helpstring("FWCmds Class")
+	]
+	coclass FWCmds
+	{
+		[default] interface IFWCmds;
+	};
+	[
+		uuid(32BCAB3F-004B-4925-BFC5-00ADB4400924),
+		helpstring("FWCmdManager Class")
+	]
+	coclass FWCmdManager
+	{
+		[default] interface IFWCmdManager;
+	};
+	[
+		uuid(4C5871A4-DA89-4E9B-96AC-79D809E897C3),
+		helpstring("FWUIManager Class")
+	]
+	coclass FWUIManager
+	{
+		[default] interface IFWUIManager;
+	};
+	[
+		uuid(76E05C81-FB65-497D-A3F7-366F4B8BBC8F),
+		helpstring("FWUICmdBars Class")
+	]
+	coclass FWUICmdBars
+	{
+		[default] interface IFWUICmdBars;
+	};
+	[
+		uuid(F697015C-3D63-40AD-A7C2-60EC702D2F32),
+		helpstring("FWUICmdBar Class")
+	]
+	coclass FWUICmdBar
+	{
+		[default] interface IFWUICmdBar;
+	};
+	[
+		uuid(812AADD3-1215-4EAF-A1F2-39468967590C),
+		helpstring("FWUICmdBarCtrls Class")
+	]
+	coclass FWUICmdBarCtrls
+	{
+		[default] interface IFWUICmdBarCtrls;
+	};
+	[
+		uuid(9F1C2330-6204-4518-83DC-C778671447BD),
+		helpstring("FWUICmdBarCtrl Class")
+	]
+	coclass FWUICmdBarCtrl
+	{
+		[default] interface IFWUICmdBarCtrl;
+	};
+
+
+	[
+		uuid(4F79F414-5D9B-464E-86E9-DD791BE705CC),
+		helpstring("FWEventManager Class")
+	]
+	coclass FWEventManager
+	{
+		[default] interface IFWEventManager;
+	};
+};
