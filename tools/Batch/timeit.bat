@@ -12,7 +12,7 @@ set t2=%TIME%
 echo ------------------------
 echo Start:   %t1%
 echo End:     %t2%
-python "%~f0"
+python "%~f0" 2>NUL
 endlocal
 exit /b
 rem ^
