@@ -1,5 +1,9 @@
 # http://www.pythonchallenge.com/pc/def/map.html
 
+
+# A list of string method could be found here:
+# 	http://docs.python.org/2/library/stdtypes.html#string-methods
+
 import string
 import unittest
 
