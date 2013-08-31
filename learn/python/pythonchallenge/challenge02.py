@@ -4,7 +4,7 @@ import string
 import unittest
 
 def map_char(c):
-	if not c.isalpha():
+	if not (c.isalpha() and c.islower()):
 		return c
 	a = ord('a')
 	# map the character as c+2
