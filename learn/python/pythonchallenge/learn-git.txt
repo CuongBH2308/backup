@@ -1,0 +1,22 @@
+git status
+
+git add filename
+
+git commit -m "my first commit"
+
+git branch -a
+
+git push origin master
+
+git log
+
+git diff
+
+git config --global -l
+
+git config --add user.name "lzprgmr"
+git config --add user.email "baiyanhuang@gmail.com"
+
+git show commit
+
+git mv filename1 filename2
