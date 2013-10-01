@@ -1,0 +1,622 @@
+syntax on
+
+:au Syntax c     runtime! syntax/c.vim
+
+:au Syntax cpp   runtime! syntax/cpp.vim
+
+:au Syntax ragel runtime! syntax/ragel.vim
+
+ 
+
+if $TERM == 'screen'
+
+  set term=xterm
+
+endif
+
+ 
+
+set backspace=2
+
+set nocompatible
+
+set expandtab
+
+set nocompatible
+
+"set noautoindent
+
+"set nosmartindent
+
+set history=50
+
+set showcmd
+
+"set incsearch
+
+set tabstop=2
+
+set shiftwidth=2
+
+set textwidth=0
+
+set ruler
+
+set vb
+
+set ic
+
+"set number
+
+set enc=utf-8
+
+set tenc=utf-8
+
+set fo=croq
+
+set ttymouse=xterm2
+
+set nohls
+
+let mapleader = ","
+
+let maplocalleader = ","
+
+let g:netrw_maxfilenamelen=60
+
+set comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+
+"set incsearch
+
+set cindent
+
+set clipboard=unnamed
+
+set mouse=a
+
+set nopaste
+
+set pastetoggle=<F12>
+
+set tags=./tags,tags;
+
+set path=.,;,../**
+
+nnoremap <silent> <F8> :TlistToggle<CR>
+
+"set highlight
+
+set hlsearch
+
+ 
+
+" Correct typos
+
+command! Q quit
+
+command! QA qa
+
+command! Qa qa
+
+command! W write
+
+command! WQ wq
+
+command! Wq wq
+
+ 
+
+set t_Co=256
+
+:let g:inkpot_black_background = 1
+
+:filetype on
+
+:autocmd FileType java,c,cpp,perl,ragel :syntax on
+
+ 
+
+:nmap <F9> :tabprevious<cr>
+
+:nmap <F10> :tabnext<cr>
+
+:imap <F9> <ESC>:tabprevious<cr>i
+
+:imap <F10> <ESC>:tabnext<cr>i
+
+ 
+
+" Fix keycodes
+
+map ^[[1~ <Home>
+
+map ^[[4~ <End>
+
+imap ^[[1~ <Home>
+
+imap ^[[4~ <End>
+
+ 
+
+colorscheme inkpot "desert inkpot darkblue
+
+"highlight DiffAdd cterm=none ctermfg=bg ctermbg=Green gui=none guifg=bg guibg=Green 
+
+"highlight DiffDelete cterm=none ctermfg=bg ctermbg=Red gui=none guifg=bg guibg=Red 
+
+"highlight DiffChange cterm=none ctermfg=bg ctermbg=Yellow gui=none guifg=bg guibg=Yellow 
+
+"highlight DiffText cterm=none ctermfg=bg ctermbg=Magenta gui=none guifg=bg guibg=Magenta 
+
+"
+
+" Color terminal settings
+
+"
+
+:if &term =~ "xterm" || &term =~ "xterm-color" || &term =~ "xtermc" || &term =~ "screen"
+
+:if has("terminfo")      
+
+:  set t_Co=256
+
+:  set t_Sf=[3%p1%dm
+
+:  set t_Sb=[4%p1%dm
+
+:else    
+
+:  set t_Co=256
+
+:  set t_Sf=[3%dm   
+
+:  set t_Sb=[4%dm   
+
+:endif
+
+:endif
+
+ 
+
+let localleader = ","
+
+let g:lang = "british"
+
+ 
+
+" Only do this part when compiled with support for autocommands.
+
+if has("autocmd")
+
+ 
+
+  " Enable file type detection.
+
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+
+  " 'cindent' is on in C files, etc.
+
+  " Also load indent files, to automatically do language-dependent indenting.
+
+  filetype plugin indent on
+
+ 
+
+  " Put these in an autocmd group, so that we can delete them easily.
+
+  augroup vimrcEx
+
+  au!
+
+ 
+
+  " For all text files set 'textwidth' to 78 characters.
+
+  autocmd FileType text setlocal textwidth=78
+
+ 
+
+  " When editing a file, always jump to the last known cursor position.
+
+  " Don't do it when the position is invalid or when inside an event handler
+
+  " (happens when dropping a file on gvim).
+
+  autocmd BufReadPost *
+
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+
+    \   exe "normal g`\"" |
+
+    \ endif
+
+ 
+
+  augroup END
+
+ 
+
+else
+
+ 
+
+  set autoindent        " always set autoindenting on
+
+ 
+
+endif " has("autocmd")
+
+ 
+
+" 
+
+" Spelling
+
+"
+
+noremap <LocalLeader>si :w!<CR>:execute "!aspell -d " g:lang " -c %"<CR>:e<CR><CR>
+
+:vmap <LocalLeader>si :w! ~/temp.txt<CR>:execute "!aspell -d " g:lang " -c ~/temp.txt" <CR>:'<,'>!cat ~/temp.txt<CR>
+
+ 
+
+"
+
+" Ragel
+
+"
+
+autocmd BufRead *.rl    set syntax=ragel
+
+autocmd BufRead *.ragel set syntax=ragel
+
+ 
+
+"
+
+" XML formatting
+
+"
+
+autocmd BufRead *.xsl source $VIMRUNTIME/indent/xml.vim
+
+autocmd BufRead *.xsl set shiftwidth=2 tabstop=2 expandtab
+
+ 
+
+autocmd BufRead *.xml source $VIMRUNTIME/indent/xml.vim
+
+autocmd BufRead *.xml set shiftwidth=2 tabstop=2 expandtab
+
+ 
+
+autocmd BufRead *.xml source $VIMRUNTIME/indent/xml.vim
+
+ 
+
+let g:xml_syntax_folding = 1 
+
+noremap <LocalLeader>xi :%!xmllint --format -<CR>
+
+:vmap <LocalLeader>xi :!xmllint --format -<CR>
+
+map <LocalLeader>x :set filetype=xml<CR>
+
+  \:source $VIMRUNTIME/syntax/xml.vim<CR>
+
+  \:source $VIMRUNTIME/indent/xml.vim<CR>
+
+  \:set foldmethod=syntax<CR>
+
+  \:set tabstop=2<CR>
+
+  \:set shiftwidth=2<CR>
+
+  \:set expandtab<CR>
+
+  \:echo "XML mode is on"<CR>
+
+ 
+
+"
+
+" SQL
+
+"
+
+ 
+
+autocmd BufRead *.sql source ~/.vim/sql.vim
+
+ 
+
+"
+
+" Java stuff
+
+"
+
+ 
+
+"
+
+" compile & run current class command for MSDE builds
+
+"
+
+let g:args=""
+
+function! RunMsde()
+
+  let cmd = '!ant run -Dmsde.run.mainclass=$(javarun-class %) -Dmsde.run.appargs="' .  g:args . '" -Dmsde.verbose=false $(javarun-properties)'
+
+  echo cmd
+
+endfunction
+
+"
+
+" set shortcuts for Java and ant build
+
+"
+
+autocmd BufRead *.java set comments=s1:/*,mb:*,ex:*/,:<LocalLeader><LocalLeader>,b:#,:%,:XCOMM,n:>,fb:-
+
+autocmd BufRead *.java map <F9> :w!<CR>:compiler javac<CR>:set makeprg=javaunit<CR>:make % compile<CR>
+
+autocmd BufRead *.java map <F8> :w!<CR>:make % norun<CR>
+
+autocmd BufRead *.java map <F7> :w!<CR>:set makeprg=ant<CR>:make <UP><CR>
+
+autocmd BufRead *.java map <F5> :exec '!ant run -Dmsde.run.mainclass=$(javarun-class %)  $(javarun-properties) -Dmsde.run.appargs="' .  g:args . '" -Dmsde.verbose=false'<CR>
+
+autocmd BufRead *.java map <F6> :set makeprg=ant<CR>:make clean install<CR>
+
+autocmd BufRead *.java compiler ant
+
+autocmd BufRead *.java set makeprg=ant
+
+autocmd BufRead *.pl map <F5> :w!<CR>:!chmod a+x %<CR>:!%<CR>
+
+"
+
+" Mail formatting
+
+"
+
+map <LocalLeader>m :set filetype=mail<CR>
+
+  \:source $VIMRUNTIME/syntax/mail.vim<CR>
+
+  \:set tabstop=4<CR>
+
+  \:set expandtab<CR>
+
+  \:set tw=72 fo=tcrqn nosi ai expandtab<CR>
+
+  \:echo "Mail mode is on"<CR>
+
+"
+
+" Twiki formatting and the rest
+
+"
+
+map <LocalLeader>tw :set filetype=twiki<CR>
+
+  \:echo "Twiki mode is on"<CR>
+
+au BufNewFile,BufRead *w3mtmp*  setf twiki   
+
+au BufNewFile,BufRead *.twiki   setf twiki   
+
+ 
+
+"
+
+" XSLT
+
+"
+
+noremap <LocalLeader>ttc :!java "-Djava.endorsed.dirs=$JAVA_ENDORSED_DIRS" org.apache.xalan.xslt.Process -XSLTC -IN response.xml -XSL %<CR>
+
+noremap <LocalLeader>tts :!java "-Djava.endorsed.dirs=$JAVA_ENDORSED_DIRS" org.apache.xalan.xslt.Process -IN response.xml -XSL %<CR>
+
+noremap <LocalLeader>ttcf :!java "-Djava.endorsed.dirs=$JAVA_ENDORSED_DIRS" org.apache.xalan.xslt.Process -XSLTC -IN response.xml -XSL % -OUT out.html<CR>
+
+noremap <LocalLeader>ttsf :!java "-Djava.endorsed.dirs=$JAVA_ENDORSED_DIRS" org.apache.xalan.xslt.Process -IN response.xml -XSL % -OUT out.html<CR>
+
+noremap <LocalLeader>ttsh :!java "-Djava.endorsed.dirs=$JAVA_ENDORSED_DIRS" org.apache.xalan.xslt.Process -IN response.xml -XSL % \| cathtml.sh<CR>
+
+ 
+
+" 
+
+" HTML
+
+"
+
+noremap <LocalLeader>hi :%!xmllint --format --html --nowarning -<CR>
+
+:vmap <LocalLeader>hi :%!xmllint --format --html --nowarning -<CR>
+
+" launch browser with current file, saving it 
+
+noremap <LocalLeader>ffx :w<CR>:!modulecmd bash load fsf/firefox/default;firefox file:<LocalLeader><LocalLeader>%<CR>
+
+noremap <LocalLeader>b :w! ~/temp.html<CR>:!w3m ~/temp.html<CR>
+
+noremap <LocalLeader>hc :!. ~/sh/cathtml.sh %<CR>
+
+ 
+
+"
+
+" statistics with awk
+
+"
+
+noremap <LocalLeader>aw1 :%!awk -f ~/awk/xstats.awk<CR>
+
+:vmap <LocalLeader>aw1 :!awk -f ~/awk/xstats.awk<CR>
+
+ 
+
+"
+
+" Split windows
+
+"
+
+map <C-J> <C-W>j<C-W>_
+
+map <C-K> <C-W>k<C-W>_
+
+map <C-H> <C-W>h<C-W>_
+
+map <C-L> <C-W>l<C-W>_
+
+map <C-M> <C-W>_
+
+map <C-Y> :redo<CR>
+
+set wmh=0
+
+"
+
+" Misc mappings
+
+"
+
+map <LocalLeader>rr :nohls<CR>
+
+map <LocalLeader>g <ESC>:!grep -ir --color ''
+
+" e-mail highlited text as an attachement using mutt
+
+:vmap <LocalLeader>mu :w! ~/mail.temp.%:t<CR>:!module load fsf/mutt; mutt -a ~/mail.temp."%:t"<CR>
+
+set notitle
+
+"   Edit another file in the same directory as the current file
+
+"   uses expression to extract path from current file's path
+
+"  (thanks Douglas Potts)
+
+if has("unix")
+
+    map <LocalLeader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+    map <LocalLeader>r :r <C-R>=expand("%:p:h") . "/" <CR>
+
+    map <LocalLeader>w :w <C-R>=expand("%:p:h") . "/" <CR>
+
+else
+
+    map <LocalLeader>e :e <C-R>=expand("%:p:h") . "\" <CR>
+
+    map <LocalLeader>r :r <C-R>=expand("%:p:h") . "\" <CR>
+
+    map <LocalLeader>w :w <C-R>=expand("%:p:h") . "\" <CR>
+
+endif
+
+" Add mappings for mail quoting
+
+if !exists("no_plugin_maps") && !exists("no_mail_maps")
+
+  " Quote text by inserting "> "
+
+  if !hasmapto('<Plug>MailQuote')
+
+    vmap <buffer> <LocalLeader>q <Plug>MailQuote
+
+    nmap <buffer> <LocalLeader>q <Plug>MailQuote
+
+  endif
+
+  vnoremap <buffer> <Plug>MailQuote :s/^/> /<CR>:noh<CR>``
+
+  nnoremap <buffer> <Plug>MailQuote :.,$s/^/> /<CR>:noh<CR>``
+
+endif   
+
+"global compiler
+
+compiler! ant
+
+"Perforce
+
+map <LocalLeader>pd :!export P4DIFF=vimdiff;p4 diff % <CR>
+
+map <LocalLeader>pe :!p4 edit % <CR>
+
+map <LocalLeader>pr :!p4 revert % <CR>
+
+map <LocalLeader>ps :!p4 submit <CR>
+
+map <LocalLeader>ph :!p4 filelog -tLi % <CR>
+
+map <LocalLeader>< :diffget <CR>
+
+map <LocalLeader>> :diffput <CR>
+
+"
+
+"Experimental shortcuts
+
+"
+
+map <LocalLeader><LocalLeader>main   public static void main(String args[]) {<ESC>o<ESC>o}<ESC>k$i
+
+map <LocalLeader><LocalLeader>print  System.out.println();<ESC>hi
+
+map <LocalLeader><LocalLeader>dbg    _tr.debug("");<ESC>hhi
+
+map <LocalLeader><LocalLeader>if     <ESC>iif () {<ESC>o<ESC>o}<ESC>kkeei
+
+map <LocalLeader><LocalLeader>else   <ESC>ielse {<ESC>o<ESC>o}<ESC>kk$i
+
+map <LocalLeader><LocalLeader>elif   <ESC>ielse if () {<ESC>o<ESC>o}<ESC>kkeeei
+
+map <LocalLeader><LocalLeader>for    <ESC>ifor () {<ESC>o<ESC>o}<ESC>kkeei
+
+map <LocalLeader><LocalLeader>while  <ESC>iwhile () {<ESC>o<ESC>o}<ESC>kkeei
+
+ 
+
+map <LocalLeader><LocalLeader>cout  <ESC>istd::cout<<<<std::endl;<ESC>bbbhhi
+
+map <LocalLeader><LocalLeader>br <br><ESC>
+
+map <LocalLeader><LocalLeader>b  <b><ESC>
+
+map <LocalLeader><LocalLeader>/b </b><ESC>
+
+map <LocalLeader><LocalLeader>/i </i><ESC>
+
+map <LocalLeader><LocalLeader>p  <p><ESC>
+
+map <LocalLeader><LocalLeader>/p </p><ESC>o
+
+ 
+
+ 
+
+map <LocalLeader>= <ESC>:set foldmethod=indent<CR>zo<CR>
+
+map <LocalLeader>- <ESC>:set foldmethod=indent<CR>zc<CR>
+
+map <LocalLeader><LocalLeader>= <ESC>:set foldmethod=marker<CR>
+
+ 
+
+map F !}fmt<CR>
+
+ 
+
+map <LocalLeader>c :w! ~/temp.edit.copy <CR>
+
+map <LocalLeader>p :r ~/temp.edit.copy <CR>
+

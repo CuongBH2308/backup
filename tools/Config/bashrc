@@ -1,0 +1,126 @@
+#ln /v/campus/tk/cs/msde/baiyanh ~/v -s
+
+ 
+
+# my alias
+
+alias cd..='cd ..'
+
+alias .='cd ..'
+
+alias ..='cd ../../'
+
+alias ...='cd ../../../'
+
+alias ....='cd ../../../../'
+
+alias .4='cd ../../../../'
+
+alias .....='cd ../../../../../'
+
+alias .5='cd ../../../../../'
+
+alias ......='cd ../../../../../../'
+
+alias .6='cd ../../../../../../'
+
+ 
+
+alias grep='grep --color=auto'
+
+alias egrep='egrep --color=auto'
+
+alias fgrep='fgrep --color=auto'
+
+ 
+
+ 
+
+alias sha1='openssl sha1'
+
+ 
+
+alias mkdir='mkdir -pv'
+
+ 
+
+alias h='history'
+
+ 
+
+alias path='echo -e ${PATH//:/\\n} | sort'
+
+ 
+
+alias header='curl -I'
+
+alias headerc='curl -I --compress'
+
+ 
+
+alias df='df -H'
+
+alias du='du -ch'
+
+alias top='top -m'
+
+ 
+
+ 
+
+# history
+
+export HISTSIZE=1000
+
+export HISTFILESIZE=2000
+
+export HISTFILE=~/.bash_history
+
+export HISTTIMEFORMAT=' %F %T '
+
+ 
+
+#use ctl keys to move forward and back in words
+
+bind '"\eOC":forward-word'
+
+bind '"\eOD":backward-word'
+
+ 
+
+
+
+# tricks
+
+alias dialy='filename=`date +%Y-%m-%d.txt` && [ ! -f $filename ] && touch $filename && echo $filename'
+
+ 
+
+ 
+
+# show time 
+
+alias bptime='TZ=Europe/Budapest  date'
+
+alias lntime='TZ=Europe/London date'
+
+alias nytime='TZ=America/New_York  date'
+
+alias tktime='TZ=Asia/Tokyo  date'
+
+ 
+
+ 
+
+# set python start up
+
+export PYTHONPATH="/v/global/user/b/ba/baiyanh/utility/"
+
+export PYTHONSTARTUP="/v/global/user/b/ba/baiyanh/utility/startup.py"
+
+ 
+
+alias lstime='printf "Week: %s  Weekday: %s\n" `TZ=Asia/Shanghai date +%U` `date +%A`; for tz in Asia/Tokyo Asia/Shanghai Europe/Budapest Europe/London America/New_York; do dt=`TZ=$tz date "+%X@%F"`; printf "%-20s%s\n" $tz $dt; done'
+
+
+
