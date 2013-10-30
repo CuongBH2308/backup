@@ -14,23 +14,27 @@
 #ifdef CHECK_PTHREAD_RETURN_VALUE
 
 #ifdef NDEBUG
+// lzprgmr: for extern "C"  in C++ and nothing in C
 __BEGIN_DECLS
 extern void __assert_perror_fail (int errnum,
                                   const char *file,
                                   unsigned int line,
                                   const char *function)
-    __THROW __attribute__ ((__noreturn__));
+    __THROW __attribute__ ((__noreturn__)); // lzprgmr: 该属性通知编译器函数从不返回值，当遇到类似函数需要返回值而却不可能运行到返回值处就已经退出来的情况，该属性可以避免出现错误信息。C库函数中的abort（）和exit（）的声明格式就采用了这种格式
 __END_DECLS
 #endif
 
+// lzprgmr: __builtin_expect: tell compiler which branch is mostly expected, thus generate machine code in more efficient way (place true/false branch)
 #define MCHECK(ret) ({ __typeof__ (ret) errnum = (ret);         \
                        if (__builtin_expect(errnum != 0, 0))    \
-                         __assert_perror_fail (errnum, __FILE__, __LINE__, __func__);})
+                         __assert_perror_fail (errnum, __FILE__, __LINE__, __func__);})  //lzprgmr: the predefined func name?
 
 #else  // CHECK_PTHREAD_RETURN_VALUE
 
+// lzprmgr: ypeof是gcc对C语言的一个扩展保留字，用于声明变量类型
+// __typeof__(errnum) == decltype(errnum) in C++11
 #define MCHECK(ret) ({ __typeof__ (ret) errnum = (ret);         \
-                       assert(errnum == 0); (void) errnum;})
+                       assert(errnum == 0); (void) errnum;})      // lzprgmr: what is (void) errnum for?
 
 #endif // CHECK_PTHREAD_RETURN_VALUE
 
@@ -45,7 +49,7 @@ namespace muduo
 //   int size() const;
 //
 //  private:
-//   mutable MutexLock mutex_;
+//   mutable MutexLock mutex_; //lzprgmr: why mutable? because a const Foo object also need to be guided using mutex_, which would change the state of mutex_
 //   std::vector<int> data_; // GUARDED BY mutex_
 // };
 class MutexLock : boost::noncopyable
@@ -96,6 +100,7 @@ class MutexLock : boost::noncopyable
  private:
   friend class Condition;
 
+  // lzprgmr: what is this for?
   class UnassignGuard : boost::noncopyable
   {
    public:

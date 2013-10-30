@@ -10,6 +10,8 @@
 
 namespace muduo
 {
+
+// lzprgmr: no indent in top level namespace
 namespace CurrentThread
 {
   // internal
