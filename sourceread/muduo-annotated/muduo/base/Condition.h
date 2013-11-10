@@ -11,6 +11,10 @@
 #include <boost/noncopyable.hpp>
 #include <pthread.h>
 
+// lzprgmr: conditonal pthread functions:
+// pthread_cond_init
+// pthread_cond_wait  vs. pthread_cond_signal/pthread_cond_broadcast
+// pthread_cond_destroy
 namespace muduo
 {
 
@@ -30,7 +34,7 @@ class Condition : boost::noncopyable
 
   void wait()
   {
-    MutexLock::UnassignGuard ug(mutex_);
+    MutexLock::UnassignGuard ug(mutex_); // lzprgmr: what is the line for?
     MCHECK(pthread_cond_wait(&pcond_, mutex_.getPthreadMutex()));
   }
 

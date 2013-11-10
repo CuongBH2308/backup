@@ -1,5 +1,6 @@
 import re
 import os
+import unittest
 
 def _discover(module, filter):
 	members = dir(module)

@@ -31,7 +31,7 @@ class BlockingQueue : boost::noncopyable
   {
     MutexLockGuard lock(mutex_);
     queue_.push_back(x);
-    notEmpty_.notify(); // wait morphing saves us
+    notEmpty_.notify(); // wait morphing saves us   // lzprgmr: why notify everytime we put? I guess we could notify only when it was empty?
     // http://www.domaigne.com/blog/computing/condvars-signal-with-mutex-locked-or-not/
   }
 
@@ -58,7 +58,7 @@ class BlockingQueue : boost::noncopyable
  private:
   mutable MutexLock mutex_;
   Condition         notEmpty_;
-  std::deque<T>     queue_;
+  std::deque<T>     queue_;      //lzprgmr: use deque as we need to push to the end, and pop from the front, vector would have bad performance
 };
 
 }

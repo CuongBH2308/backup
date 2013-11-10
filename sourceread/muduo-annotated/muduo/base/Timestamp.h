@@ -13,7 +13,7 @@ namespace muduo
 /// Time stamp in UTC, in microseconds resolution.
 ///
 /// This class is immutable.
-/// It's recommended to pass it by value, since it's passed in register on x64.
+/// It's recommended to pass it by value, since it's passed in register on x64. -- lzprgmr: why it is passed in register on x64?
 ///
 class Timestamp : public muduo::copyable,
                   public boost::less_than_comparable<Timestamp>
@@ -23,7 +23,7 @@ class Timestamp : public muduo::copyable,
   /// Constucts an invalid Timestamp.
   ///
   Timestamp()
-    : microSecondsSinceEpoch_(0)
+    : microSecondsSinceEpoch_(0)  // lzprgmr: epoch - a reference time in the history that is used in computer, January 1, 1970 in Unix/Linux
   {
   }
 

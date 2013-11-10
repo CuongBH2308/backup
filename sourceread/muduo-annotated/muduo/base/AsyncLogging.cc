@@ -13,7 +13,7 @@ AsyncLogging::AsyncLogging(const string& basename,
     running_(false),
     basename_(basename),
     rollSize_(rollSize),
-    thread_(boost::bind(&AsyncLogging::threadFunc, this), "Logging"),
+    thread_(boost::bind(&AsyncLogging::threadFunc, this), "Logging"),  // lzprgmr: how boost::bind works?
     latch_(1),
     mutex_(),
     cond_(mutex_),

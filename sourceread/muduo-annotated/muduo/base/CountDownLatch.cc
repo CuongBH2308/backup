@@ -27,7 +27,7 @@ void CountDownLatch::countDown()
   MutexLockGuard lock(mutex_);
   --count_;
   if (count_ == 0) {
-    condition_.notifyAll();
+    condition_.notifyAll(); //lzprgmr: how long would it wait? how many times the countDown is called, it is actually not about the time
   }
 }
 

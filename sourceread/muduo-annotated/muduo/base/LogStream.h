@@ -17,7 +17,7 @@ namespace detail
 {
 
 const int kSmallBuffer = 4000;
-const int kLargeBuffer = 4000*1000;
+const int kLargeBuffer = 4000*1000;  // lzprgmr: 4M size buffer
 
 template<int SIZE>
 class FixedBuffer : boost::noncopyable
@@ -73,12 +73,12 @@ class FixedBuffer : boost::noncopyable
 };
 
 }
-
+// lzprgmr: a Stream is basically a set of operator<<
 class LogStream : boost::noncopyable
 {
   typedef LogStream self;
  public:
-  typedef detail::FixedBuffer<detail::kSmallBuffer> Buffer;
+  typedef detail::FixedBuffer<detail::kSmallBuffer> Buffer; // lzprgmr: LogStream by default using kSmallBuffer
 
   self& operator<<(bool v)
   {
@@ -150,7 +150,7 @@ class LogStream : boost::noncopyable
   template<typename T>
   void formatInteger(T);
 
-  Buffer buffer_;
+  Buffer buffer_; 
 
   static const int kMaxNumericSize = 32;
 };

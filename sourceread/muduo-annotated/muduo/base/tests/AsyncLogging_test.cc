@@ -16,7 +16,7 @@ void asyncOutput(const char* msg, int len)
 
 void bench(bool longLog)
 {
-  muduo::Logger::setOutput(asyncOutput);
+  muduo::Logger::setOutput(asyncOutput);  // lzprgmr:The Logger is reused by only setting this callback
 
   int cnt = 0;
   const int kBatch = 1000;

@@ -16,6 +16,7 @@
 namespace muduo
 {
 
+// lzprgmr: BoundedBlockQueue need 2 conditional variable
 template<typename T>
 class BoundedBlockingQueue : boost::noncopyable
 {
@@ -28,6 +29,9 @@ class BoundedBlockingQueue : boost::noncopyable
   {
   }
 
+  // lzprgmr: 
+  // if full, wait until there is a place
+  // after put, notify notEmpty
   void put(const T& x)
   {
     MutexLockGuard lock(mutex_);
@@ -37,9 +41,12 @@ class BoundedBlockingQueue : boost::noncopyable
     }
     assert(!queue_.full());
     queue_.push_back(x);
-    notEmpty_.notify();
+    notEmpty_.notify(); 
   }
 
+  // lzprgmr:
+  // if empty, wait until there is an element
+  // after take, notify notFull
   T take()
   {
     MutexLockGuard lock(mutex_);
@@ -80,9 +87,9 @@ class BoundedBlockingQueue : boost::noncopyable
 
  private:
   mutable MutexLock          mutex_;
-  Condition                  notEmpty_;
+  Condition                  notEmpty_;  //lzprgmr: we need to check both empty and full
   Condition                  notFull_;
-  boost::circular_buffer<T>  queue_;
+  boost::circular_buffer<T>  queue_;     //lzprgmr: using circular_buffer, should be ok also using a deque, just you need to code the 'capacity' part
 };
 
 }

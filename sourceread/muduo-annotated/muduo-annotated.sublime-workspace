@@ -14,9 +14,411 @@
 				"buffer_size": 1012,
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"file": "muduo/base/AsyncLogging.cc",
+			"settings":
+			{
+				"buffer_size": 3243,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Windows/System32/drivers/etc/hosts",
+			"settings":
+			{
+				"buffer_size": 836,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/filetransfer/loadtest/Client.java",
+			"settings":
+			{
+				"buffer_size": 2342,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/Mutex.h",
+			"settings":
+			{
+				"buffer_size": 3824,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/CurrentThread.h",
+			"settings":
+			{
+				"buffer_size": 835,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 343 files for \"isMainThread\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\CurrentThread.h:\n   40    }\n   41  \n   42:   bool isMainThread();\n   43  \n   44    void sleepUsec(int64_t usec);\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\Thread.cc:\n  139  }\n  140  \n  141: bool CurrentThread::isMainThread()\n  142  {\n  143    return tid() == ::getpid();\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\inspect\\Inspector.cc:\n   66        processInspector_(new ProcessInspector)\n   67  {\n   68:   assert(CurrentThread::isMainThread());\n   69    assert(g_globalInspector == 0);\n   70    g_globalInspector = this;\n   ..\n   80  Inspector::~Inspector()\n   81  {\n   82:   assert(CurrentThread::isMainThread());\n   83    g_globalInspector = NULL;\n   84  }\n\n4 matches across 3 files\n\n\nSearching 343 files for \"UnassignGuard\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\MacOSX.diff:\n   95  +#endif\n   96     abstime.tv_sec += seconds;\n   97:    MutexLock::UnassignGuard ug(mutex_);\n   98     return ETIMEDOUT == pthread_cond_timedwait(&pcond_, mutex_.getPthreadMutex(), &abstime);\n   99  diff --git a/muduo/base/LogFile.cc b/muduo/base/LogFile.cc\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\Condition.cc:\n   14    clock_gettime(CLOCK_REALTIME, &abstime);\n   15    abstime.tv_sec += seconds;\n   16:   MutexLock::UnassignGuard ug(mutex_);\n   17    return ETIMEDOUT == pthread_cond_timedwait(&pcond_, mutex_.getPthreadMutex(), &abstime);\n   18  }\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\Condition.h:\n   31    void wait()\n   32    {\n   33:     MutexLock::UnassignGuard ug(mutex_);\n   34      MCHECK(pthread_cond_wait(&pcond_, mutex_.getPthreadMutex()));\n   35    }\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\Mutex.h:\n  102  \n  103    // lzprgmr: what is this for?\n  104:   class UnassignGuard : boost::noncopyable\n  105    {\n  106     public:\n  107:     UnassignGuard(MutexLock& owner)\n  108        : owner_(owner)\n  109      {\n  ...\n  111      }\n  112  \n  113:     ~UnassignGuard()\n  114      {\n  115        owner_.assignHolder();\n\n6 matches across 4 files\n\n\nSearching 343 files for \"SourceFile\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\ChangeLog:\n   49  2012-09-30   Shuo Chen  <chenshuo@chenshuo.com>\n   50    * Add Channel::remove()\n   51:   * Logger::SourceFile supports char*\n   52    * Fix for g++ 4.7\n   53    * Version 0.8.1\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\Logging.cc:\n   83  }\n   84  \n   85: inline LogStream& operator<<(LogStream& s, const Logger::SourceFile& v)\n   86  {\n   87    s.append(v.data_, v.size_);\n   ..\n  108  using namespace muduo;\n  109  \n  110: Logger::Impl::Impl(LogLevel level, int savedErrno, const SourceFile& file, int line)\n  111    : time_(Timestamp::now()),\n  112      stream_(),\n  ...\n  151  }\n  152  \n  153: Logger::Logger(SourceFile file, int line)\n  154    : impl_(INFO, 0, file, line)\n  155  {\n  156  }\n  157  \n  158: Logger::Logger(SourceFile file, int line, LogLevel level, const char* func)\n  159    : impl_(level, 0, file, line)\n  160  {\n  ...\n  162  }\n  163  \n  164: Logger::Logger(SourceFile file, int line, LogLevel level)\n  165    : impl_(level, 0, file, line)\n  166  {\n  167  }\n  168  \n  169: Logger::Logger(SourceFile file, int line, bool toAbort)\n  170    : impl_(toAbort?FATAL:ERROR, errno, file, line)\n  171  {\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\Logging.h:\n   23  \n   24    // compile time calculation of basename of source file\n   25:   class SourceFile\n   26    {\n   27     public:\n   28      template<int N>\n   29:     inline SourceFile(const char (&arr)[N])\n   30        : data_(arr),\n   31          size_(N-1)\n   ..\n   39      }\n   40  \n   41:     explicit SourceFile(const char* filename)\n   42        : data_(filename)\n   43      {\n   ..\n   54    };\n   55  \n   56:   Logger(SourceFile file, int line);\n   57:   Logger(SourceFile file, int line, LogLevel level);\n   58:   Logger(SourceFile file, int line, LogLevel level, const char* func);\n   59:   Logger(SourceFile file, int line, bool toAbort);\n   60    ~Logger();\n   61  \n   ..\n   76   public:\n   77    typedef Logger::LogLevel LogLevel;\n   78:   Impl(LogLevel level, int old_errno, const SourceFile& file, int line);\n   79    void formatTime();\n   80    void finish();\n   ..\n   84    LogLevel level_;\n   85    int line_;\n   86:   SourceFile basename_;\n   87  };\n   88  \n   ..\n  122  // A small helper for CHECK_NOTNULL().\n  123  template <typename T>\n  124: T* CheckNotNull(Logger::SourceFile file, int line, const char *names, T* ptr) {\n  125    if (ptr == NULL) {\n  126     Logger(file, line, Logger::FATAL).stream() << names;\n\n17 matches across 3 files\n\n\nSearching 343 files for \"largebuffer\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\AsyncLogging.h:\n   58    void threadFunc();\n   59  \n   60:   typedef muduo::detail::FixedBuffer<muduo::detail::kLargeBuffer> Buffer;\n   61    typedef boost::ptr_vector<Buffer> BufferVector;  // lzprgmr: ptr_vector own the pointers in the vector, and will automatically delete them on destruction\n   62    typedef BufferVector::auto_type BufferPtr;\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\LogStream.cc:\n   74  \n   75  template class FixedBuffer<kSmallBuffer>;\n   76: template class FixedBuffer<kLargeBuffer>;\n   77  \n   78  }\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\LogStream.h:\n   18  \n   19  const int kSmallBuffer = 4000;\n   20: const int kLargeBuffer = 4000*1000;\n   21  \n   22  template<int SIZE>\n\n3 matches across 3 files\n\n\nSearching 343 files for \"FixedBuffer\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\AsyncLogging.h:\n   58    void threadFunc();\n   59  \n   60:   typedef muduo::detail::FixedBuffer<muduo::detail::kLargeBuffer> Buffer;\n   61    typedef boost::ptr_vector<Buffer> BufferVector;  // lzprgmr: ptr_vector own the pointers in the vector, and will automatically delete them on destruction\n   62    typedef BufferVector::auto_type BufferPtr;\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\LogStream.cc:\n   73  }\n   74  \n   75: template class FixedBuffer<kSmallBuffer>;\n   76: template class FixedBuffer<kLargeBuffer>;\n   77  \n   78  }\n   ..\n   80  \n   81  template<int SIZE>\n   82: const char* FixedBuffer<SIZE>::debugString()\n   83  {\n   84    *cur_ = '\\0';\n   ..\n   87  \n   88  template<int SIZE>\n   89: void FixedBuffer<SIZE>::cookieStart()\n   90  {\n   91  }\n   92  \n   93  template<int SIZE>\n   94: void FixedBuffer<SIZE>::cookieEnd()\n   95  {\n   96  }\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\LogStream.h:\n   21  \n   22  template<int SIZE>\n   23: class FixedBuffer : boost::noncopyable\n   24  {\n   25   public:\n   26:   FixedBuffer()\n   27      : cur_(data_)\n   28    {\n   ..\n   30    }\n   31  \n   32:   ~FixedBuffer()\n   33    {\n   34      setCookie(cookieEnd);\n   ..\n   79    typedef LogStream self;\n   80   public:\n   81:   typedef detail::FixedBuffer<detail::kSmallBuffer> Buffer;\n   82  \n   83    self& operator<<(bool v)\n\n10 matches across 3 files\n\n\nSearching 343 files for \"FixedBuffer\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\AsyncLogging.h:\n   58    void threadFunc();\n   59  \n   60:   typedef muduo::detail::FixedBuffer<muduo::detail::kLargeBuffer> Buffer;\n   61    typedef boost::ptr_vector<Buffer> BufferVector;  // lzprgmr: ptr_vector own the pointers in the vector, and will automatically delete them on destruction\n   62    typedef BufferVector::auto_type BufferPtr;\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\LogStream.cc:\n   73  }\n   74  \n   75: template class FixedBuffer<kSmallBuffer>;\n   76: template class FixedBuffer<kLargeBuffer>;\n   77  \n   78  }\n   ..\n   80  \n   81  template<int SIZE>\n   82: const char* FixedBuffer<SIZE>::debugString()\n   83  {\n   84    *cur_ = '\\0';\n   ..\n   87  \n   88  template<int SIZE>\n   89: void FixedBuffer<SIZE>::cookieStart()\n   90  {\n   91  }\n   92  \n   93  template<int SIZE>\n   94: void FixedBuffer<SIZE>::cookieEnd()\n   95  {\n   96  }\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\LogStream.h:\n   21  \n   22  template<int SIZE>\n   23: class FixedBuffer : boost::noncopyable\n   24  {\n   25   public:\n   26:   FixedBuffer()\n   27      : cur_(data_)\n   28    {\n   ..\n   30    }\n   31  \n   32:   ~FixedBuffer()\n   33    {\n   34      setCookie(cookieEnd);\n   ..\n   79    typedef LogStream self;\n   80   public:\n   81:   typedef detail::FixedBuffer<detail::kSmallBuffer> Buffer;\n   82  \n   83    self& operator<<(bool v)\n\n10 matches across 3 files\n\n\nSearching 343 files for \"klarge\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\AsyncLogging.h:\n   58    void threadFunc();\n   59  \n   60:   typedef muduo::detail::FixedBuffer<muduo::detail::kLargeBuffer> Buffer;\n   61    typedef boost::ptr_vector<Buffer> BufferVector;  // lzprgmr: ptr_vector own the pointers in the vector, and will automatically delete them on destruction\n   62    typedef BufferVector::auto_type BufferPtr;\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\LogStream.cc:\n   74  \n   75  template class FixedBuffer<kSmallBuffer>;\n   76: template class FixedBuffer<kLargeBuffer>;\n   77  \n   78  }\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\LogStream.h:\n   18  \n   19  const int kSmallBuffer = 4000;\n   20: const int kLargeBuffer = 4000*1000;\n   21  \n   22  template<int SIZE>\n\n3 matches across 3 files\n\n\nSearching 343 files for \"kLargeBuffer\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\AsyncLogging.h:\n   58    void threadFunc();\n   59  \n   60:   typedef muduo::detail::FixedBuffer<muduo::detail::kLargeBuffer> Buffer;\n   61    typedef boost::ptr_vector<Buffer> BufferVector;  // lzprgmr: ptr_vector own the pointers in the vector, and will automatically delete them on destruction\n   62    typedef BufferVector::auto_type BufferPtr;\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\LogStream.cc:\n   74  \n   75  template class FixedBuffer<kSmallBuffer>;\n   76: template class FixedBuffer<kLargeBuffer>;\n   77  \n   78  }\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\LogStream.h:\n   18  \n   19  const int kSmallBuffer = 4000;\n   20: const int kLargeBuffer = 4000*1000;\n   21  \n   22  template<int SIZE>\n\n3 matches across 3 files\n\n\nSearching 343 files for \"down_cast\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\Types.h:\n   99  // You should design the code some other way not to need this.\n  100  \n  101: template<typename To, typename From>     // use like this: down_cast<T*>(foo);\n  102: inline To down_cast(From* f) {                   // so we only accept pointers\n  103    // Ensures that To is a sub-type of From *.  This test is here only\n  104    // for compile-time type checking, and has no overhead in an\n\n2 matches in 1 file\n\n\nSearching 343 files for \"implicit_cast\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\backport.diff:\n  292  +++ b/muduo/net/SocketsOps.cc\n  293  @@ -37,7 +37,9 @@ SA* sockaddr_cast(struct sockaddr_in* addr)\n  294:    return static_cast<SA*>(implicit_cast<void*>(addr));\n  295   }\n  296   \n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\examples\\protobuf\\codec\\codec.cc:\n  125        break;\n  126      }\n  127:     else if (buf->readableBytes() >= implicit_cast<size_t>(len + kHeaderLen))\n  128      {\n  129        ErrorCode errorCode = kNoError;\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\examples\\roundtrip\\roundtrip_udp.cc:\n   44      LOG_SYSERR << \"::recvfrom\";\n   45    }\n   46:   else if (implicit_cast<size_t>(nr) == frameLen)\n   47    {\n   48      message[1] = receiveTime.microSecondsSinceEpoch();\n   ..\n   52        LOG_SYSERR << \"::sendto\";\n   53      }\n   54:     else if (implicit_cast<size_t>(nw) != frameLen)\n   55      {\n   56        LOG_ERROR << \"Expect \" << frameLen << \" bytes, wrote \" << nw << \" bytes.\";\n   ..\n   85      LOG_SYSERR << \"::read\";\n   86    }\n   87:   else if (implicit_cast<size_t>(nr) == frameLen)\n   88    {\n   89      int64_t send = message[0];\n   ..\n  109      LOG_SYSERR << \"::write\";\n  110    }\n  111:   else if (implicit_cast<size_t>(nw) != frameLen)\n  112    {\n  113      LOG_ERROR << \"Expect \" << frameLen << \" bytes, wrote \" << nw << \" bytes.\";\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\examples\\sudoku\\client.cc:\n   28    while (getline(in, line))\n   29    {\n   30:     if (line.size() == implicit_cast<size_t>(kCells))\n   31      {\n   32        ++count;\n   ..\n   50    while (getline(in, line))\n   51    {\n   52:     if (line.size() == implicit_cast<size_t>(kCells))\n   53      {\n   54        input->push_back(line.c_str());\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\examples\\sudoku\\server_basic.cc:\n   93      }\n   94  \n   95:     if (puzzle.size() == implicit_cast<size_t>(kCells))\n   96      {\n   97        LOG_DEBUG << conn->name();\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\examples\\sudoku\\server_multiloop.cc:\n   96      }\n   97  \n   98:     if (puzzle.size() == implicit_cast<size_t>(kCells))\n   99      {\n  100        LOG_DEBUG << conn->name();\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\examples\\sudoku\\server_threadpool.cc:\n   97      }\n   98  \n   99:     if (puzzle.size() == implicit_cast<size_t>(kCells))\n  100      {\n  101        threadPool_.run(boost::bind(&solve, conn, puzzle, id));\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\FileUtil.cc:\n   61          {\n   62            *fileSize = statbuf.st_size;\n   63:           content->reserve(static_cast<int>(std::min(implicit_cast<int64_t>(maxSize), *fileSize)));\n   64          }\n   65          else if (S_ISDIR(statbuf.st_mode))\n   ..\n   82      }\n   83  \n   84:     while (content->size() < implicit_cast<size_t>(maxSize))\n   85      {\n   86:       size_t toRead = std::min(implicit_cast<size_t>(maxSize) - content->size(), sizeof(buf_));\n   87        ssize_t n = ::read(fd_, buf_, toRead);\n   88        if (n > 0)\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\LogStream.h:\n   38    {\n   39      // FIXME: append partially\n   40:     if (implicit_cast<size_t>(avail()) > len)\n   41      {\n   42        memcpy(cur_, buf, len);\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\Types.h:\n   59  \n   60  //\n   61: // Use implicit_cast as a safe version of static_cast or const_cast\n   62  // for upcasting in the type hierarchy (i.e. casting a pointer to Foo\n   63  // to a pointer to SuperclassOfFoo or casting a pointer to Foo to\n   64  // a const pointer to Foo).\n   65: // When you use implicit_cast, the compiler checks that the cast is safe.\n   66: // Such explicit implicit_casts are necessary in surprisingly many\n   67  // situations where C++ demands an exact type match instead of an\n   68  // argument type convertable to a target type.\n   69  //\n   70  // The From type can be inferred, so the preferred syntax for using\n   71: // implicit_cast is the same as for static_cast etc.:\n   72  //\n   73: //   implicit_cast<ToType>(expr)\n   74  //\n   75: // implicit_cast would have been part of the C++ standard library,\n   76  // but the proposal was submitted too late.  It will probably make\n   77  // its way into the language in the future.\n   78  template<typename To, typename From>\n   79: inline To implicit_cast(From const &f) {\n   80    return f;\n   81  }\n   82  \n   83  // When you upcast (that is, cast a pointer from type Foo to type\n   84: // SuperclassOfFoo), it's fine to use implicit_cast<>, since upcasts\n   85  // always succeed.  When you downcast (that is, cast a pointer from\n   86  // type Foo to type SubclassOfFoo), static_cast<> isn't safe, because\n   ..\n  106    // completely.\n  107    if (false) {\n  108:     implicit_cast<From*, To>(0);\n  109    }\n  110  \n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\Buffer.cc:\n   41      *savedErrno = errno;\n   42    }\n   43:   else if (implicit_cast<size_t>(n) <= writable)\n   44    {\n   45      writerIndex_ += n;\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\Callbacks.h:\n   25  inline ::boost::shared_ptr<To> down_pointer_cast(const ::boost::shared_ptr<From>& f) {\n   26    if (false) {\n   27:     implicit_cast<From*, To*>(0);\n   28    }\n   29  \n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\EventLoopThreadPool.cc:\n   60      loop = loops_[next_];\n   61      ++next_;\n   62:     if (implicit_cast<size_t>(next_) >= loops_.size())\n   63      {\n   64        next_ = 0;\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\SocketsOps.cc:\n   30  const SA* sockaddr_cast(const struct sockaddr_in* addr)\n   31  {\n   32:   return static_cast<const SA*>(implicit_cast<const void*>(addr));\n   33  }\n   34  \n   35  SA* sockaddr_cast(struct sockaddr_in* addr)\n   36  {\n   37:   return static_cast<SA*>(implicit_cast<void*>(addr));\n   38  }\n   39  \n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\poller\\EPollPoller.cc:\n   66      LOG_TRACE << numEvents << \" events happended\";\n   67      fillActiveChannels(numEvents, activeChannels);\n   68:     if (implicit_cast<size_t>(numEvents) == events_.size())\n   69      {\n   70        events_.resize(events_.size()*2);\n   ..\n   90                                       ChannelList* activeChannels) const\n   91  {\n   92:   assert(implicit_cast<size_t>(numEvents) <= events_.size());\n   93    for (int i = 0; i < numEvents; ++i)\n   94    {\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\poller\\PollPoller.cc:\n  124    size_t n = channels_.erase(channel->fd());\n  125    assert(n == 1); (void)n;\n  126:   if (implicit_cast<size_t>(idx) == pollfds_.size()-1)\n  127    {\n  128      pollfds_.pop_back();\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\protorpc\\RpcCodec.cc:\n   57          static_cast<int>(buf.readableBytes())));\n   58    buf.appendInt32(checkSum);\n   59:   assert(buf.readableBytes() == implicit_cast<size_t>(kHeaderLen + byte_size + kHeaderLen));\n   60    int32_t len = sockets::hostToNetwork32(static_cast<int32_t>(buf.readableBytes()));\n   61    buf.prepend(&len, sizeof len);\n   ..\n   76        break;\n   77      }\n   78:     else if (buf->readableBytes() >= implicit_cast<size_t>(len + kHeaderLen))\n   79      {\n   80        RpcMessage message;\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\tests\\EchoClient_unittest.cc:\n   52      {\n   53        ++current;\n   54:       if (implicit_cast<size_t>(current) < clients.size())\n   55        {\n   56          clients[current].connect();\n\n35 matches across 18 files\n\n\nSearching 343 files for \"CHECK_NOTNULL\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo-annotated.sublime-workspace:\n   49  		},\n   50  		{\n   51: 			\"contents\": \"Searching 343 files for \\\"isMainThread\\\"\\n\\nD:\\\\Source\\\\GitHub\\\\privaterepo\\\\sourceread\\\\muduo-annotated\\\\muduo\\\\base\\\\CurrentThread.h:\\n   40    }\\n   41  \\n   42:   bool isMainThread();\\n   43  \\n   44    void sleepUsec(int64_t usec);\\n\\nD:\\\\Source\\\\GitHub\\\\privaterepo\\\\sourceread\\\\muduo-annotated\\\\muduo\\\\base\\\\Thread.cc:\\n  139  }\\n  140  \\n  141: bool CurrentThread::isMainThread()\\n  142  {\\n  143    return tid() == ::getpid();\\n\\nD:\\\\Source\\\\GitHub\\\\privaterepo\\\\sourceread\\\\muduo-annotated\\\\muduo\\\\net\\\\inspect\\\\Inspector.cc:\\n   66        processInspector_(new ProcessInspector)\\n   67  {\\n   68:   assert(CurrentThread::isMainThread());\\n   69    assert(g_globalInspector == 0);\\n   70    g_globalInspector = this;\\n   ..\\n   80  Inspector::~Inspector()\\n   81  {\\n   82:   assert(CurrentThread::isMainThread());\\n   83    g_globalInspector = NULL;\\n   84  }\\n\\n4 matches across 3 files\\n\\n\\nSearching 343 files for \\\"UnassignGuard\\\"\\n\\nD:\\\\Source\\\\GitHub\\\\privaterepo\\\\sourceread\\\\muduo-annotated\\\\MacOSX.diff:\\n   95  +#endif\\n   96     abstime.tv_sec += seconds;\\n   97:    MutexLock::UnassignGuard ug(mutex_);\\n   98     return ETIMEDOUT == pthread_cond_timedwait(&pcond_, mutex_.getPthreadMutex(), &abstime);\\n   99  diff --git a/muduo/base/LogFile.cc b/muduo/base/LogFile.cc\\n\\nD:\\\\Source\\\\GitHub\\\\privaterepo\\\\sourceread\\\\muduo-annotated\\\\muduo\\\\base\\\\Condition.cc:\\n   14    clock_gettime(CLOCK_REALTIME, &abstime);\\n   15    abstime.tv_sec += seconds;\\n   16:   MutexLock::UnassignGuard ug(mutex_);\\n   17    return ETIMEDOUT == pthread_cond_timedwait(&pcond_, mutex_.getPthreadMutex(), &abstime);\\n   18  }\\n\\nD:\\\\Source\\\\GitHub\\\\privaterepo\\\\sourceread\\\\muduo-annotated\\\\muduo\\\\base\\\\Condition.h:\\n   31    void wait()\\n   32    {\\n   33:     MutexLock::UnassignGuard ug(mutex_);\\n   34      MCHECK(pthread_cond_wait(&pcond_, mutex_.getPthreadMutex()));\\n   35    }\\n\\nD:\\\\Source\\\\GitHub\\\\privaterepo\\\\sourceread\\\\muduo-annotated\\\\muduo\\\\base\\\\Mutex.h:\\n  102  \\n  103    // lzprgmr: what is this for?\\n  104:   class UnassignGuard : boost::noncopyable\\n  105    {\\n  106     public:\\n  107:     UnassignGuard(MutexLock& owner)\\n  108        : owner_(owner)\\n  109      {\\n  ...\\n  111      }\\n  112  \\n  113:     ~UnassignGuard()\\n  114      {\\n  115        owner_.assignHolder();\\n\\n6 matches across 4 files\\n\\n\\nSearching 343 files for \\\"SourceFile\\\"\\n\\nD:\\\\Source\\\\GitHub\\\\privaterepo\\\\sourceread\\\\muduo-annotated\\\\ChangeLog:\\n   49  2012-09-30   Shuo Chen  <chenshuo@chenshuo.com>\\n   50    * Add Channel::remove()\\n   51:   * Logger::SourceFile supports char*\\n   52    * Fix for g++ 4.7\\n   53    * Version 0.8.1\\n\\nD:\\\\Source\\\\GitHub\\\\privaterepo\\\\sourceread\\\\muduo-annotated\\\\muduo\\\\base\\\\Logging.cc:\\n   83  }\\n   84  \\n   85: inline LogStream& operator<<(LogStream& s, const Logger::SourceFile& v)\\n   86  {\\n   87    s.append(v.data_, v.size_);\\n   ..\\n  108  using namespace muduo;\\n  109  \\n  110: Logger::Impl::Impl(LogLevel level, int savedErrno, const SourceFile& file, int line)\\n  111    : time_(Timestamp::now()),\\n  112      stream_(),\\n  ...\\n  151  }\\n  152  \\n  153: Logger::Logger(SourceFile file, int line)\\n  154    : impl_(INFO, 0, file, line)\\n  155  {\\n  156  }\\n  157  \\n  158: Logger::Logger(SourceFile file, int line, LogLevel level, const char* func)\\n  159    : impl_(level, 0, file, line)\\n  160  {\\n  ...\\n  162  }\\n  163  \\n  164: Logger::Logger(SourceFile file, int line, LogLevel level)\\n  165    : impl_(level, 0, file, line)\\n  166  {\\n  167  }\\n  168  \\n  169: Logger::Logger(SourceFile file, int line, bool toAbort)\\n  170    : impl_(toAbort?FATAL:ERROR, errno, file, line)\\n  171  {\\n\\nD:\\\\Source\\\\GitHub\\\\privaterepo\\\\sourceread\\\\muduo-annotated\\\\muduo\\\\base\\\\Logging.h:\\n   23  \\n   24    // compile time calculation of basename of source file\\n   25:   class SourceFile\\n   26    {\\n   27     public:\\n   28      template<int N>\\n   29:     inline SourceFile(const char (&arr)[N])\\n   30        : data_(arr),\\n   31          size_(N-1)\\n   ..\\n   39      }\\n   40  \\n   41:     explicit SourceFile(const char* filename)\\n   42        : data_(filename)\\n   43      {\\n   ..\\n   54    };\\n   55  \\n   56:   Logger(SourceFile file, int line);\\n   57:   Logger(SourceFile file, int line, LogLevel level);\\n   58:   Logger(SourceFile file, int line, LogLevel level, const char* func);\\n   59:   Logger(SourceFile file, int line, bool toAbort);\\n   60    ~Logger();\\n   61  \\n   ..\\n   76   public:\\n   77    typedef Logger::LogLevel LogLevel;\\n   78:   Impl(LogLevel level, int old_errno, const SourceFile& file, int line);\\n   79    void formatTime();\\n   80    void finish();\\n   ..\\n   84    LogLevel level_;\\n   85    int line_;\\n   86:   SourceFile basename_;\\n   87  };\\n   88  \\n   ..\\n  122  // A small helper for CHECK_NOTNULL().\\n  123  template <typename T>\\n  124: T* CheckNotNull(Logger::SourceFile file, int line, const char *names, T* ptr) {\\n  125    if (ptr == NULL) {\\n  126     Logger(file, line, Logger::FATAL).stream() << names;\\n\\n17 matches across 3 files\\n\",\n   52  			\"settings\":\n   53  			{\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\examples\\curl\\Curl.cc:\n   18  Request::Request(Curl* owner, StringPiece url)\n   19    : owner_(owner),\n   20:     curl_(CHECK_NOTNULL(curl_easy_init()))\n   21  {\n   22    setopt(CURLOPT_URL, url.data());\n   ..\n  194  Curl::Curl(EventLoop* loop)\n  195    : loop_(loop),\n  196:     curlm_(CHECK_NOTNULL(curl_multi_init())),\n  197      runningHandles_(0),\n  198      prevRunningHandles_(0)\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\Logging.h:\n  117  // initializer lists.\n  118  \n  119: #define CHECK_NOTNULL(val) \\\n  120    ::muduo::CheckNotNull(__FILE__, __LINE__, \"'\" #val \"' Must be non NULL\", (val))\n  121  \n  122: // A small helper for CHECK_NOTNULL().\n  123  template <typename T>\n  124  T* CheckNotNull(Logger::SourceFile file, int line, const char *names, T* ptr) {\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\TcpClient.cc:\n   28  \n   29  // TcpClient::TcpClient(EventLoop* loop, const string& host, uint16_t port)\n   30: //   : loop_(CHECK_NOTNULL(loop)),\n   31  //     serverAddr_(host, port)\n   32  // {\n   ..\n   57                       const InetAddress& serverAddr,\n   58                       const string& name)\n   59:   : loop_(CHECK_NOTNULL(loop)),\n   60      connector_(new Connector(loop, serverAddr)),\n   61      name_(name),\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\TcpConnection.cc:\n   42                               const InetAddress& localAddr,\n   43                               const InetAddress& peerAddr)\n   44:   : loop_(CHECK_NOTNULL(loop)),\n   45      name_(nameArg),\n   46      state_(kConnecting),\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\TcpServer.cc:\n   26                       const string& nameArg,\n   27                       Option option)\n   28:   : loop_(CHECK_NOTNULL(loop)),\n   29      hostport_(listenAddr.toIpPort()),\n   30      name_(nameArg),\n\n9 matches across 6 files\n\n\nSearching 343 files for \"AsyncLogging\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\armlinux.diff:\n  128  +++ b/muduo/base/tests/CMakeLists.txt\n  129  @@ -2,7 +2,7 @@\n  130:  target_link_libraries(asynclogging_test muduo_base)\n  131   \n  132   add_executable(atomic_unittest Atomic_unittest.cc)\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\ChangeLog:\n   56    * More Buffer member functions, contributed by SeasonLee\n   57    * Add unit tests for Buffer\n   58:   * Fix wait condition in AsyncLogging::threadFunc()\n   59    * Rename fromHostPort to fromIpPort\n   60    * Add hash_value for shared_ptr\n   ..\n   92  \n   93    * Replace std::ostream with LogStream.\n   94:   * Add LogFile and AsyncLogging.\n   95    * Set SO_KEEPALIVE by default.\n   96    * Add HighWaterMark callback to TcpConnection.\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\MacOSX.diff:\n  186   \n  187     return localTime;\n  188: diff --git a/muduo/base/tests/AsyncLogging_test.cc b/muduo/base/tests/AsyncLogging_test.cc\n  189  index bd9fe59..e510fd4 100644\n  190: --- a/muduo/base/tests/AsyncLogging_test.cc\n  191: +++ b/muduo/base/tests/AsyncLogging_test.cc\n  192  @@ -4,6 +4,9 @@\n  193   \n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo-annotated.sublime-workspace:\n   17  		},\n   18  		{\n   19: 			\"file\": \"muduo/base/AsyncLogging.cc\",\n   20  			\"settings\":\n   21  			{\n   ..\n  171  		},\n  172  		{\n  173: 			\"file\": \"muduo/base/AsyncLogging.h\",\n  174  			\"settings\":\n  175  			{\n  ...\n  275  				{\n  276  					\"buffer\": 1,\n  277: 					\"file\": \"muduo/base/AsyncLogging.cc\",\n  278  					\"settings\":\n  279  					{\n  ...\n  924  				{\n  925  					\"buffer\": 20,\n  926: 					\"file\": \"muduo/base/AsyncLogging.h\",\n  927  					\"settings\":\n  928  					{\n  ...\n  996  			[\n  997  				\"async\",\n  998: 				\"muduo/base/AsyncLogging.h\"\n  999  			],\n 1000  			[\n 1001  				\"asy\",\n 1002: 				\"muduo/base/AsyncLogging.cc\"\n 1003  			],\n 1004  			[\n ....\n 1060  			[\n 1061  				\"sync\",\n 1062: 				\"muduo/base/AsyncLogging.cc\"\n 1063  			],\n 1064  			[\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\AsyncLogging.cc:\n    1: #include <muduo/base/AsyncLogging.h>\n    2  #include <muduo/base/LogFile.h>\n    3  #include <muduo/base/Timestamp.h>\n    .\n    7  using namespace muduo;\n    8  \n    9: AsyncLogging::AsyncLogging(const string& basename,\n   10                             size_t rollSize,\n   11                             int flushInterval)\n   ..\n   14      basename_(basename),\n   15      rollSize_(rollSize),\n   16:     thread_(boost::bind(&AsyncLogging::threadFunc, this), \"Logging\"),\n   17      latch_(1),\n   18      mutex_(),\n   ..\n   27  }\n   28  \n   29: void AsyncLogging::append(const char* logline, int len)\n   30  {\n   31    muduo::MutexLockGuard lock(mutex_);\n   ..\n   51  }\n   52  \n   53: void AsyncLogging::threadFunc()\n   54  {\n   55    assert(running_ == true);\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\AsyncLogging.h:\n    1: #ifndef MUDUO_BASE_ASYNCLOGGING_H\n    2: #define MUDUO_BASE_ASYNCLOGGING_H\n    3  \n    4  #include <muduo/base/BlockingQueue.h>\n    .\n   18  {\n   19  \n   20: class AsyncLogging : boost::noncopyable\n   21  {\n   22   public:\n   23  \n   24:   AsyncLogging(const string& basename,\n   25                 size_t rollSize,\n   26                 int flushInterval = 3);\n   27  \n   28:   ~AsyncLogging()\n   29    {\n   30      if (running_)\n   ..\n   53  \n   54    // declare but not define, prevent compiler-synthesized functions\n   55:   AsyncLogging(const AsyncLogging&);  // ptr_container\n   56:   void operator=(const AsyncLogging&);  // ptr_container\n   57  \n   58    void threadFunc();\n   ..\n   76  \n   77  }\n   78: #endif  // MUDUO_BASE_ASYNCLOGGING_H\n   79  \n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\CMakeLists.txt:\n    1  set(base_SRCS\n    2:   AsyncLogging.cc\n    3    Condition.cc\n    4    CountDownLatch.cc\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\premake4.lua:\n    8      headers('*.h')\n    9      files {\n   10:             'AsyncLogging.cc',\n   11              'Condition.cc',\n   12              'CountDownLatch.cc',\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\tests\\AsyncLogging_test.cc:\n    1: #include <muduo/base/AsyncLogging.h>\n    2  #include <muduo/base/Logging.h>\n    3  #include <muduo/base/Timestamp.h>\n    .\n    8  int kRollSize = 500*1000*1000;\n    9  \n   10: muduo::AsyncLogging* g_asyncLog = NULL;\n   11  \n   12  void asyncOutput(const char* msg, int len)\n   ..\n   55    char name[256];\n   56    strncpy(name, argv[0], 256);\n   57:   muduo::AsyncLogging log(::basename(name), kRollSize);\n   58    log.start();\n   59    g_asyncLog = &log;\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\base\\tests\\CMakeLists.txt:\n    1: add_executable(asynclogging_test AsyncLogging_test.cc)\n    2: target_link_libraries(asynclogging_test muduo_base)\n    3  \n    4  add_executable(atomic_unittest Atomic_unittest.cc)\n\n37 matches across 10 files\n\n\nSearching 1155 files for \"newDefaultPoller\"\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\backport.diff:\n  191  @@ -69,11 +57,17 @@ EventLoop::EventLoop()\n  192       threadId_(CurrentThread::tid()),\n  193:      poller_(Poller::newDefaultPoller(this)),\n  194       timerQueue_(new TimerQueue(this)),\n  195  -    wakeupFd_(createEventfd()),\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\MacOSX.diff:\n  337  @@ -69,11 +57,15 @@ EventLoop::EventLoop()\n  338       threadId_(CurrentThread::tid()),\n  339:      poller_(Poller::newDefaultPoller(this)),\n  340       timerQueue_(new TimerQueue(this)),\n  341  -    wakeupFd_(createEventfd()),\n  ...\n  656  @@ -16,6 +16,9 @@ using namespace muduo::net;\n  657   \n  658:  Poller* Poller::newDefaultPoller(EventLoop* loop)\n  659   {\n  660  +#ifdef __MACH__\n  ...\n  664     {\n  665       return new PollPoller(loop);\n  666: @@ -24,4 +27,5 @@ Poller* Poller::newDefaultPoller(EventLoop* loop)\n  667     {\n  668       return new EPollPoller(loop);\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\EventLoop.cc:\n   68      iteration_(0),\n   69      threadId_(CurrentThread::tid()),\n   70:     poller_(Poller::newDefaultPoller(this)),\n   71      timerQueue_(new TimerQueue(this)),\n   72      wakeupFd_(createEventfd()),\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\Poller.h:\n   49    virtual void removeChannel(Channel* channel) = 0;\n   50  \n   51:   static Poller* newDefaultPoller(EventLoop* loop);\n   52  \n   53    void assertInLoopThread()\n\nD:\\Source\\GitHub\\privaterepo\\sourceread\\muduo-annotated\\muduo\\net\\poller\\DefaultPoller.cc:\n   15  using namespace muduo::net;\n   16  \n   17: Poller* Poller::newDefaultPoller(EventLoop* loop)\n   18  {\n   19    if (::getenv(\"MUDUO_USE_POLL\"))\n\n7 matches across 5 files\n",
+			"settings":
+			{
+				"buffer_size": 32897,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "muduo/net/poller/DefaultPoller.cc",
+			"settings":
+			{
+				"buffer_size": 590,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/tests/AsyncLogging_test.cc",
+			"settings":
+			{
+				"buffer_size": 1460,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/net/TcpClient.cc",
+			"settings":
+			{
+				"buffer_size": 4276,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "examples/roundtrip/roundtrip_udp.cc",
+			"settings":
+			{
+				"buffer_size": 3807,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/LogStream.cc",
+			"settings":
+			{
+				"buffer_size": 4226,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/Logging.cc",
+			"settings":
+			{
+				"buffer_size": 4226,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/Logging.h",
+			"settings":
+			{
+				"buffer_size": 3460,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/Condition.cc",
+			"settings":
+			{
+				"buffer_size": 546,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/Thread.cc",
+			"settings":
+			{
+				"buffer_size": 4438,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/Condition.h",
+			"settings":
+			{
+				"buffer_size": 1198,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/BlockingQueue.h",
+			"settings":
+			{
+				"buffer_size": 1479,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/BoundedBlockingQueue.h",
+			"settings":
+			{
+				"buffer_size": 2066,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/tests/BoundedBlockingQueue_test.cc",
+			"settings":
+			{
+				"buffer_size": 2127,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/Thread.h",
+			"settings":
+			{
+				"buffer_size": 1196,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/CountDownLatch.cc",
+			"settings":
+			{
+				"buffer_size": 774,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/net/EventLoop.h",
+			"settings":
+			{
+				"buffer_size": 4234,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/net/Channel.h",
+			"settings":
+			{
+				"buffer_size": 3239,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/LogFile.cc",
+			"settings":
+			{
+				"buffer_size": 3506,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/LogStream.h",
+			"settings":
+			{
+				"buffer_size": 3659,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/AsyncLogging.h",
+			"settings":
+			{
+				"buffer_size": 1701,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/LogFile.h",
+			"settings":
+			{
+				"buffer_size": 1119,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/Types.h",
+			"settings":
+			{
+				"buffer_size": 4993,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/Timestamp.h",
+			"settings":
+			{
+				"buffer_size": 2620,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/Timestamp.cc",
+			"settings":
+			{
+				"buffer_size": 1432,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/tests/Logging_test.cc",
+			"settings":
+			{
+				"buffer_size": 2179,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/ThreadPool.cc",
+			"settings":
+			{
+				"buffer_size": 2934,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Source/Arena/cpp/unique_ptr.cpp",
+			"settings":
+			{
+				"buffer_size": 304,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/ThreadPool.h",
+			"settings":
+			{
+				"buffer_size": 1252,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/SignalSlot.h",
+			"settings":
+			{
+				"buffer_size": 3613,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/test/BlockingQueue_test.cc",
+			"settings":
+			{
+				"buffer_size": 2069,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/test/NonRecursiveMutex_test.cc",
+			"settings":
+			{
+				"buffer_size": 536,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/BlockingQueue.h",
+			"settings":
+			{
+				"buffer_size": 1180,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/ThreadPool.cc",
+			"settings":
+			{
+				"buffer_size": 2188,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/ThreadPool.h",
+			"settings":
+			{
+				"buffer_size": 1260,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/base/Date.cc",
+			"settings":
+			{
+				"buffer_size": 1799,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/net/Socket.h",
+			"settings":
+			{
+				"buffer_size": 1690,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/net/Socket.cc",
+			"settings":
+			{
+				"buffer_size": 1998,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/net/TcpConnection.h",
+			"settings":
+			{
+				"buffer_size": 4283,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/logging/Logging.h",
+			"settings":
+			{
+				"buffer_size": 2584,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/net/EventLoop.cc",
+			"settings":
+			{
+				"buffer_size": 6873,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/net/Poller.h",
+			"settings":
+			{
+				"buffer_size": 1392,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/net/Buffer.h",
+			"settings":
+			{
+				"buffer_size": 8000,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/net/SocketsOps.h",
+			"settings":
+			{
+				"buffer_size": 1448,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "muduo/net/Poller.cc",
+			"settings":
+			{
+				"buffer_size": 412,
+				"line_ending": "Windows"
+			}
 		}
 	],
-	"build_system": "",
+	"build_system": "Packages/C++/C++.sublime-build",
 	"command_palette":
 	{
 		"height": 392.0,
@@ -35,7 +437,7 @@
 		"show_minimap": false,
 		"show_open_files": false,
 		"show_tabs": false,
-		"side_bar_visible": false,
+		"side_bar_visible": true,
 		"status_bar_visible": false
 	},
 	"file_history":
@@ -43,13 +445,14 @@
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
 		"height": 0.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -57,6 +460,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"newDefaultPoller",
+			"AsyncLogging",
+			"timestamp",
+			"impl_",
+			"CHECK_NOTNULL",
+			"implicit_cast",
+			"down_cast",
+			"kLargeBuffer",
+			"klarge",
+			"FixedBuffer",
+			"largebuffer",
+			"SourceFile",
+			"mutex",
+			"UnassignGuard",
+			"isMainThread"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -74,7 +492,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -89,8 +507,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								301,
+								301
 							]
 						],
 						"settings":
@@ -104,13 +522,1997 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "muduo/base/AsyncLogging.cc",
+					"settings":
+					{
+						"buffer_size": 3243,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								601,
+								601
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Windows/System32/drivers/etc/hosts",
+					"settings":
+					{
+						"buffer_size": 836,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								828,
+								828
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "examples/filetransfer/loadtest/Client.java",
+					"settings":
+					{
+						"buffer_size": 2342,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								672,
+								672
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Java/Java.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 108.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "muduo/base/Mutex.h",
+					"settings":
+					{
+						"buffer_size": 3824,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								805,
+								805
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "muduo/base/CurrentThread.h",
+					"settings":
+					{
+						"buffer_size": 835,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								419,
+								419
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 324.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"settings":
+					{
+						"buffer_size": 32897,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										157,
+										169
+									],
+									[
+										343,
+										355
+									],
+									[
+										586,
+										598
+									],
+									[
+										756,
+										768
+									],
+									[
+										1028,
+										1041
+									],
+									[
+										1407,
+										1420
+									],
+									[
+										1675,
+										1688
+									],
+									[
+										1924,
+										1937
+									],
+									[
+										1999,
+										2012
+									],
+									[
+										2112,
+										2125
+									],
+									[
+										2417,
+										2427
+									],
+									[
+										2656,
+										2666
+									],
+									[
+										2825,
+										2835
+									],
+									[
+										2956,
+										2966
+									],
+									[
+										3069,
+										3079
+									],
+									[
+										3223,
+										3233
+									],
+									[
+										3353,
+										3363
+									],
+									[
+										3626,
+										3636
+									],
+									[
+										3711,
+										3721
+									],
+									[
+										3844,
+										3854
+									],
+									[
+										3963,
+										3973
+									],
+									[
+										4007,
+										4017
+									],
+									[
+										4067,
+										4077
+									],
+									[
+										4145,
+										4155
+									],
+									[
+										4332,
+										4342
+									],
+									[
+										4474,
+										4484
+									],
+									[
+										4626,
+										4636
+									],
+									[
+										5020,
+										5031
+									],
+									[
+										5430,
+										5441
+									],
+									[
+										5606,
+										5617
+									],
+									[
+										5883,
+										5894
+									],
+									[
+										6268,
+										6279
+									],
+									[
+										6317,
+										6328
+									],
+									[
+										6420,
+										6431
+									],
+									[
+										6537,
+										6548
+									],
+									[
+										6634,
+										6645
+									],
+									[
+										6811,
+										6822
+									],
+									[
+										6878,
+										6889
+									],
+									[
+										6963,
+										6974
+									],
+									[
+										7101,
+										7112
+									],
+									[
+										7404,
+										7415
+									],
+									[
+										7789,
+										7800
+									],
+									[
+										7838,
+										7849
+									],
+									[
+										7941,
+										7952
+									],
+									[
+										8058,
+										8069
+									],
+									[
+										8155,
+										8166
+									],
+									[
+										8332,
+										8343
+									],
+									[
+										8399,
+										8410
+									],
+									[
+										8484,
+										8495
+									],
+									[
+										8622,
+										8633
+									],
+									[
+										8947,
+										8953
+									],
+									[
+										9357,
+										9363
+									],
+									[
+										9533,
+										9539
+									],
+									[
+										9839,
+										9851
+									],
+									[
+										10249,
+										10261
+									],
+									[
+										10425,
+										10437
+									],
+									[
+										10770,
+										10779
+									],
+									[
+										10807,
+										10816
+									],
+									[
+										11298,
+										11311
+									],
+									[
+										11514,
+										11527
+									],
+									[
+										11775,
+										11788
+									],
+									[
+										11965,
+										11978
+									],
+									[
+										12175,
+										12188
+									],
+									[
+										12334,
+										12347
+									],
+									[
+										12630,
+										12643
+									],
+									[
+										12778,
+										12791
+									],
+									[
+										13010,
+										13023
+									],
+									[
+										13241,
+										13254
+									],
+									[
+										13473,
+										13486
+									],
+									[
+										13790,
+										13803
+									],
+									[
+										13967,
+										13980
+									],
+									[
+										14050,
+										14063
+									],
+									[
+										14336,
+										14349
+									],
+									[
+										14533,
+										14546
+									],
+									[
+										14802,
+										14815
+									],
+									[
+										14884,
+										14897
+									],
+									[
+										15156,
+										15169
+									],
+									[
+										15229,
+										15242
+									],
+									[
+										15277,
+										15290
+									],
+									[
+										15527,
+										15540
+									],
+									[
+										15712,
+										15725
+									],
+									[
+										15958,
+										15971
+									],
+									[
+										16145,
+										16158
+									],
+									[
+										16431,
+										16444
+									],
+									[
+										16639,
+										16652
+									],
+									[
+										16916,
+										16929
+									],
+									[
+										17061,
+										17074
+									],
+									[
+										17328,
+										17341
+									],
+									[
+										17550,
+										17563
+									],
+									[
+										17847,
+										17860
+									],
+									[
+										18159,
+										18172
+									],
+									[
+										18435,
+										18448
+									],
+									[
+										18673,
+										18686
+									],
+									[
+										23776,
+										23789
+									],
+									[
+										24248,
+										24261
+									],
+									[
+										24415,
+										24428
+									],
+									[
+										24646,
+										24659
+									],
+									[
+										24793,
+										24806
+									],
+									[
+										25118,
+										25131
+									],
+									[
+										25320,
+										25333
+									],
+									[
+										25655,
+										25668
+									],
+									[
+										25928,
+										25941
+									],
+									[
+										26259,
+										26271
+									],
+									[
+										26561,
+										26573
+									],
+									[
+										26763,
+										26775
+									],
+									[
+										27017,
+										27029
+									],
+									[
+										27057,
+										27069
+									],
+									[
+										27145,
+										27157
+									],
+									[
+										27196,
+										27208
+									],
+									[
+										27394,
+										27406
+									],
+									[
+										27505,
+										27517
+									],
+									[
+										27632,
+										27644
+									],
+									[
+										27765,
+										27777
+									],
+									[
+										27881,
+										27893
+									],
+									[
+										27963,
+										27975
+									],
+									[
+										28065,
+										28077
+									],
+									[
+										28220,
+										28232
+									],
+									[
+										28367,
+										28379
+									],
+									[
+										28381,
+										28393
+									],
+									[
+										28624,
+										28636
+									],
+									[
+										28747,
+										28759
+									],
+									[
+										28887,
+										28899
+									],
+									[
+										29068,
+										29080
+									],
+									[
+										29109,
+										29121
+									],
+									[
+										29213,
+										29225
+									],
+									[
+										29289,
+										29301
+									],
+									[
+										29429,
+										29441
+									],
+									[
+										29578,
+										29590
+									],
+									[
+										29597,
+										29609
+									],
+									[
+										29661,
+										29673
+									],
+									[
+										29783,
+										29795
+									],
+									[
+										29920,
+										29932
+									],
+									[
+										30132,
+										30144
+									],
+									[
+										30349,
+										30361
+									],
+									[
+										30511,
+										30523
+									],
+									[
+										30687,
+										30699
+									],
+									[
+										30896,
+										30908
+									],
+									[
+										30914,
+										30926
+									],
+									[
+										30965,
+										30977
+									],
+									[
+										31330,
+										31346
+									],
+									[
+										31635,
+										31651
+									],
+									[
+										31839,
+										31855
+									],
+									[
+										32007,
+										32023
+									],
+									[
+										32273,
+										32289
+									],
+									[
+										32551,
+										32567
+									],
+									[
+										32787,
+										32803
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								32798,
+								32798
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 13,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 15696.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "muduo/net/poller/DefaultPoller.cc",
+					"settings":
+					{
+						"buffer_size": 590,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								359,
+								359
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "muduo/base/tests/AsyncLogging_test.cc",
+					"settings":
+					{
+						"buffer_size": 1460,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1289,
+								1289
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 209.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "muduo/net/TcpClient.cc",
+					"settings":
+					{
+						"buffer_size": 4276,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1392,
+								1392
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 959.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "examples/roundtrip/roundtrip_udp.cc",
+					"settings":
+					{
+						"buffer_size": 3807,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1405,
+								1405
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 491.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "muduo/base/LogStream.cc",
+					"settings":
+					{
+						"buffer_size": 4226,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "muduo/base/Logging.cc",
+					"settings":
+					{
+						"buffer_size": 4226,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								129,
+								129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "muduo/base/Logging.h",
+					"settings":
+					{
+						"buffer_size": 3460,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								903,
+								903
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "muduo/base/Condition.cc",
+					"settings":
+					{
+						"buffer_size": 546,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								384,
+								384
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "muduo/base/Thread.cc",
+					"settings":
+					{
+						"buffer_size": 4438,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								578,
+								578
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "muduo/base/Condition.h",
+					"settings":
+					{
+						"buffer_size": 1198,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "muduo/base/BlockingQueue.h",
+					"settings":
+					{
+						"buffer_size": 1479,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								758,
+								758
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 155.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "muduo/base/BoundedBlockingQueue.h",
+					"settings":
+					{
+						"buffer_size": 2066,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								909,
+								909
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "muduo/base/tests/BoundedBlockingQueue_test.cc",
+					"settings":
+					{
+						"buffer_size": 2127,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "muduo/base/Thread.h",
+					"settings":
+					{
+						"buffer_size": 1196,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								508,
+								508
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "muduo/base/CountDownLatch.cc",
+					"settings":
+					{
+						"buffer_size": 774,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								710,
+								710
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "muduo/net/EventLoop.h",
+					"settings":
+					{
+						"buffer_size": 4234,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3835,
+								3842
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2214.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "muduo/net/Channel.h",
+					"settings":
+					{
+						"buffer_size": 3239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2526,
+								2526
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1739.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 24,
+					"file": "muduo/base/LogFile.cc",
+					"settings":
+					{
+						"buffer_size": 3506,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								223,
+								230
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 702.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 25,
+					"file": "muduo/base/LogStream.h",
+					"settings":
+					{
+						"buffer_size": 3659,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3344,
+								3344
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2315.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 26,
+					"file": "muduo/base/AsyncLogging.h",
+					"settings":
+					{
+						"buffer_size": 1701,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								818,
+								818
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 756.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 27,
+					"file": "muduo/base/LogFile.h",
+					"settings":
+					{
+						"buffer_size": 1119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1119,
+								1119
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 28,
+					"file": "muduo/base/Types.h",
+					"settings":
+					{
+						"buffer_size": 4993,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3016,
+								3016
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 806.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 29,
+					"file": "muduo/base/Timestamp.h",
+					"settings":
+					{
+						"buffer_size": 2620,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2118,
+								2118
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 432.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 30,
+					"file": "muduo/base/Timestamp.cc",
+					"settings":
+					{
+						"buffer_size": 1432,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1429,
+								1429
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 71.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 31,
+					"file": "muduo/base/tests/Logging_test.cc",
+					"settings":
+					{
+						"buffer_size": 2179,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								597,
+								597
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 522.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 32,
+					"file": "muduo/base/ThreadPool.cc",
+					"settings":
+					{
+						"buffer_size": 2934,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2934,
+								2934
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1534.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 33,
+					"file": "/D/Source/Arena/cpp/unique_ptr.cpp",
+					"settings":
+					{
+						"buffer_size": 304,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								303,
+								303
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 34,
+					"file": "muduo/base/ThreadPool.h",
+					"settings":
+					{
+						"buffer_size": 1252,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								530,
+								530
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 157.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 35,
+					"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/SignalSlot.h",
+					"settings":
+					{
+						"buffer_size": 3613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2087,
+								2087
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1620.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 36,
+					"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/test/BlockingQueue_test.cc",
+					"settings":
+					{
+						"buffer_size": 2069,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								700,
+								700
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 37,
+					"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/test/NonRecursiveMutex_test.cc",
+					"settings":
+					{
+						"buffer_size": 536,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								535,
+								535
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 38,
+					"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/BlockingQueue.h",
+					"settings":
+					{
+						"buffer_size": 1180,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								807,
+								807
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 39,
+					"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/ThreadPool.cc",
+					"settings":
+					{
+						"buffer_size": 2188,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1519,
+								1530
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1188.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 40,
+					"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/thread/ThreadPool.h",
+					"settings":
+					{
+						"buffer_size": 1260,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								516,
+								516
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 162.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 41,
+					"file": "muduo/base/Date.cc",
+					"settings":
+					{
+						"buffer_size": 1799,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								510,
+								510
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 432.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 42,
+					"file": "muduo/net/Socket.h",
+					"settings":
+					{
+						"buffer_size": 1690,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								964,
+								964
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 702.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 43,
+					"file": "muduo/net/Socket.cc",
+					"settings":
+					{
+						"buffer_size": 1998,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1859,
+								1859
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 792.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 44,
+					"file": "muduo/net/TcpConnection.h",
+					"settings":
+					{
+						"buffer_size": 4283,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1410,
+								1410
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 540.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 45,
+					"file": "/D/Source/GitHub/privaterepo/sourceread/recipes-annotated/logging/Logging.h",
+					"settings":
+					{
+						"buffer_size": 2584,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 46,
+					"file": "muduo/net/EventLoop.cc",
+					"settings":
+					{
+						"buffer_size": 6873,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1384,
+								1384
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 796.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 47,
+					"file": "muduo/net/Poller.h",
+					"settings":
+					{
+						"buffer_size": 1392,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1208,
+								1224
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 48,
+					"file": "muduo/net/Buffer.h",
+					"settings":
+					{
+						"buffer_size": 8000,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7967,
+								7967
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5778.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 49,
+					"file": "muduo/net/SocketsOps.h",
+					"settings":
+					{
+						"buffer_size": 1448,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 50,
+					"file": "muduo/net/Poller.cc",
+					"settings":
+					{
+						"buffer_size": 412,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"input":
 	{
@@ -139,6 +2541,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
 	"replace":
 	{
 		"height": 0.0
@@ -149,6 +2555,214 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"poller",
+				"muduo-annotated/muduo/net/Poller.cc"
+			],
+			[
+				"eve",
+				"muduo-annotated/muduo/net/EventLoop.cc"
+			],
+			[
+				"eventlo",
+				"muduo-annotated/muduo/net/EventLoop.h"
+			],
+			[
+				"socketops",
+				"muduo-annotated/muduo/net/SocketsOps.h"
+			],
+			[
+				"buffer",
+				"muduo-annotated/muduo/net/Buffer.h"
+			],
+			[
+				"poll",
+				"muduo-annotated/muduo/net/Poller.h"
+			],
+			[
+				"eventloop.cc",
+				"muduo-annotated/muduo/net/EventLoop.cc"
+			],
+			[
+				"eventloo",
+				"muduo-annotated/muduo/net/EventLoop.h"
+			],
+			[
+				"lo",
+				"recipes-annotated/logging/Logging.h"
+			],
+			[
+				"tcpconn",
+				"muduo-annotated/muduo/net/TcpConnection.h"
+			],
+			[
+				"sock",
+				"muduo-annotated/muduo/net/Socket.cc"
+			],
+			[
+				"socket",
+				"muduo-annotated/muduo/net/Socket.h"
+			],
+			[
+				"date.cc",
+				"muduo-annotated/muduo/base/Date.cc"
+			],
+			[
+				"threadpoo",
+				"muduo-annotated/muduo/base/ThreadPool.h"
+			],
+			[
+				"",
+				"recipes-annotated/thread/ThreadPool.cc"
+			],
+			[
+				"threadpool",
+				"recipes-annotated/thread/ThreadPool.h"
+			],
+			[
+				"threadpo",
+				"recipes-annotated/thread/ThreadPool.cc"
+			],
+			[
+				"block",
+				"recipes-annotated/thread/BlockingQueue.h"
+			],
+			[
+				"nonre",
+				"recipes-annotated/thread/test/NonRecursiveMutex_test.cc"
+			],
+			[
+				"taskqueue",
+				"recipes-annotated/thread/test/BlockingQueue_test.cc"
+			],
+			[
+				"signal",
+				"recipes-annotated/thread/SignalSlot.h"
+			],
+			[
+				"threap",
+				"muduo/base/ThreadPool.cc"
+			],
+			[
+				"threadp",
+				"muduo/base/ThreadPool.h"
+			],
+			[
+				"logtes",
+				"muduo/base/tests/Logging_test.cc"
+			],
+			[
+				"threa",
+				"muduo/base/ThreadPool.h"
+			],
+			[
+				"test/log",
+				"muduo/base/tests/Logging_test.cc"
+			],
+			[
+				"asy",
+				"muduo/base/AsyncLogging.h"
+			],
+			[
+				"thread",
+				"muduo/base/Thread.h"
+			],
+			[
+				"loggin",
+				"muduo/base/Logging.h"
+			],
+			[
+				"log",
+				"muduo/base/AsyncLogging.h"
+			],
+			[
+				"logstrea",
+				"muduo/base/LogStream.cc"
+			],
+			[
+				"logstre",
+				"muduo/base/LogStream.h"
+			],
+			[
+				"logging",
+				"muduo/base/Logging.cc"
+			],
+			[
+				"logg",
+				"muduo/base/Logging.cc"
+			],
+			[
+				"time",
+				"muduo/base/Timestamp.cc"
+			],
+			[
+				"times",
+				"muduo/base/Timestamp.h"
+			],
+			[
+				"loggg",
+				"muduo/base/Logging.cc"
+			],
+			[
+				"log.h",
+				"muduo/base/Logging.h"
+			],
+			[
+				"type",
+				"muduo/base/Types.h"
+			],
+			[
+				"async",
+				"muduo/base/AsyncLogging.h"
+			],
+			[
+				"mutex",
+				"muduo/base/Mutex.h"
+			],
+			[
+				"channel",
+				"muduo/net/Channel.h"
+			],
+			[
+				"event",
+				"muduo/net/EventLoop.h"
+			],
+			[
+				"thread.cc",
+				"muduo/base/Thread.cc"
+			],
+			[
+				"thread.h",
+				"muduo/base/Thread.h"
+			],
+			[
+				"condi",
+				"muduo/base/Condition.cc"
+			],
+			[
+				"con",
+				"muduo/base/Condition.h"
+			],
+			[
+				"cond",
+				"muduo/base/Condition.h"
+			],
+			[
+				"mutex.h",
+				"muduo/base/Mutex.h"
+			],
+			[
+				"mute",
+				"muduo/base/Mutex.h"
+			],
+			[
+				"current",
+				"muduo/base/CurrentThread.h"
+			],
+			[
+				"java",
+				"examples/filetransfer/loadtest/Client.java"
+			],
 			[
 				"sync",
 				"muduo/base/AsyncLogging.cc"
@@ -162,16 +2776,16 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 456.0,
 	"status_bar_visible": true
 }

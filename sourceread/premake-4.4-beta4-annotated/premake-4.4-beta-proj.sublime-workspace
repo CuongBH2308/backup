@@ -1,0 +1,372 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/C++/C++.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": true,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"newDefaultPoller",
+			"AsyncLogging",
+			"timestamp",
+			"impl_",
+			"CHECK_NOTNULL",
+			"implicit_cast",
+			"down_cast",
+			"kLargeBuffer",
+			"klarge",
+			"FixedBuffer",
+			"largebuffer",
+			"SourceFile",
+			"mutex",
+			"UnassignGuard",
+			"isMainThread"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"poller",
+				"muduo-annotated/muduo/net/Poller.cc"
+			],
+			[
+				"eve",
+				"muduo-annotated/muduo/net/EventLoop.cc"
+			],
+			[
+				"eventlo",
+				"muduo-annotated/muduo/net/EventLoop.h"
+			],
+			[
+				"socketops",
+				"muduo-annotated/muduo/net/SocketsOps.h"
+			],
+			[
+				"buffer",
+				"muduo-annotated/muduo/net/Buffer.h"
+			],
+			[
+				"poll",
+				"muduo-annotated/muduo/net/Poller.h"
+			],
+			[
+				"eventloop.cc",
+				"muduo-annotated/muduo/net/EventLoop.cc"
+			],
+			[
+				"eventloo",
+				"muduo-annotated/muduo/net/EventLoop.h"
+			],
+			[
+				"lo",
+				"recipes-annotated/logging/Logging.h"
+			],
+			[
+				"tcpconn",
+				"muduo-annotated/muduo/net/TcpConnection.h"
+			],
+			[
+				"sock",
+				"muduo-annotated/muduo/net/Socket.cc"
+			],
+			[
+				"socket",
+				"muduo-annotated/muduo/net/Socket.h"
+			],
+			[
+				"date.cc",
+				"muduo-annotated/muduo/base/Date.cc"
+			],
+			[
+				"threadpoo",
+				"muduo-annotated/muduo/base/ThreadPool.h"
+			],
+			[
+				"",
+				"recipes-annotated/thread/ThreadPool.cc"
+			],
+			[
+				"threadpool",
+				"recipes-annotated/thread/ThreadPool.h"
+			],
+			[
+				"threadpo",
+				"recipes-annotated/thread/ThreadPool.cc"
+			],
+			[
+				"block",
+				"recipes-annotated/thread/BlockingQueue.h"
+			],
+			[
+				"nonre",
+				"recipes-annotated/thread/test/NonRecursiveMutex_test.cc"
+			],
+			[
+				"taskqueue",
+				"recipes-annotated/thread/test/BlockingQueue_test.cc"
+			],
+			[
+				"signal",
+				"recipes-annotated/thread/SignalSlot.h"
+			],
+			[
+				"threap",
+				"muduo/base/ThreadPool.cc"
+			],
+			[
+				"threadp",
+				"muduo/base/ThreadPool.h"
+			],
+			[
+				"logtes",
+				"muduo/base/tests/Logging_test.cc"
+			],
+			[
+				"threa",
+				"muduo/base/ThreadPool.h"
+			],
+			[
+				"test/log",
+				"muduo/base/tests/Logging_test.cc"
+			],
+			[
+				"asy",
+				"muduo/base/AsyncLogging.h"
+			],
+			[
+				"thread",
+				"muduo/base/Thread.h"
+			],
+			[
+				"loggin",
+				"muduo/base/Logging.h"
+			],
+			[
+				"log",
+				"muduo/base/AsyncLogging.h"
+			],
+			[
+				"logstrea",
+				"muduo/base/LogStream.cc"
+			],
+			[
+				"logstre",
+				"muduo/base/LogStream.h"
+			],
+			[
+				"logging",
+				"muduo/base/Logging.cc"
+			],
+			[
+				"logg",
+				"muduo/base/Logging.cc"
+			],
+			[
+				"time",
+				"muduo/base/Timestamp.cc"
+			],
+			[
+				"times",
+				"muduo/base/Timestamp.h"
+			],
+			[
+				"loggg",
+				"muduo/base/Logging.cc"
+			],
+			[
+				"log.h",
+				"muduo/base/Logging.h"
+			],
+			[
+				"type",
+				"muduo/base/Types.h"
+			],
+			[
+				"async",
+				"muduo/base/AsyncLogging.h"
+			],
+			[
+				"mutex",
+				"muduo/base/Mutex.h"
+			],
+			[
+				"channel",
+				"muduo/net/Channel.h"
+			],
+			[
+				"event",
+				"muduo/net/EventLoop.h"
+			],
+			[
+				"thread.cc",
+				"muduo/base/Thread.cc"
+			],
+			[
+				"thread.h",
+				"muduo/base/Thread.h"
+			],
+			[
+				"condi",
+				"muduo/base/Condition.cc"
+			],
+			[
+				"con",
+				"muduo/base/Condition.h"
+			],
+			[
+				"cond",
+				"muduo/base/Condition.h"
+			],
+			[
+				"mutex.h",
+				"muduo/base/Mutex.h"
+			],
+			[
+				"mute",
+				"muduo/base/Mutex.h"
+			],
+			[
+				"current",
+				"muduo/base/CurrentThread.h"
+			],
+			[
+				"java",
+				"examples/filetransfer/loadtest/Client.java"
+			],
+			[
+				"sync",
+				"muduo/base/AsyncLogging.cc"
+			],
+			[
+				"set",
+				"/D/Tools/setup.bat"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/D/Source/GitHub/privaterepo/sourceread/gradle-annotated/gradle-proj.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 456.0,
+	"status_bar_visible": true
+}

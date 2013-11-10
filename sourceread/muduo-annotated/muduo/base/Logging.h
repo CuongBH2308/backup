@@ -30,7 +30,7 @@ class Logger
       : data_(arr),
         size_(N-1)
     {
-      const char* slash = strrchr(data_, '/'); // builtin function
+      const char* slash = strrchr(data_, '/'); // builtin function - lzprgmr: how to we make sure this happened at compile time?
       if (slash)
       {
         data_ = slash + 1;
@@ -98,13 +98,13 @@ inline Logger::LogLevel Logger::logLevel()
 }
 
 #define LOG_TRACE if (muduo::Logger::logLevel() <= muduo::Logger::TRACE) \
-  muduo::Logger(__FILE__, __LINE__, muduo::Logger::TRACE, __func__).stream()
+  muduo::Logger(__FILE__, __LINE__, muduo::Logger::TRACE, __func__).stream()  // lzprgmr: empty ops if loglevel is lower than current setting
 #define LOG_DEBUG if (muduo::Logger::logLevel() <= muduo::Logger::DEBUG) \
   muduo::Logger(__FILE__, __LINE__, muduo::Logger::DEBUG, __func__).stream()
 #define LOG_INFO if (muduo::Logger::logLevel() <= muduo::Logger::INFO) \
   muduo::Logger(__FILE__, __LINE__).stream()
-#define LOG_WARN muduo::Logger(__FILE__, __LINE__, muduo::Logger::WARN).stream()
-#define LOG_ERROR muduo::Logger(__FILE__, __LINE__, muduo::Logger::ERROR).stream()
+#define LOG_WARN muduo::Logger(__FILE__, __LINE__, muduo::Logger::WARN).stream() // lzprgmr: WARN and above is always logged
+#define LOG_ERROR muduo::Logger(__FILE__, __LINE__, muduo::Logger::ERROR).stream() // lzprgmr: every log a new tmp object - is that too expensive?
 #define LOG_FATAL muduo::Logger(__FILE__, __LINE__, muduo::Logger::FATAL).stream()
 #define LOG_SYSERR muduo::Logger(__FILE__, __LINE__, false).stream()
 #define LOG_SYSFATAL muduo::Logger(__FILE__, __LINE__, true).stream()

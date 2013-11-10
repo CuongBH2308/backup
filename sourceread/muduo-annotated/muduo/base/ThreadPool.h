@@ -23,7 +23,7 @@ namespace muduo
 class ThreadPool : boost::noncopyable
 {
  public:
-  typedef boost::function<void ()> Task;
+  typedef boost::function<void ()> Task; // lzprgmr: a task, is a threadfunc
 
   explicit ThreadPool(const string& name = string());
   ~ThreadPool();

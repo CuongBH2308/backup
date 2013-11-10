@@ -58,7 +58,7 @@ class AsyncLogging : boost::noncopyable
   void threadFunc();
 
   typedef muduo::detail::FixedBuffer<muduo::detail::kLargeBuffer> Buffer;
-  typedef boost::ptr_vector<Buffer> BufferVector;
+  typedef boost::ptr_vector<Buffer> BufferVector;  // lzprgmr: ptr_vector own the pointers in the vector, and will automatically delete them on destruction
   typedef BufferVector::auto_type BufferPtr;
 
   const int flushInterval_;

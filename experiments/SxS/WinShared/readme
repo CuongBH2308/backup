@@ -1,0 +1,17 @@
+This example test that vc++ crt runtime 9.0 and 10.0 can be loaded into the same process, as there are side by side shared assemblies.
+
+foo: a shared library built with vc9
+bar: a executable built with vc10, and depends on foo
+
+steps:
+1. build foo
+	* cd foo
+	* premake4 vs2008
+	* "C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\Tools\vsvars32.bat"
+	* msbuild foo.sln
+2. build bar
+	* cd bar
+	* premake4 vs2010
+	* "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\vsvars32.bat"
+	* msbuild bar.sln
+3. Copy foo.dll to bar/

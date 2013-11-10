@@ -45,7 +45,8 @@ set PATH=%PATH%;D:\Source\Tools\Apache-Subversion-1.7.7\bin
 set PATH=%PATH%;D:\System\mongodb-win32-x86_64-2.4.5\mongodb\bin
 set PATH=%PATH%;D:\Source\GitHub\privaterepo\tools\Batch
 set PATH=%PATH%;C:\Program Files\TortoiseHg
-
+set PATH=%PATH%;D:\System\groovy\groovy-2.1.2\bin
+set PATH=D:\System\gradle\gradle-1.7\bin;%PATH%
 
 REM ======================================================
 REM doskey setup

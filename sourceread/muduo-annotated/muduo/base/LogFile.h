@@ -5,7 +5,7 @@
 #include <muduo/base/Types.h>
 
 #include <boost/noncopyable.hpp>
-#include <boost/scoped_ptr.hpp>
+#include <boost/scoped_ptr.hpp> // lzprgmr: no copy, not move, a simle RAII wrapper for pointers - compared to shared_ptr, and unique_ptr (auto_ptr is a disater)
 
 namespace muduo
 {

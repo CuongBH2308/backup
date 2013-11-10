@@ -1,0 +1,8 @@
+// read a file, print out matched pattern...
+// file: current file
+// pattern: function calls
+scriptFile ="D:\\Source\\GitHub\\privaterepo\\learn\\groovy\\user-guide\\filehandling.groovy"
+
+new File(scriptFile).eachLine { 
+    line -> println (line)
+}

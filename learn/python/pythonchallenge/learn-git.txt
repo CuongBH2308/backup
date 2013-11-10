@@ -20,3 +20,9 @@ git config --add user.email "baiyanhuang@gmail.com"
 git show commit
 
 git mv filename1 filename2
+
+# Sync lastest code
+git pull
+
+# .gitignore - tell git to ignore a file pattern, just like .p4ingore
+.gitignore

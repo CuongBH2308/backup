@@ -18,7 +18,7 @@ namespace muduo
 #ifdef MUDUO_STD_STRING
 using std::string;
 #else  // !MUDUO_STD_STRING
-typedef __gnu_cxx::__sso_string string;
+typedef __gnu_cxx::__sso_string string; // lzprgmr: short string optimization  - use the pointer to store characters for short strings
 #endif
 
 // Taken from google-protobuf stubs/common.h
@@ -111,7 +111,7 @@ inline To down_cast(From* f) {                   // so we only accept pointers
 #if !defined(NDEBUG) && !defined(GOOGLE_PROTOBUF_NO_RTTI)
   assert(f == NULL || dynamic_cast<To>(f) != NULL);  // RTTI: debug mode only!
 #endif
-  return static_cast<To>(f);
+  return static_cast<To>(f);  // lzprgmr: I guess static_cast won't always success in case of multi-inheirtance?
 }
 
 }

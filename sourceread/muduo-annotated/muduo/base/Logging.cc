@@ -30,7 +30,7 @@ class LoggerImpl
 };
 */
 
-__thread char t_errnobuf[512];
+__thread char t_errnobuf[512]; // lzprgmr: thread local global variables, so it is not shared, hence no lock is needed
 __thread char t_time[32];
 __thread time_t t_lastSecond;
 
@@ -46,9 +46,10 @@ Logger::LogLevel initLogLevel()
   else if (::getenv("MUDUO_LOG_DEBUG"))
     return Logger::DEBUG;
   else
-    return Logger::INFO;
+    return Logger::INFO;  // lzprgmr: default to INFO, you could set DEBUG or TRACE use environemnt variable, WARN and above are always logged
 }
 
+// lzprmgr: it is initialized in startup time, no multi-thread will be involved
 Logger::LogLevel g_logLevel = initLogLevel();
 
 const char* LogLevelName[Logger::NUM_LOG_LEVELS] =
@@ -116,7 +117,7 @@ Logger::Impl::Impl(LogLevel level, int savedErrno, const SourceFile& file, int l
 {
   formatTime();
   CurrentThread::tid();
-  stream_ << T(CurrentThread::tidString(), 6);
+  stream_ << T(CurrentThread::tidString(), 6);  // lzprgmr: compile time?
   stream_ << T(LogLevelName[level], 6);
   if (savedErrno != 0)
   {
