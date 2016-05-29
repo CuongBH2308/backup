@@ -1,0 +1,51 @@
+apply plugin: 'java'
+
+// gradle events
+gradle.beforeProject {
+	println "gradle.beforeProject"
+}
+
+gradle.afterProject {
+	println "gradle.afterProject"
+}
+
+gradle.buildFinished{
+	println "gradle.buildFinished"
+}
+
+gradle.projectsEvaluated{
+	println "gradle.projectsEvaluated"
+}
+
+gradle.projectsLoaded{
+	println "gradle.projectsLoaded"
+}
+
+gradle.settingsEvaluated{
+	println "gradle.settingsEvaluated"
+}
+
+// project events
+rootProject.afterEvaluate {
+	println "rootProject.afterEvaluate1"
+}
+rootProject.afterEvaluate {
+	println "rootProject.afterEvaluate2"
+}
+
+rootProject.beforeEvaluate {
+	println "rootProject.beforeEvaluate"
+}
+
+// taskgraph events
+gradle.taskGraph.whenReady {
+	println "gradle.taskGraph.whenReady"
+}
+
+// Add listers
+class ExampleTaskExecutionGraphListener implements TaskExecutionGraphListener {
+	public void graphPopulated(TaskExecutionGraph graph) {
+		println "TaskExecutionGraphListener.graphPopulated"
+	}
+}
+gradle.taskGraph.addTaskExecutionGraphListener(new ExampleTaskExecutionGraphListener())

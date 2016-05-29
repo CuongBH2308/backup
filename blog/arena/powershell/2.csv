@@ -1,0 +1,5 @@
+#TYPE Selected.System.IO.FileInfo
+"Name","Length"
+"1.txt","21"
+"2.csv","66"
+"ceatedir.ps1","184"

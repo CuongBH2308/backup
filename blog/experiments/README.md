@@ -1,0 +1,2 @@
+# Hello
+This is the place for me to experiment with different technologies - when you see something interesting and might be useful, like docker, redis, node.js, bootstrap, spring, herbinate...,  don't just stay at just reading it, try it out and get your hands dirty!!!

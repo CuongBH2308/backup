@@ -1,0 +1,6 @@
+C:\Workspace\github\blog\arena\cs\bin\Debug\cs.exe.config
+C:\Workspace\github\blog\arena\cs\bin\Debug\cs.exe
+C:\Workspace\github\blog\arena\cs\bin\Debug\cs.pdb
+C:\Workspace\github\blog\arena\cs\obj\Debug\cs.csprojResolveAssemblyReference.cache
+C:\Workspace\github\blog\arena\cs\obj\Debug\cs.exe
+C:\Workspace\github\blog\arena\cs\obj\Debug\cs.pdb

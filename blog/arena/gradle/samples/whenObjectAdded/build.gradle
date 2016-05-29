@@ -1,0 +1,38 @@
+// DomainObjectCollection.whenObjectAdded
+// It could be useful to apply default values in this event:
+// 1. before it gets configured
+// 2. after it gets created
+
+class ApplicationConfig {
+	String name
+	String mainClass
+
+	ApplicationConfig(String name) {
+		println "New object: $name created"
+		this.name = name
+	}
+}
+
+class ContainerPlugin implements Plugin<Project> {
+	void apply(Project project) {
+		def applicationContainer = project.container(ApplicationConfig.class)
+		project.extensions.add('applications', applicationContainer)
+
+		project.applications.whenObjectAdded {application ->
+			println "New object: ${application.name} added"
+		}
+	}
+}
+
+
+apply plugin: ContainerPlugin
+applications {
+	'qa' {
+		println "New object: qa configured"
+		mainClass = 'qa'
+	}
+	'prod' {
+		println "New object: prod configured"
+		mainClass = 'prod'
+	}
+}

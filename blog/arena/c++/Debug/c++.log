@@ -1,0 +1,19 @@
+﻿Build started 4/24/2016 8:05:51 AM.
+     1>Project "C:\Workspace\github\blog\arena\c++\c++.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt unique_ptr.cpp
+         unique_ptr.cpp
+     1>c:\workspace\github\blog\arena\c++\unique_ptr.cpp(64): warning C4700: uninitialized local variable 'z2' used
+     1>c:\workspace\github\blog\arena\c++\unique_ptr.cpp(64): warning C4700: uninitialized local variable 'z' used
+     1>c:\workspace\github\blog\arena\c++\unique_ptr.cpp(64): warning C4700: uninitialized local variable 'y' used
+     1>c:\workspace\github\blog\arena\c++\unique_ptr.cpp(64): warning C4700: uninitialized local variable 'x' used
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Workspace\github\blog\arena\c++\Debug\c++.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Workspace\github\blog\arena\c++\Debug\c++.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Workspace\github\blog\arena\c++\Debug\c++.lib" /MACHINE:X86 Debug\c++.obj
+         Debug\stdafx.obj
+         Debug\unique_ptr.obj
+         c++.vcxproj -> C:\Workspace\github\blog\arena\c++\Debug\c++.exe
+     1>Done Building Project "C:\Workspace\github\blog\arena\c++\c++.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.43

@@ -1,0 +1,13 @@
+body {
+	background-color: yellow;
+	text-align: center
+}
+
+input[type=button] {
+	width: 3em;
+	height: 3em;
+}
+
+
+
+p {color:blue;}

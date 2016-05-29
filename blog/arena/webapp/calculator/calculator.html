@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="description" content="This is a web calculator">
+	<meta name="author" content="Baiyan Huang" >
+	<meta http-equiv="refresh" content="200" >
+
+	<title> Web Calculator </title>
+	<link rel="icon" href="calculator/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" type="text/css" href="calculator/calstyle.css" />
+	<style type="text/css">
+		p.abacus {color:red;}
+	</style>
+
+	<script type="text/javascript" src="calculator/calculator.js" > 
+	</script>
+	
+</head>
+<body>
+	<h1> Web Calculator </h1>
+	<hr/>
+
+	<form>
+		<input type="text" id="output" style="width:15em; height:2em; text-align:right;">
+		<br>
+		<input type="button"	value="C" style="width:14em; height:2em;" id="clear" />
+		<br>
+		<input type="button"	value="1" class="number" />
+		<input type="button"	value="2" class="number" />
+		<input type="button"	value="3" class="number" />
+		<input type="button"	value="+" class="operator" />
+		<br>
+		<input type="button"	value="4" class="number" />
+		<input type="button"	value="5" class="number" />
+		<input type="button"	value="6" class="number" />
+		<input type="button"	value="-" class="operator" />
+		<br>
+		<input type="button"	value="7" class="number" />
+		<input type="button"	value="8" class="number" />
+		<input type="button"	value="9" class="number" />
+		<input type="button"	value="*" class="operator" />
+		<br>
+		<input type="button"	value="0" class="number"/>
+		<input type="button"	value="." class="operator"/>
+		<input type="button"	value="/" class="operator"/>
+		<input type="button"	value="=" id="execute"/>
+		<br> <!--There is important to keep the last row aligned with previous ones -->
+	</form>
+
+	<script>
+		addEventListeners(document)
+	</script>
+</body>
+</html>
